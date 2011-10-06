@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="site")
  * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\SiteRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Site
 {
@@ -139,4 +140,22 @@ class Site
     {
         return $this->updated;
     }
+    
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist() {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+    
+    
+    /**
+    * @ORM\PreUpdate
+    */
+    public function onPreUpdate() {
+      $this->setUpdated(new \DateTime());
+    }
+    
 }
