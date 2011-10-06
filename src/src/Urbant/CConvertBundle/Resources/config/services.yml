@@ -1,0 +1,7 @@
+parameters:
+#    urbant_c_convert.example.class: Urbant\CConvertBundle\Example
+
+services:
+#    urbant_c_convert.example:
+#        class: %urbant_c_convert.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

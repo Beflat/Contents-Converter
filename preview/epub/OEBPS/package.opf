@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
+ <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+   <dc:title>タイトル</dc:title>
+   <dc:creator opf:role="aut">著者</dc:creator>
+   <dc:contributor opf:role="trl">共著者</dc:contributor>
+   <dc:contributor opf:role="prt">contributor</dc:contributor>
+   <dc:language>ja</dc:language>
+   <dc:publisher>出版社</dc:publisher>
+   <dc:identifier id="BookId">urn:uuid:contents-converter.urban-theory.net_1000</dc:identifier>
+ </metadata>
+ <manifest>
+  <item id="ncx" href="toc.ncx" media-type="text/xml" />
+  <item id="style" href="style.css" media-type="text/css" />
+  <item id="page" href="page.xhtml" media-type="application/xhtml+xml" />
+  <item id="img01" href="images/fig42378_01.png" media-type="image/png"/>
+  <item id="img02" href="images/fig42378_02.png" media-type="image/png"/>
+ </manifest>
+ <spine toc="ncx">
+  <itemref idref="page" />
+ </spine>
+</package>

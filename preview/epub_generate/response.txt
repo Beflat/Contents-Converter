@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］：第1回　2011年「あけおめアクセス」の対策と結果｜gihyo.jp … 技術評論社</title>
+<meta name="description" content="gihyo.jp:" />
+<meta name="keywords" content="技術評論社,技評,gihyo.jp,mixi,システム運用,MySQL,InnoDB,負荷対策,mixiボイス,Q4M" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta property="og:title" content="第1回　2011年「あけおめアクセス」の対策と結果" />
+<meta property="og:type" content="article" />
+<meta property="og:description" content="はじめまして。（株）ミクシィのシステム本部 運用部でアプリ運用を担当している小池知裕です。mixiのシステムの運用／管理業務に従事しています。" />
+<meta property="og:url" content="http://gihyo.jp/admin/serial/01/mixi_sd/0001" />
+<meta property="og:image" content="http://image.gihyo.co.jp/assets/images/ICON/2011/819_mixi_xxx.png" />
+<meta property="og:site_name" content="gihyo.jp" />
+<meta property="fb:page_id" content="18391916958" />
+<meta name="viewport" content="width=500;" />
+
+<base href="http://gihyo.jp/" />
+<link rel="canonical" href="http://gihyo.jp/admin/serial/01/mixi_sd/0001" />
+<link rel="alternate" type="application/rss+xml" title="gihyo.jp：ADMINISTRATOR STAGE RSS1.0" href="http://gihyo.jp/admin/feed/rss1" />
+<link rel="alternate" type="application/rss+xml" title="gihyo.jp：ADMINISTRATOR STAGE RSS2.0" href="http://gihyo.jp/admin/feed/rss2" />
+<link rel="alternate" type="application/atom+xml" title="gihyo.jp：ADMINISTRATOR STAGE Atom" href="http://gihyo.jp/admin/feed/atom" />
+<link rel="stylesheet" href="http://image.gihyo.co.jp/assets/templates/gihyojp2007/css/setAll.css?110602" type="text/css" media="all" />
+<!--［if IE］><link rel="stylesheet" type="text/css" href="http://image.gihyo.co.jp/assets/templates/gihyojp2007/css/ie.css" media="all" /><!［endif］-->
+
+<link rel="prefetch" href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=2" /><link rel="prerender" href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=2" />
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="header">
+
+<h1 id="logo" style="width:188px;"><a href="http://gihyo.jp/"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/header_logo_gihyo.gif" alt="技術評論社" width="142" height="27" /></a></h1>
+
+<div class="utility">
+<ul class="logoIcon">
+<li class="num01"><a href="http://gihyo.jp/magazine/SD" title="「Software Design」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_sd.gif" alt="Software Design" width="23" height="21" class="buttons" /></a></li>
+<li class="num02"><a href="http://gihyo.jp/magazine/wdpress" title="「WEB+DB PRESS」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_wd.gif" alt="WEB+DB PRESS" width="23" height="21" class="buttons" /></a></li>
+<li class="num03"><a href="http://gihyo.jp/magazine/WSE" title="「Web Site Expert」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_ws.gif" alt="Web Site Expert" width="23" height="21" class="buttons" /></a></li>
+<!--li class="num04"><a href="http://gihyo.jp/magazine/emind" title="「エンジニアマインド」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_em.gif" alt="エンジニアマインド" width="23" height="21" class="buttons" /></a></li-->
+<li class="num04"><a href="http://gihyo.jp/magazine/kumikomi" title="「組込みプレス」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_kumi.gif" alt="組込みプレス" width="23" height="21" class="buttons" /></a></li>
+</ul><!-- end of .logoIcon -->
+
+
+<ul id="shortcut">
+<li class="num01"><a href="http://gihyo.jp/site"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/shotcut_nav_about.gif" alt="このサイトについて" width="116" height="21" class="buttons" /></a></li>
+<li class="num02"><a href="http://gihyo.jp/site/inquiry"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/shotcut_nav_inquiry.gif" alt="お問い合わせ" width="93" height="21" class="buttons" /></a></li>
+</ul><!-- end of #shortcut -->
+
+<div id="searchForm">
+<form action="http://gihyo.jp/searchResult"><input id="searchFormKeyword" name="query" type="text" value="検索したい用語を入力" onfocus="this.value=(this.value=='検索したい用語を入力')? '' : this.value;"  onblur="this.value=(this.value=='')? '検索したい用語を入力' : this.value;" /><input id="searchFormSubmit" src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_search.gif" name="sa" alt="検索" type="image" /></form>
+</div>
+<!-- end of #searchForm -->
+</div><!-- end of .utility -->
+
+<div id="headerBanner01">
+<script type="text/javascript" language="JavaScript">
+<!--
+var impAserver = "http://as.gh.impact-ad.jp";
+var impAtarget = "/SITE=ADMIN/AREA=SUPERBANNER/AAMSZ=728X90/OENCJP=UTF8";
+
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+
+document.write('<iframe src="'+impAserver+'/hserver/acc_random='+impArnd + impAtarget + '/pageid=' + impApid + '"');
+document.write(' noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="728" height="90" allowTransparency="true">');
+if (navigator.userAgent.indexOf("Gecko")==-1 && navigator.userAgent.indexOf("MSIE")==-1){
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/jnserver/acc_random=' + impArnd + impAtarget + '/pageid=' + impApid + '">');
+document.write('</scr');
+document.write('ipt>');
+}
+document.write('</iframe>');
+//-->
+</script>
+<noscript>
+<iframe src="http://as.gh.impact-ad.jp/hserver/SITE=ADMIN/AREA=SUPERBANNER/AAMSZ=728X90/OENCJP=UTF8" noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="728" height="90" allowTransparency="true">
+</iframe>
+</noscript>
+</div>
+<div id="headerBanner02"><a href="/dev/serial/01/engineer_toolbox/0018"><img src="http://image.gihyo.co.jp/assets/images/ad/2011/engineer_toolbox.jpg" alt="本格派エンジニアの工具箱" width="243" height="90" /></a></div>
+</div><!-- end of #header -->
+
+
+<div id="categoryNavigation">
+<ul class="main clearfix" style="margin-left:3px;">
+<li><a href="http://gihyo.jp/dev"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/tab_developer.gif" alt="DEVELOPER STAGE" width="162" height="39" class="buttons" /></a></li>
+<li class="current"><a href="http://gihyo.jp/admin"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/tab_admin_cr.gif" alt="ADMINISTRATOR STAGE" width="162" height="39" /></a></li>
+<li><a href="http://gihyo.jp/design"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/tab_web.gif" alt="WEB+DESIGN STAGE" width="162" height="39" class="buttons" /></a></li>
+<li><a href="http://gihyo.jp/lifestyle"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/tab_lifestyle.gif" alt="LIFESTYLE STAGE" width="162" height="39" class="buttons" /></a></li>
+<li><a href="http://gihyo.jp/cloud"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/tab_cloud.gif" alt="CLOUD COMPUTING STAGE" width="162" height="39" class="buttons" /></a></li></ul><!-- end of .main -->
+</div><!-- end of #categoryNavigation -->
+
+<div id="topicPath">
+<span class="B_crumbBox"><span class="B_firstCrumb"><a href="http://gihyo.jp/" class="B_homeCrumb" title="トップページ">gihyo.jp</a></span> &raquo; <a href="http://gihyo.jp/admin" class="B_crumb" title="ADMINISTRATOR STAGE">ADMINISTRATOR STAGE</a> &raquo; <a href="http://gihyo.jp/admin/serial" class="B_crumb" title="連載">連載</a> &raquo; <a href="http://gihyo.jp/admin/serial/01/mixi_sd" class="B_crumb" title="ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］">ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］</a> &raquo; <span class="B_currentCrumb">第1回　2011年「あけおめアクセス」の対策と結果</span></span>
+</div><!-- end of #topicPath -->
+
+<div id="content" class="clearfix">
+<div id="main">
+<div id="primary">
+
+<!-- google_ad_section_start -->
+<h1 class="mainTitle01"><a href="http://gihyo.jp/admin/serial/01/mixi_sd">ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］</a></h1>
+<h2 class="subTitle01">第1回　2011年「あけおめアクセス」の対策と結果</h2>
+
+<div id="article" class="sectionBlock01 main">
+
+<div class="sectionInfo01">
+<div class="sectionProperty">
+<div id="socialBookmark" class="clearfix">
+
+<ul id="socialBookmarkList">
+<li class="twitter"><a href="http://twitter.com/share" data-lang="ja" data-url="http://gihyo.jp/admin/serial/01/mixi_sd/0001" data-text="ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］：第1回　2011年「あけおめアクセス」の対策と結果 #gihyojp" class="twitter-share-button"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/sb/twitter.gif" alt="この記事についてTwitterで発言する" title="この記事についてTwitterで発言する" border="0" width="12" height="12" />&nbsp;</a></li>
+<li class="google"><g:plusone size="medium" href="http://gihyo.jp/admin/serial/01/mixi_sd/0001"></g:plusone></li>
+<li class="hatena"><a href="http://b.hatena.ne.jp/entry/http://gihyo.jp/admin/serial/01/mixi_sd/0001" class="hatena-bookmark-button" data-hatena-bookmark-title="ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］：第1回　2011年「あけおめアクセス」の対策と結果" data-hatena-bookmark-layout="standard" data-hatena-bookmark-position="bottom-left" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a></li>
+<li class="facebook"><div id="fb-root"></div><fb:like href="http://gihyo.jp/admin/serial/01/mixi_sd/0001" send="false" layout="button_count" width="100" show_faces="false" font="" style="margin-left:10px;"></fb:like></li>
+<li class="evernote"><a href="http://www.evernote.com/" onclick="Evernote.doClip({providerName:'gihyo.jp',contentId:'primary',code:'Giju7256',styling:'full'}); return false;"><img src="http://static.evernote.com/article-clipper-jp.png" alt="Clip to Evernote" /></a></li>
+</ul>
+</div>
+<p class="date">2011年6月17日</p>
+
+<p class="author"> 小池知裕</p>
+
+</div><!-- end of .sectionProperty -->
+
+<p class="linkTag"> <a href="http://gihyo.jp/tagList?mixi" rel="tag">mixi</a>, <a href="http://gihyo.jp/tagList?%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E9%81%8B%E7%94%A8" rel="tag">システム運用</a>, <a href="http://gihyo.jp/tagList?MySQL" rel="tag">MySQL</a>, <a href="http://gihyo.jp/tagList?InnoDB" rel="tag">InnoDB</a>, <a href="http://gihyo.jp/tagList?%E8%B2%A0%E8%8D%B7%E5%AF%BE%E7%AD%96" rel="tag">負荷対策</a>, <a href="http://gihyo.jp/tagList?mixi%E3%83%9C%E3%82%A4%E3%82%B9" rel="tag">mixiボイス</a>, <a href="http://gihyo.jp/tagList?Q4M" rel="tag">Q4M</a></p>
+
+<p id="contentHotspot">
+<a href="http://search.gihyo.jp/sponsor/?Keywords=%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB&ref=adminArticleTop">テーブル</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0&ref=adminArticleTop">システム</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=MySQL&ref=adminArticleTop">MySQL</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9&ref=adminArticleTop">アクセス</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=Generator&ref=adminArticleTop">Generator</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=mixi&ref=adminArticleTop">mixi</a>
+</p>
+<div id="primaryTopTextPr"><dl class="robots-nocontent textAdList01">
+
+
+</dl></div>
+</div><!-- end of .sectionInfo01 -->
+
+<div class="readingTime">この記事を読むのに必要な時間：およそ 2 ～ 3 分</div>
+<div class="pageSwitch01">
+<ul>
+<li class="current"><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=1">1</a></li>
+<li><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=2">2</a></li>
+</ul>
+<p class="next"><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=2" rel="next"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/pageSwitch_next.gif" alt="次のページへ" width="81" height="13" class="buttons" /></a></p>
+</div><div class="readingContent01 autopagerize_page_element">
+<h3 id="sec1">はじめに</h3>
+
+<p id="sec1_p1">はじめまして。（株）ミクシィのシステム本部 運用部でアプリ運用を担当している小池知裕です。mixiのシステムの運用／管理業務に従事しています。本連載では，3回にわたってmixi.jpでのシステム運用業務の裏側を紹介します。</p>
+
+<h4 id="sec1_h1">ミクシィの運用部のシゴト</h4>
+<p id="sec1_p2">最初に，（株）ミクシィの運用部という組織について簡単に説明します。運用部には「アプリ運用」「インフラ」「バックオフィス」の3つのグループがあり，それぞれ「ソフトウェア面での運用／管理／改善」「ハードウェア面での運用／管理／改善」「購買／資産管理」の業務を担当しています。</p>
+
+<p id="sec1_p3">そのほか，同じシステム本部には技術部があり，さまざまな研究開発を行う研究開発グループやmixiの<a href="http://alpha.mixi.co.jp/blog/?p=2211">大規模障害</a>で有名になった，たんぽぽグループなどがあります。</p>
+
+<p id="sec1_p4">本連載では，筆者が所属するアプリ運用グループで，mixiサービスのソフトウェアをどのように運用／管理／改善しているかについて取り上げます。</p>
+
+<h3 id="sec2">突然のアクセス集中</h3>
+
+<p id="sec2_p1">mixiは突発的な高負荷（アクセス集中など）がときどき発生します。たとえば毎年12月31日の大晦日から新年1月1日に切り替わる瞬間などです。各携帯キャリアなどでも毎年のように広報される「0時付近での通話やメールなどでの新年のご挨拶はお控えください」と言われるアレです。</p>
+
+<p id="sec2_p2">そこで今回は，「毎年1月1日0時0分になった瞬間にアクセス（書き込み）が爆発的に増える現象」を例にして，ここ数年でどういった障害が起きてきたのか，どう対策したのか，そしてどういう結果になったのかを時系列で紹介します。</p>
+
+<p id="sec2_p3">なお，本稿では「1月1日0時0分になった瞬間」のアクセス集中を「あけおめアクセス」という名で呼びますが，社内用語などではありません。あくまでも個人的にそう呼んでいるだけです。</p>
+
+<h3 id="sec3">例年の傾向と対策</h3>
+
+<h4 id="sec3_h1">2008年の年末</h4>
+<p id="sec3_p1">2008年当時は，まだmixiと言えば日記で，コンテンツは日記が大部分を占めていました。そして，毎年1月1日0時0分になった瞬間に多くの利用者が一斉に日記を書いていました。</p>
+
+<p id="sec3_p2">われわれも当然のことながら，その「あけおめの瞬間」に投稿される日記のアクセス集中対策を行っていました。具体的には，日記のIDを管理する「ID Generatorの改善」です。</p>
+
+<ul id="sec3_o1">
+<li id="sec3_l1">ID Generatorの改善：ID管理用のAPIを用いて大量のクライアントからの接続を行わないように改善</li>
+</ul>
+
+<p id="sec3_p3">もう少し詳しく説明をします。mixiではすべての日記にIDを付与して管理しており，日記の投稿時にそれらを採番してデータベースに保存していました（これは今も変わっていません）。</p>
+
+
+<div id="sec3_o2" class="codelist">
+<p id="sec3_p4"><strong>リスト1</strong>　idpotテーブル</p>
+<div id="sec3_o3" class="preWrap"><pre>
+<code>create table idpot (
+  id bigint unsigned NOT NULL default '0'
+);</code>
+</pre></div>
+</div>
+
+<p id="sec3_p5"><strong>リスト1</strong>のテーブル（idpot）に対して，日記が投稿されるたびに次のクエリで更新を行い，idの値を次々と更新していきます。</p>
+
+<div id="sec3_o4" class="codelist">
+<div id="sec3_o5" class="preWrap"><pre>
+<code>UPDATE idpot SET id=LAST_INSERT_ID(id+1);</code>
+</pre></div>
+</div>
+
+<p id="sec3_p6">そして，更新されたidの値を日記のユニークなIDとして保存します。その日記のIDを管理しているテーブル（リスト1のidpotテーブル）が，あけおめアクセスでの大量アクセスによって多数のクライアントから一斉／大量にMySQLに接続したためエラーになっていました。そこで，<strong>図1</strong>のようにMySQLへの接続本数を減らすように「ID Generatorの改善」を施しました。</p>
+
+<div id="sec3_o6" class="illust">
+<p id="sec3_p7"><strong>図1</strong>　2008年から2010年の対策</p>
+<p id="sec3_p8"><a href="http://image.gihyo.co.jp/assets/images/admin/serial/01/mixi_sd/0001/001.png" rel="lightbox" title="図1　2008年から2010年の対策" class="imgLightbox"><img src="http://image.gihyo.co.jp/assets/images/admin/serial/01/mixi_sd/0001/thumb/TH400_001.png" width="400" height="312" alt="図1　2008年から2010年の対策" title="図1　2008年から2010年の対策" /></a></p>
+</div>
+
+<h4 id="sec3_h2">2009年1月1日はどうだったのか？</h4>
+<p id="sec3_p9">話は翌年に進みます。図1の対策を取っていましたが，残念ながら2009年1月1日0時過ぎにアクセス集中のため日記投稿でエラーが発生してしまいました。</p>
+
+<p id="sec3_pa">ID管理用のAPIを用いて多数のクライアントからの接続数をコントロールしていても，さらに多くのアクセスが発生したため，MySQLの性能を超えてエラーが発生してしまったためでした。</p>
+
+<p id="sec3_pb">そして，あけおめアクセスの改善はさらに翌年に継続されます。</p>
+
+<h4 id="sec3_h3">2009年の年末</h4>
+<p id="sec3_pc"><a href="http://mixi.jp/recent_voice.pl">mixiボイス</a>がインディーズから正式機能としてリリースされ，mixiボイスの投稿数が上昇していましたが，1月1日0 時0 分の日記投稿はまだまだ多いはずだと予想していました。</p>
+
+<p id="sec3_pd">また，前年の結果を踏まえて，再度，日記のID Generatorの改善を行いました。具体的には「API方式でのアクセスを止め，ID管理用のテーブルをストレージエンジンのInnoDBではなく，MyISAMとすることでパフォーマンスの向上を図る」というものです。</p>
+
+<p id="sec3_pe">現在，MySQLで用いられるストレージエンジンとはInnoDBが主流であり，mixiでもほとんどすべてのMySQLサーバではInnoDBで運用しています。InnoDBはMyISAMになかった次のようなメリット（機能）があります。</p>
+<ul id="sec3_o7">
+<li id="sec3_l2">行単位のロック</li>
+<li id="sec3_l3">大量のデータのあるテーブルのパフォーマンス向上</li>
+<li id="sec3_l4">トランザクション機能</li>
+</ul>
+
+<p id="sec3_pf">ただし，先述したように「ID Generator」は非常に単純なテーブル／クエリであり，データも常に1件しかないテーブルです。そのためこれらの高機能な部分が仇となっていました。われわれはこれらの機能は「ID Generator」には不要と判断し，思いきってストレージエンジンをMyISAMに変更を行いました。</p>
+
+
+</div>
+<div class="pageSwitch01 autopagerize_insert_before">
+<ul>
+<li class="current"><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=1">1</a></li>
+<li><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=2">2</a></li>
+</ul>
+<p class="next"><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0001?page=2" rel="next"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/pageSwitch_next.gif" alt="次のページへ" width="81" height="13" class="buttons" /></a></p>
+</div>
+<!-- google_ad_section_end -->
+
+<div id="bannerRG1" class="robots-nocontent primaryBanner">
+<script type="text/javascript" language="JavaScript">
+<!--
+var impAserver = "http://as.gh.impact-ad.jp";
+var impAtarget = "/SITE=SP.MIXI/AREA=MAIN.REGULARBANNER/AAMSZ=468X60/OENCJP=UTF8";
+
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+
+document.write('<iframe src="'+impAserver+'/hserver/acc_random='+impArnd + impAtarget + '/pageid=' + impApid + '"');
+document.write(' noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="468" height="60" allowTransparency="true">');
+if (navigator.userAgent.indexOf("Gecko")==-1 && navigator.userAgent.indexOf("MSIE")==-1){
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/jnserver/acc_random=' + impArnd + impAtarget + '/pageid=' + impApid + '">');
+document.write('</scr');
+document.write('ipt>');
+}
+document.write('</iframe>');
+//-->
+</script>
+<noscript>
+<iframe src="http://as.gh.impact-ad.jp/hserver/SITE=SP.MIXI/AREA=MAIN.REGULARBANNER/AAMSZ=468X60/OENCJP=UTF8" noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="468" height="60" allowTransparency="true">
+</iframe>
+</noscript>
+</div>
+
+<div class="sectionInfo01">
+
+<p id="contentHotspot">
+<a href="http://search.gihyo.jp/sponsor/?Keywords=%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB&ref=adminArticleBottom">テーブル</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0&ref=adminArticleBottom">システム</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=MySQL&ref=adminArticleBottom">MySQL</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9&ref=adminArticleBottom">アクセス</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=Generator&ref=adminArticleBottom">Generator</a>, <a href="http://search.gihyo.jp/sponsor/?Keywords=mixi&ref=adminArticleBottom">mixi</a>
+</p>
+<p class="linkTag"> <a href="http://gihyo.jp/tagList?mixi" rel="tag">mixi</a>, <a href="http://gihyo.jp/tagList?%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E9%81%8B%E7%94%A8" rel="tag">システム運用</a>, <a href="http://gihyo.jp/tagList?MySQL" rel="tag">MySQL</a>, <a href="http://gihyo.jp/tagList?InnoDB" rel="tag">InnoDB</a>, <a href="http://gihyo.jp/tagList?%E8%B2%A0%E8%8D%B7%E5%AF%BE%E7%AD%96" rel="tag">負荷対策</a>, <a href="http://gihyo.jp/tagList?mixi%E3%83%9C%E3%82%A4%E3%82%B9" rel="tag">mixiボイス</a>, <a href="http://gihyo.jp/tagList?Q4M" rel="tag">Q4M</a></p>
+
+</div><!-- end of .sectionInfo01 -->
+
+</div><!-- end of #article -->
+
+<div id="articleInterestMatch" class="robots-nocontent primaryBanner"></div>
+
+<div id="authorProfile" class="sectionBlock02">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/prm_authorProfile.gif" alt="著者プロフィール" width="101" height="15" /></h2>
+<div class="profile02">
+
+<div class="data">
+<h3>小池知裕（こいけともひろ）</h3>
+<p>（株）ミクシィ システム本部 運用部 運用グループ アプリ運用チーム</p>
+</div><!-- end of .data -->
+</div><!-- end of .profile01 -->
+</div><!-- end of #authorProfile -->
+
+<div id="backNumber01" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/prm_backNumber.gif" alt="バックナンバー" width="97" height="16" /></h2>
+<h3 class="linkHeading02"><a href="http://gihyo.jp/admin/serial/01/mixi_sd">ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］</a></h3>
+<ul class="linkList02">
+<li><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0003">第3回　日常の運用業務を考える</a></li>
+<li><a href="http://gihyo.jp/admin/serial/01/mixi_sd/0002">第2回　mixi.jpを支える運用監視</a></li>
+<li class="here">第1回　2011年「あけおめアクセス」の対策と結果</li>
+</ul>
+</div><!-- end of #backNumber01 -->
+
+
+
+
+
+<div id="relArticle" class="sectionBlock01"> 
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/prm_relArticle.gif" alt="関連記事" width="59" height="16" /></h2> 
+<ul class="linkList02"> 
+<li><a href="/news/nr/2009/10/2801">ミクシィ，「ミクシィ年賀状＋（プラス）」を発表 ─今年は携帯電話からの利用も可能に </a></li>
+<li><a href="/news/report/2009/10/1401">第1回Webエンジニアバトルロワイヤルレポート―注目Webエンジニア，クリエイター達が「Webサービスとものづくり」について語った熱い夜 </a></li>
+<li><a href="/dev/serial/01/yapc-asia2009/0001">第1回　開催の経緯とコーポレートトラック</a></li>
+<li><a href="/news/nr/2008/11/112701">ミクシィ，日本最大のSNS「mixi」でのオープン化戦略について発表―mixiアプリ，mixi Connect，登録制の採用</a></li>
+<li><a href="/news/nr/2008/11/112101">ミクシィ，「mixi OpenIDコンテスト」を開催</a></li>
+</ul> 
+</div><!-- end of #relArticle --> 
+
+
+<div id="trackback" class="robots-nocontent sectionBlock01">
+<a name="trackback"></a>
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/prm_trackback.gif" alt="トラックバック" width="91" height="16" /></h2>
+<div class="sectionBlock03">
+<!-- 
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"> 
+<rdf:Description 
+    rdf:about="http://gihyo.jp/admin/serial/01/mixi_sd/0001" 
+    dc:identifier="http://gihyo.jp/admin/serial/01/mixi_sd/0001" 
+    trackback:ping="http://gihyo.jp/tb?p=admin/serial/01/mixi_sd/0001" 
+    dc:title="第1回　2011年「あけおめアクセス」の対策と結果" 
+    dc:subject="TrackBack" 
+    dc:description="はじめまして。（株）ミクシィのシステム本部 運用部でアプリ運用を担当している小池知裕です。mixiのシステムの運用／管理業務に従事しています。" 
+    dc:creator="Gihyo" 
+    dc:date="Thu, 30 Apr 1310 20:00:00 +0900" /> 
+</rdf:RDF> 
+-->  
+<p class="linkParagraph01"><a rel="nofollow" href="http://gihyo.jp/tb?p=admin/serial/01/mixi_sd/0001" onClick="return false;">このエントリのトラックバック URI</a></p>
+</div><!-- end of .sectionBlock03 -->
+<ul class="sectionList01">
+
+
+
+</ul><!-- end of .sectionList01 -->
+</div><!-- end of #trackback --><div id="comment" class="robots-nocontent sectionBlock01">
+<a name="comment"></a>
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/prm_comment.gif" alt="コメント" width="54" height="16" /></h2>
+<ul class="sectionList01">
+
+
+</ul><!-- end of .sectionList01 -->
+
+
+<div class="sectionBlock03">
+<a name="jf85dcdbaf"></a>
+<h3><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/prm_commentForm.gif" alt="コメントの記入" width="87" height="15" /></h3>
+
+
+<form method="post" action="http://gihyo.jp/admin/serial/01/mixi_sd/0001?jt#jf85dcdbaf" class="inputForm01">
+    <input name="JotForm" type="hidden" value="85dcdbaf0f389a3f39f08c22cae8384a" />
+    <input name="JotNow" type="hidden" value="1073101430" />
+    <input name="parent" type="hidden" value="" />
+    
+<table cellspacing="0">
+<tr> <th><label for="commentFormName">お名前</label></th> <td><input id="commentFormName" name="name" type="text" class="input" value="" /></td> </tr> <tr> <th><label for="commentFormAddress">メールアドレス</label></th> <td><input id="commentFormAddress" name="email" type="text" class="input" value="" /></td> </tr>
+<tr>
+<th><label for="commentFormTitle">タイトル</label></th>
+<td><input id="commentFormTitle" name="title" type="text" class="input" value="" /></td>
+</tr>
+<tr>
+<th><label for="commentFormComment">コメント</label></th>
+<td><textarea id="commentFormComment" name="content" cols="60" rows="15"></textarea></td>
+</tr>
+</table>
+
+<p class="submit"><input type="submit" value="送信" /></p>
+</form><!-- end of .inputForm01 -->
+</div><!-- end of .sectionBlock03 -->
+
+</div><!-- end of #comment -->
+</div><!-- end of #primary -->
+<div id="secondary" class="robots-nocontent">
+<div id="secondaryTopTextPr" class="textPR">
+<ul class="prList01">
+
+
+</ul>
+</div>
+
+
+<div class="banner" id="bannerRT1">
+<script type="text/javascript" language="JavaScript">
+<!--
+var impAserver = "http://as.gh.impact-ad.jp";
+var impAtarget = "/SITE=ADMIN/AREA=RECTANGLE1/AAMSZ=300X300/OENCJP=UTF8";
+
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+
+document.write('<iframe src="'+impAserver+'/hserver/acc_random='+impArnd + impAtarget + '/pageid=' + impApid + '"');
+document.write(' noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="300" height="300" allowTransparency="true">');
+if (navigator.userAgent.indexOf("Gecko")==-1 && navigator.userAgent.indexOf("MSIE")==-1){
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/jnserver/acc_random=' + impArnd + impAtarget + '/pageid=' + impApid + '">');
+document.write('</scr');
+document.write('ipt>');
+}
+document.write('</iframe>');
+//-->
+</script>
+<noscript>
+<iframe src="http://as.gh.impact-ad.jp/hserver/SITE=ADMIN/AREA=RECTANGLE1/AAMSZ=300X300/OENCJP=UTF8" noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="300" height="300" allowTransparency="true">
+</iframe>
+</noscript>
+</div>
+<div id="passap" class="sectionBlock04 clearfix">
+<div>
+<a href="http://gihyo.jp/dp"><img src="http://image.gihyo.co.jp/assets/images/ad/gdp_banner.png" alt="Gihyo Digital Publishing" width="300" height="120" /></a>
+<!--a href="ad/01/gcloudweb"><img src="http://image.gihyo.co.jp/assets/images/ad/01/gcloud/gcloud-logo.png" alt="G-CLOUD" title="G-CLOUD" width="300" height="90" /></a-->
+</div>
+</div>
+
+<div id="gihyojpSpecial"  class="sectionBlock04 clearfix">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/scd_pickup.gif" alt="ピックアップ" height="15" width="82"></h2>
+<dl class="definition01">
+
+<dt><a href="dev/serial/01/cyberagent">サイバーエージェントを支える技術者たち</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/dev/serial/01/cyberagent"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH64_805_calogo.jpg" alt="サイバーエージェントを支える技術者たち" title="サイバーエージェントを支える技術者たち" width="64" height="61" /></a></div>
+<p>「アメーバブログ」などを展開するAmebaを運営するサイバーエージェントの技術者に，多くの魅力的なサービスを支える秘密を伺いました。 </p>
+</dd>
+
+<dt><a href="ad/01/mixi_infra">大規模ソーシャルサービス mixiのインフラ技術</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/ad/01/mixi_infra"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH64_819_mixi_xxx.png" alt="大規模ソーシャルサービス mixiのインフラ技術" title="大規模ソーシャルサービス mixiのインフラ技術" width="64" height="64" /></a></div>
+<p>日本最大のSNS「mixi」を支えるべく活躍するエンジニアが，日々の運用にまつわるさまざまなできごとを紹介します。</p>
+</dd>
+
+
+<dt><a href="ad/01/yayoi">弥生がスマートフォンアプリコンテストを開催</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/news/info/2011/09/1401"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH64_863_yayoi20110914.png" alt="弥生がスマートフォンアプリコンテストを開催，多彩な特典が魅力" title="弥生がスマートフォンアプリコンテストを開催，多彩な特典が魅力" width="64" height="64" /></a></div>
+<p>バックオフィスの業務を楽しく簡単にするスマートフォンアプリを募集します。応募は9月6日～10月31日。</p>
+</dd>
+
+<dt><a href="dev/serial/01/engineer_toolbox/0018">Silverlight業務アプリケーションの配布で押さえておきたいポイント</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/dev/serial/01/engineer_toolbox"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH64_754_tools.png" alt="本格派エンジニアの工具箱" title="本格派エンジニアの工具箱" width="64" height="64" /></a></div>
+<p>Silverlight業務アプリケーションを開発し，配布する際に押さえておきたいポイントを紹介します。</p>
+</dd>
+
+<dt><a href="ad/01/azure_frontier">Windows Azureユーザーズフロンティア </a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/ad/01/azure_frontier"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH64_872_azure_frontier.png" alt="Windows Azure ユーザーズフロンティア" title="Windows Azure ユーザーズフロンティア" width="64" height="64" /></a></div>
+<p>これからWindows Azureを活用しようという皆さんに，さまざまな角度から有益な情報をお届けしていきます。</p>
+</dd>
+
+<!--
+<dt><a href="ad/01/power_up">エンジニアパワーアップ講座 ～システム基盤を活用するための基礎知識～</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/ad/01/power_up"><img src="http://image.gihyo.co.jp/assets/images/ICON/2010/thumb/TH64_615_EngPwupkouza.jpg" alt="エンジニアパワーアップ講座 ～システム基盤を活用するための基礎知識～" title="エンジニアパワーアップ講座 ～システム基盤を活用するための基礎知識～" width="64" height="64" /></a></div>
+<p>イマドキのエンジニアに要求されるさまざまな知識や能力。これらを効率よくキャッチアップしていくヒントをいろいろな視点から取り上げます。</p>
+</dd>
+
+<dt><a href="ad/01/infra">gihyo.jp インフラエンジニア情報局</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/ad/01/infra"><img src="http://image.gihyo.co.jp/assets/images/ICON/2009/thumb/TH64_521_inf-eng.png" alt="gihyo.jp インフラエンジニア情報局" title="gihyo.jp インフラエンジニア情報局" width="64" height="64" /></a></div>
+<p>ネットワークやITにかかわるあらゆる業種で必要とされるインフラエンジニアに向けた情報や魅力を多角的に紹介します。</p>
+</dd>
+-->
+
+</dl>
+</div>
+
+
+<div id="gihyojpSpecial"  class="sectionBlock04 clearfix">
+<h2>ホワイトペーパーダウンロード</h2>
+<ul>
+<li><a href="ad/whitepaper/2010/truecloud">CDN対応IaaS型パブリッククラウドサービス「True CLOUD」</a></li>
+<li><a href="ad/whitepaper/2010/PKILite">認証局運用サービス／グローバルサイン</a></li>
+<li><a href="ad/whitepaper/2010/codesigning">コードサイニング証明書／グローバルサイン</a></li>
+<li><a href="ad/whitepaper/2010/blueBox">専用サーバサービス「blue Box」の特長</a></li>
+<li><a href="ad/whitepaper/2010/blueBlock">共有サーバサービス「blue Block」の特長</a></li>
+<li><a href="ad/whitepaper/2010/dk-ssl">ドメインキーパーが提供する「SSLサーバ証明書サービス」の特長</a></li>
+<li><a href="ad/whitepaper/2010/abr10">Windows，Linux，仮想環境を一括管理～データバックアップとシステム環境のバックアップを実現する最良の方法</a></li>
+<li><a href="ad/whitepaper/2010/openblocks600">小型Linuxサーバの最高峰 OpenBlockS 600活用指南</a></li>
+</ul>
+
+</div>
+
+
+<div id="eventInfo"  class="sectionBlock04 clearfix">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/scd_event.gif" alt="イベント" height="15" width="53"></h2>
+<ul>
+
+<li><a href="http://ec-cube.ec-orange.jp/lp/cassandra-conference-in-tokyo/">Cassandra Conference in Tokyo</a>（10/5）</li>
+<li><a href="http://yapcasia.org/2011/">YAPC::Asia Tokyo 2011</a>（10/13〜15）</li>
+<li><a href="http://2011.phpmatsuri.net/">PHP Matsuri 2011 in Osaka</a>（10/15,16）</li><li><a href="https://spreadsheets.google.com/spreadsheet/viewform?formkey=dF90c3Q3TnFvTlJad0ItbU55ODZyTkE6MQ">eBP Meetup 2011～電子出版2年目の課題と3年目への展望</a>（10/25）</li>
+<li><a href="http://nodefest.jp/2011/">東京Node学園祭 2011</a>（10/29）</li>
+<li><a href="http://www.iij.ad.jp/news/seminar/2011/techweek.html?i=gj01w110926">IIJ Technical WEEK 2011 ～インターネット最新技術に触れる3日間～</a>（11/9～11）</li>
+<li><a href="http://www.jasa.or.jp/et/ET2011/index.html">Embedded Technology 2011</a>（11/16～18）</li>
+<li><a href="https://internetweek.jp/">Internet Week 2011</a>（11/30～12/2）</li>
+</ul>
+
+</div>
+
+<div class="banner" id="bannerRT2">
+<script type="text/javascript" language="JavaScript">
+<!--
+var impAserver = "http://as.gh.impact-ad.jp";
+var impAtarget = "/SITE=ADMIN/AREA=RECTANGLE2/AAMSZ=300X300/OENCJP=UTF8";
+
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+
+document.write('<iframe src="'+impAserver+'/hserver/acc_random='+impArnd + impAtarget + '/pageid=' + impApid + '"');
+document.write(' noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="300" height="300" allowTransparency="true">');
+if (navigator.userAgent.indexOf("Gecko")==-1 && navigator.userAgent.indexOf("MSIE")==-1){
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/jnserver/acc_random=' + impArnd + impAtarget + '/pageid=' + impApid + '">');
+document.write('</scr');
+document.write('ipt>');
+}
+document.write('</iframe>');
+//-->
+</script>
+<noscript>
+<iframe src="http://as.gh.impact-ad.jp/hserver/SITE=ADMIN/AREA=RECTANGLE2/AAMSZ=300X300/OENCJP=UTF8" noresize scrolling="no" hspace="0" vspace="0" frameborder="0" marginheight="0" marginwidth="0" width="300" height="300" allowTransparency="true">
+</iframe>
+</noscript>
+</div>
+
+<div id="otherSerial" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/scd_otherSerial_yl.gif" alt="その他の連載" width="79" height="15" /></h2>
+<dl class="thumbnailList01">
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/admin/serial/01/rd_trend">R&Dトレンドレポート</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/admin/serial/01/rd_trend"><img src="http://image.gihyo.co.jp/assets/images/ICON/2010/thumb/TH32_682_rdt.jpg" alt="R&Dトレンドレポート" title="R&Dトレンドレポート" width="32" height="32" /></a></div>
+<p>研究開発部署でWeb開発をベースに新しい技術と向き合う筆者が，トレンド技術について技術概要から実用例，そして今後の展望を経験をまじえてわかりやすく説明します。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/admin/serial/01/ubuntu-recipe">Ubuntu Weekly Recipe</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/admin/serial/01/ubuntu-recipe"><img src="http://image.gihyo.co.jp/assets/images/ICON/2008/thumb/TH32_112_ubuntuRecipe.png" alt="Ubuntu Weekly Recipe" title="Ubuntu Weekly Recipe" width="32" height="32" /></a></div>
+<p>Ubuntuの強力なデスクトップ機能を活用するための，いろいろなレシピをお届けします。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/dev/serial/01/evernote_api">［公式］Evernote API徹底活用レシピ</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/dev/serial/01/evernote_api"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH32_791_evernote_api.png" alt="［公式］Evernote API徹底活用レシピ" title="［公式］Evernote API徹底活用レシピ" width="32" height="32" /></a></div>
+<p>本連載では，情報管理ツールEvernoteが提供するさまざまなAPIにフォーカスを当て，さらに活用するために必要な開発のノウハウ，APIを利用する上で知っておきたいTipsを紹介します。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/dev/serial/01/openflow_sd">こんな夜中にOpenFlowでネットワークをプログラミング！</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/dev/serial/01/openflow_sd"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH32_851_openflow_sd.png" alt="こんな夜中にOpenFlowでネットワークをプログラミング！" title="こんな夜中にOpenFlowでネットワークをプログラミング！" width="32" height="32" /></a></div>
+<p>ネットワークは受け身でしか利用できないイメージが定着していると思いますが，次世代ネットワーク制御技術「OpenFlow」の登場により状況が変化しつつあります。本連載では，OpenFlowでネットワークをプログラミングしていきます！</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/dev/serial/01/engineer_toolbox">本格派エンジニアの工具箱</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/dev/serial/01/engineer_toolbox"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH32_754_tools.png" alt="本格派エンジニアの工具箱" title="本格派エンジニアの工具箱" width="32" height="32" /></a></div>
+<p>アプリケーションの開発効率を向上させるためには，自身のコーディング能力を向上させるのと同時に，開発をサポートするツールやライブラリ，フレームワークを適切に使いこなすことが重要です。この連載では，アプリケーション開発をサポートするさまざまなツールについて，使い方を交えながら紹介していきます。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/design/serial/01/67ws">ロクナナワークショップ NEWS & REPORT</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/design/serial/01/67ws"><img src="http://image.gihyo.co.jp/assets/images/ICON/2009/thumb/TH32_359_67ws_news_report.png" alt="ロクナナワークショップ NEWS & REPORT" title="ロクナナワークショップ NEWS & REPORT" width="32" height="32" /></a></div>
+<p>Web制作に関する実践的な講座を開講している「Flashの学校 ロクナナワークショップ」。本連載では，最新講座情報，セミナーイベントの開催情報やレポートを中心にお伝えてしていきます。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/lifestyle/serial/01/shimoda">シモダテツヤのIT四コマふんわり劇場</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/lifestyle/serial/01/shimoda"><img src="http://image.gihyo.co.jp/assets/images/ICON/2010/thumb/TH32_671_bhb.jpg" alt="シモダテツヤのIT四コマふんわり劇場" title="シモダテツヤのIT四コマふんわり劇場" width="32" height="32" /></a></div>
+<p>IT界を揺るがす四コマ漫画家“シモダテツヤ”が，毎回楽しい四コマ漫画とふんわりしたコラムでお届けしていきます！</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="http://gihyo.jp/dev/serial/01/phonegap">PhoneGapで手軽にiPhone/Androidアプリを作ろう</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="http://gihyo.jp/dev/serial/01/phonegap"><img src="http://image.gihyo.co.jp/assets/images/ICON/2011/thumb/TH32_849_phonegap.png" alt="PhoneGapで手軽にiPhone/Androidアプリを作ろう" title="PhoneGapで手軽にiPhone/Androidアプリを作ろう" width="32" height="32" /></a></div>
+<p>PhoneGapは，HTML5＋CSS＋JavaScriptのみでiPhoneやAndrodのネイティブアプリケーションを開発することができるフレームワークです。このPhoneGapを使った，iOSやAndroidアプリケーションの開発方法を紹介します。</p>
+</dd>
+
+</dl>
+<p class="linkParagraph01"><a href="http://gihyo.jp/serial">連載一覧</a></p>
+</div>
+
+
+<div id="gihyojpSpecial"  class="sectionBlock04 clearfix">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/scd_gihyojpSP.gif" alt="gihyo.jp special" height="15" width="121"></h2>
+<ul>
+<li><a href="ad/01/infra">gihyo.jp インフラエンジニア情報局</a></li>
+<li><a href="ad/01/power_up">エンジニアパワーアップ講座 ～システム基盤を活用するための基礎知識～</a></li>
+<li><a href="ad/2008/test">テストエンジニア ステーション</a></li>
+<li><a href="news/interview/20090406">IVIAに賭けた日本のテスト技術への想い</a></li>
+<li><a href="http://gihyo.jp/design/serial/01/net_dynamism">疾走するネット・ダイナミズム</a></li>
+<li><a href="ad/01/hosting">レンタルサーバ導入ガイド</a></li>
+</ul>
+
+</div>
+
+
+
+</div><!-- end of #secondary -->
+</div><!-- end of #main -->
+<div id="sub" class="robots-nocontent">
+
+
+<div id="contentList" class="sectionBlock02">
+<div class="section">
+<h2><a href="http://gihyo.jp/"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_hn_gh.gif" alt="gihyo.jp" width="157" height="40" class="buttons" /></a></h2>
+<ul class="level01">
+<li><a href="http://gihyo.jp/dev"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_dev.gif" alt="DEVELOPER STAGE" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/admin"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_admin.gif" alt="ADMINISTRATOR STAGE" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/design"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_web.gif" alt="WEB+DESIGN STAGE" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/lifestyle"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_life.gif" alt="LIFESTYLE STAGE" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/science"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_science.gif" alt="SCIENCE STAGE" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/news"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_news.gif" alt="NEWS &amp; REPORT" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/cloud"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_cloud.gif" alt="CLOUD COMPUTING STAGE" width="157" height="30" class="buttons" /></a></li></ul>
+</div><!-- end of .section -->
+<div class="section">
+<h2><a href="http://gihyo.jp/book"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_hn_bk.gif" alt="書籍案内" width="157" height="40" class="buttons" /></a></h2>
+<ul class="level01"><li><a href="http://gihyo.jp/book/list"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_newBook.gif" alt="新刊書籍" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/book/genre"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_bookGenre.gif" alt="書籍ジャンル一覧" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/book/series"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_bookSeries.gif" alt="書籍シリーズ一覧" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/book/pickup"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_pickup.gif" alt="新刊ピックアップ" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/book/longseller"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_long.gif" alt="ロングセラー" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/book/dennou"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_den.gif" alt="電脳会議" width="157" height="30" class="buttons" /></a></li></ul>
+</div><!-- end of .section -->
+<div class="section">
+<h2><a href="http://gihyo.jp/magazine"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_hn_mg.gif" alt="定期刊行物一覧" width="157" height="40" class="buttons" /></a></h2>
+<ul class="level01">
+<li><a href="http://gihyo.jp/magazine/SD"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_sd.gif" alt="Software Design" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/magazine/wdpress"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_wd.gif" alt="WEB+DB PRESS" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/magazine/WSE"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_ws.gif" alt="Web Site Expert" width="157" height="30" class="buttons" /></a></li><li><a href="http://gihyo.jp/magazine/kumikomi"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/image_link/sub_contentList_li_kumi.gif" alt="組込みプレス" width="157" height="30" class="buttons" /></a></li></ul>
+</div><!-- end of .section -->
+
+</div><!-- end of #contentList -->
+
+
+
+
+
+<div id="pageLink" class="sectionBlock01">
+<ul class="imageList02">
+<li><a href="https://gihyo.jp/magazine/wdpress/information/2007/today2f-notice"><img src="http://image.gihyo.co.jp/assets/images/dev/serial/01/funny-play/funny-play3.png" alt="「きたみりゅうじの聞かせて珍プレー 」投稿案内" width="155" height="68" /></a></li>
+</ul>
+</div><!-- end of #pageLink -->
+
+
+
+<div id="recentTag" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/sub_recentTag.gif" alt="主なタグ" width="61" height="14" /></h2>
+<ul class="linkList01">
+<li><a href="http://gihyo.jp/tagList?FreeBSD" rel="tag">FreeBSD</a></li>
+<li><a href="http://gihyo.jp/tagList?Ubuntu" rel="tag">Ubuntu</a></li>
+<li><a href="http://gihyo.jp/tagList?Web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3" rel="tag">Webデザイン</a></li>
+<li><a href="http://gihyo.jp/tagList?Linux" rel="tag">Linux</a></li>
+<li><a href="http://gihyo.jp/tagList?Java" rel="tag">Java</a></li>
+<li><a href="http://gihyo.jp/tagList?%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3" rel="tag">セキュリティ</a></li>
+<li><a href="http://gihyo.jp/tagList?PHP" rel="tag">PHP</a></li>
+<li><a href="http://gihyo.jp/tagList?Flash" rel="tag">Flash</a></li>
+
+</ul><!-- end of .linkList01 -->
+<p class="linkParagraph02"><a href="http://gihyo.jp/tagList">[ タグ一覧 ]</a></p>
+</div><!-- end of #recentTag -->
+
+
+
+<div id="contentsRank" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/sub_contentsRank.gif" alt="昨日よく読まれた記事" width="132" height="14" /></h2>
+<ul class="linkList01">
+<li><a href="http://gihyo.jp/admin/serial/01/ibm_kvm/0005">第5回　KVM仮想マシンの操作</a></li>
+<li><a href="http://gihyo.jp/lifestyle/feature/01/yammer/0004">第4回　Yammerとの相性のよい組織とは</a></li>
+<li><a href="http://gihyo.jp/admin/clip/01/fdt/201109/30">2011年9月30日　FreeBSD 1.x系とFreeBSD 10.x系ダブルディジット問題について</a></li>
+<li><a href="http://gihyo.jp/admin/clip/01/ubuntu-topics/201109/30">2011年９月30日号　11.10のFinal Freeze・Ubuntu OneのWindowsクライアント正式版・Indicatorの作り方・UDS-Pに向けてのブレーンストーミング</a></li>
+<li><a href="http://gihyo.jp/lifestyle/serial/01/shimoda/0059">第59回　ここが僕のザ・インタビューズ</a></li>
+<li><a href="http://gihyo.jp/lifestyle/serial/01/calibre/0006">第6回　Calibre Tips集</a></li>
+<li><a href="http://gihyo.jp/dev/serial/01/androidapp/0001">第1回　Androidアプリを開発する前に</a></li>
+<li><a href="http://gihyo.jp/admin/clip/01/ubuntu-topics/201109/02">2011年9月2日号　Ubuntu 11.10デスクトッププレビュー・FCM#52・UWN#230・ApacheとFirefoxのセキュリティアップデート</a></li>
+<li><a href="http://gihyo.jp/dev/serial/01/nodefest2011/0001">第1回　コミュニティ&amp;スピーカー紹介</a></li>
+<li><a href="http://gihyo.jp/dev/serial/01/androidapp/0002">第2回　Androidアプリ開発のための環境構築</a></li>
+
+</ul><!-- end of .linkList01 -->
+</div><!-- end of #contentsRank -->
+
+<div id="pressRelease" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/sub_pressRelease.gif" alt="企業動向" width="64" height="14" /></h2>
+<ul class="linkList01">
+<li>10/1&nbsp;<a href="http://gihyo.jp/ad/pr/2011/NRR201190160">日本ご当地パン祭り開催，あの人気女優が新柔軟剤CM出演中，マイ...</a>（株式会社ニューズ・ツー・ユー）</li>
+<li>10/1&nbsp;<a href="http://gihyo.jp/ad/pr/2011/NRR201190355">ヤマハ「ぷりんと楽譜」無料楽譜（2011年9月30日～10月6日）情報...</a>（株式会社ヤマハミュージックメディア）</li>
+<li>9/30&nbsp;<a href="http://gihyo.jp/ad/pr/2011/NRR201190307">【MONDO シアター】実写版『喰いしん坊』シリーズ登場～１０月は...</a>（株式会社ジャパンイメージコミュニケーションズ）</li>
+<li>9/30&nbsp;<a href="http://gihyo.jp/ad/pr/2011/NRR201190319">勝負の秋は麻雀三昧！【MONDO TV 秋の麻雀特集】～名勝負を一挙...</a>（株式会社ジャパンイメージコミュニケーションズ）</li>
+<li>9/30&nbsp;<a href="http://gihyo.jp/ad/pr/2011/NRR201190356">【鉄道の日】記念　鉄ドルから乗り鉄，模型鉄，車両鉄&amp;#8230;鉄...</a>（株式会社ジャパンイメージコミュニケーションズ）</li>
+
+</ul><!-- end of .linkList01 -->
+<p class="linkParagraph02"><a href="http://gihyo.jp/ad/pr">[ 企業動向一覧 ]</a></p>
+</div><!-- end of #pressRelease -->
+
+
+
+<div id="recentTrackback" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/sub_recentTrackback.gif" alt="最近のトラックバック" width="127" height="14" /></h2>
+<ul class="linkList01">
+<li><a href="http://gihyo.jp/admin/serial/01/whats_inet/0019#trackback">MSDNサブスクライバダウンロードのページが2.0に</a>（from <a href="http://syasuda.com/d/blog/2011/09/msdn20.html">IGINブルネイ/syasudaの日記(MT版)</a>）</li>
+<li><a href="http://gihyo.jp/lifestyle/serial/01/kaizen/0008#trackback">技術評論社 gihyo.jp 連載：無関心な現場で始める業務改善 第8回が掲載...</a>（from <a href="http://seko-masahito.at.webry.info/201109/article_3.html">まさぶろ （まさぶーブログ）</a>）</li>
+<li><a href="http://gihyo.jp/book/2011/978-4-7741-4817-5#trackback">西新宿 #55</a>（from <a href="http://idenodokuhakukei.blog.so-net.ne.jp/2011-09-12">Cas de l&#039;exposition</a>）</li>
+<li><a href="http://gihyo.jp/lifestyle/serial/01/kaizen/0007#trackback">技術評論社 gihyo.jp 連載：無関心な現場で始める業務改善 第7回が掲載...</a>（from <a href="http://seko-masahito.at.webry.info/201109/article_2.html">まさぶろ （まさぶーブログ）</a>）</li>
+<li><a href="http://gihyo.jp/news/info/2011/09/0101#trackback">技術評論社インフォメーション：『現場の総掛かり戦による業務改善』無...</a>（from <a href="http://seko-masahito.at.webry.info/201109/article_1.html">まさぶろ （まさぶーブログ）</a>）</li>
+</ul>
+</div>
+
+
+
+
+<div id="recentComment" class="sectionBlock01">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/sub_recentComment.gif" alt="最近のコメント" width="96" height="14" /></h2>
+<ul class="linkList01">
+<li><a href="http://gihyo.jp/admin/clip/01/ubuntu-topics/200803/07#comment">良い一日を非常にクールなウェブサイト！</a>（by CexSkeceWet）</li>
+<li><a href="http://gihyo.jp/dev/serial/01/iphone/0002#comment">どうもありがとうございます</a>（by mogmo14）</li>
+<li><a href="http://gihyo.jp/design/serial/01/modx_ec/0015#comment">日本語化ファイル</a>（by T.Hayashi）</li>
+<li><a href="http://gihyo.jp/dev/feature/01/mobasif/0004#comment">スマートフォン対応できるか？</a>（by Anonymous）</li>
+<li><a href="http://gihyo.jp/dev/feature/01/mobasif/0003#comment">MobaSiFスマートフォン対応できるか？</a>（by vijaya@gmail.com）</li>
+</ul>
+</div>
+
+
+
+
+</div><!-- end of #sub -->
+
+</div><!-- end of #content -->
+<div id="footer">
+
+<div id="footerContent" class="clearfix">
+
+<div id="hotSale">
+<h2><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/footer_hotSale.gif" alt="売れています" width="90" height="14" /></h2>
+<ul class="clearfix"><li><a href="http://gihyo.jp/book/2010/978-4-7741-4345-3" target="_blank">
+<span class="cover"><img src="http://image.gihyo.co.jp/assets/images/cover/2010/thumb/TH40_9784774143453.jpg" width="40" height="61" alt="天才ガロアの発想力―対称性と群が明かす方程式の秘密―" /></span>
+<span class="title">天才ガロアの発想力―対称性と群が明かす方程式の秘密―</span>
+</a></li>
+<li><a href="http://gihyo.jp/book/2011/978-4-7741-4596-9" target="_blank">
+<span class="cover"><img src="http://image.gihyo.co.jp/assets/images/cover/2011/thumb/TH40_9784774145969.jpg" width="40" height="57" alt="良いコードを書く技術 ― 読みやすく保守しやすいプログラミング作法" /></span>
+<span class="title">良いコードを書く技術 ― 読みやすく保守しやすいプログラミング作法</span>
+</a></li>
+<li><a href="http://gihyo.jp/book/2010/978-4-7741-4206-7" target="_blank">
+<span class="cover"><img src="http://image.gihyo.co.jp/assets/images/cover/2010/thumb/TH40_9784774142067.jpg" width="40" height="57" alt="発電・送電・配電が一番わかる" /></span>
+<span class="title">発電・送電・配電が一番わかる</span>
+</a></li>
+<li><a href="http://gihyo.jp/book/2011/978-4-7741-4562-4" target="_blank">
+<span class="cover"><img src="http://image.gihyo.co.jp/assets/images/cover/2011/thumb/TH40_9784774145624.jpg" width="40" height="57" alt="キタミ式イラストIT塾　「ITパスポート」 平成23年度" /></span>
+<span class="title">キタミ式イラストIT塾　「ITパスポート」 平成23年度</span>
+</a></li>
+<li><a href="http://gihyo.jp/book/2011/978-4-7741-4569-3" target="_blank">
+<span class="cover"><img src="http://image.gihyo.co.jp/assets/images/cover/2011/thumb/TH40_9784774145693.jpg" width="40" height="52" alt="マンガ建築考 ―もしマンガ・アニメの建物を本当に建てたら―" /></span>
+<span class="title">マンガ建築考 ―もしマンガ・アニメの建物を本当に建てたら―</span>
+</a></li>
+<li><a href="http://gihyo.jp/book/2010/978-4-7741-4466-5" target="_blank">
+<span class="cover"><img src="http://image.gihyo.co.jp/assets/images/cover/2010/thumb/TH40_9784774144665.jpg" width="40" height="52" alt="JavaScript本格入門　～モダンスタイルによる基礎からAjax・jQueryまで" /></span>
+<span class="title">JavaScript本格入門　～モダンスタイルによる基礎からAjax・jQueryまで</span>
+</a></li>
+</ul>
+<div id="footerBanner">
+
+</div>
+</div><!-- end of #hotSale -->
+
+<div id="information">
+<h2><a href="http://gihyo.jp/mail"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/footer_information.gif" alt="メールでのお知らせ" width="117" height="14" class="buttons" /></a></h2>
+<p>メールで次の案内をお送りしております。メールの配信を希望する方は，利用したい項目をチェックしてメールアドレスを入力し，［登録］ボタンをクリックしてください。</p>
+<form id="informationForm" name="informationForm" method="post" action="http://gihyo.jp/mail?mailregist#mailinfo">
+<ul>
+<li><input type="checkbox" id="informationFormCheck00" name="gihyojp" value="checked" checked="checked" />
+<label for="informationFormCheck00">gihyo.jp UPDATES［ほぼ週間に1回］</label>
+</li>
+<li><input type="checkbox" id="informationFormCheck01" name="newPublished" value="checked" checked="checked" />
+<label for="informationFormCheck01">新刊メールマガジン［ほぼ週間に1回］</label>
+</li>
+<li><input type="checkbox" id="informationFormCheck02" name="dennou" value="checked" checked="checked" />
+<label for="informationFormCheck02">電脳会議の各号案内［ほぼ1ヵ月半に1回］</label></li>
+</ul>
+<p class="submit"><input name="mailaddress" id="informationFormEmail" type="text" value="e-mailアドレスを入力" onfocus="this.value=(this.value=='e-mailアドレスを入力')? '' : this.value ;" onblur="this.value=(this.value=='')? 'e-mailアドレスを入力' : this.value ;" />
+<input class="FSF_submit" id="informationFormSubmit" type="image" src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_regist.gif" name="sub" alt="登録" /></p>
+</form><!-- end of #informationForm -->
+<p class="note">※変更する場合や停止する場合は，<a href="http://gihyo.jp/mail">登録情報変更ページ</a>をご覧ください。</p>
+<p class="note">※登録いただいたメールアドレスには，そのお知らせ以外，配信いたしません。</p>
+</div><!-- end of #information -->
+
+<div id="siteSummary">
+<h2><a href="http://gihyo.jp/site"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/heading/footer_siteSummary.gif" alt="このサイトについて" width="115" height="14" class="buttons" /></a></h2>
+<ul>
+<li><a href="http://gihyo.jp/site/profile">会社案内</a></li>
+<li><a href="http://gihyo.jp/site/policy">プライバシーポリシー</a></li>
+<li><a href="http://gihyo.jp/site/purchase">書籍・雑誌の購入について</a></li>
+<li><a href="http://gihyo.jp/site/ad">広告出稿のご案内</a></li>
+<li><a href="http://gihyo.jp/site/inquiry">お問い合わせ</a></li>
+</ul>
+</div><!-- end of #siteSummary -->
+
+</div><!-- end of #footerContent -->
+
+<div class="utility">
+<ul class="logoIcon">
+<li class="num01"><a href="http://gihyo.jp/magazine/SD" title="「Software Design」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_sd.gif" alt="Software Design" width="23" height="21" class="buttons" /></a></li>
+<li class="num02"><a href="http://gihyo.jp/magazine/wdpress" title="「WEB+DB PRESS」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_wd.gif" alt="WEB+DB PRESS" width="23" height="21" class="buttons" /></a></li>
+<li class="num03"><a href="http://gihyo.jp/magazine/WSE" title="「Web Site Expert」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_ws.gif" alt="Web Site Expert" width="23" height="21" class="buttons" /></a></li>
+<!--li class="num04"><a href="http://gihyo.jp/magazine/emind" title="「エンジニアマインド」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_em.gif" alt="エンジニアマインド" width="23" height="21" class="buttons" /></a></li-->
+<li class="num04"><a href="http://gihyo.jp/magazine/kumikomi" title="「組込みプレス」のトップページに移動"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/btn_icon_kumi.gif" alt="組込みプレス" width="23" height="21" class="buttons" /></a></li>
+</ul><!-- end of .logoIcon -->
+
+<p class="feed"><a href="http://gihyo.jp/feed" title="gihyo.jpのフィードを確認"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/footer_feed.gif" alt="Feed (RSS/ATOM)" width="100" height="21" class="buttons" /></a></p>
+<p id="gotoHeader"><a href="admin/serial/01/mixi_sd/0001#header"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/footer_top.gif" alt="このページの先頭へ" width="165" height="21" class="buttons" /></a></p>
+</div><!-- end of #utility -->
+
+<div id="copyright">
+<div class="logo"><a href="http://www.gihyo.co.jp/"><img src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/image/footer_logo_gihyo.gif" alt="技術評論社" width="97" height="16" /></a></div>
+<p>Copyright &copy; 2007-2011 All Rights Reserved by Gijutsu-Hyohron Co., Ltd.<br />ページ内容の全部あるいは一部を無断で利用することを禁止します。個別にライセンスが設定されている記事等はそのライセンスに従います。</p>
+</div><!-- end of #copyright -->
+
+</div><!-- end of #footer -->
+
+</div><!-- end of #wrapper -->
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4149703-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript" language="JavaScript">
+<!--
+impAserver = "http://as.gh.impact-ad.jp";
+impAtarget1 = "/AAMB1/SITE=ADMIN/AREA=TEXTLINK1/AAMSZ=1X1";
+impAtarget2 = "/AAMB2/SITE=ADMIN/AREA=TEXTLINK2/AAMSZ=1X1";
+impAtarget3 = "/AAMB3/SITE=ADMIN/AREA=CENTER.TEXTLINK1/AAMSZ=1X1";
+impAtarget4 = "/AAMB4/SITE=ADMIN/AREA=CENTER.TEXTLINK2/AAMSZ=1X1";
+impAtarget  = impAtarget1 + impAtarget2 + impAtarget3 + impAtarget4;
+
+impArnd = Math.round(Math.random() * 100000000);
+if (!impApid) var impApid = Math.round(Math.random() * 100000000);
+document.write('<scr');
+document.write('ipt src="' + impAserver + '/bservers/AAMALL/OENCJP=UTF8/acc_random=' + impArnd + '/pageid=' + impApid + impAtarget+'">');
+document.write('</scr');
+document.write('ipt>');
+//-->
+</script>
+
+<script type="text/javascript" language="JavaScript">
+<!--
+var impAnads = 4;
+var impAbs = new Array(impAnads);
+for ( i = 0 ; i < impAnads ; i++) {
+  eval('impAbs['+i+'] = (typeof(AAMB' + (i+1) + ') != "undefined")?AAMB' + (i+1) + ':"";');
+  impAbs[i] = (impAbs[i].indexOf('null.png') == -1)?impAbs[i]:'';
+}
+var impAbsTxt = impAbs[0] + impAbs[1];
+if(document.getElementById('primaryTopTextPr')){
+  document.getElementById('primaryTopTextPr').innerHTML = '';
+}
+if(impAbsTxt){
+  var t = document.createElement('dl');
+  t.className = 'textAdList02';
+  t.innerHTML = impAbsTxt;
+  if(document.getElementById('primaryTopTextPr')){
+    document.getElementById('primaryTopTextPr').appendChild(t);
+  }
+}
+var impAbsTxt = impAbs[2] + impAbs[3];
+if(document.getElementById('secondaryTopTextPr')){
+  document.getElementById('secondaryTopTextPr').innerHTML = '';
+}
+if(impAbsTxt){
+  var t = document.createElement('ul');
+  t.className = 'prList01';
+  t.innerHTML = impAbsTxt
+  if(document.getElementById('secondaryTopTextPr')){
+    document.getElementById('secondaryTopTextPr').appendChild(t);
+  }
+}
+//-->
+</script>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+  google.load("jquery", "1.6");
+</script>
+<script src="http://image.gihyo.co.jp/assets/templates/gihyojp2007/js/button.js" type="text/javascript"></script>
+
+<script src="http://image.gihyo.co.jp/assets/js/jquery.lightbox-0.5.pack.js" type="text/javascript"></script>
+<link href="http://image.gihyo.co.jp/assets/css/jquery.lightbox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function() {
+   $('a[rel=lightbox]').lightBox({
+    imageLoading: 'http://image.gihyo.co.jp/assets/images/loading.gif',
+    imageBtnClose: 'http://image.gihyo.co.jp/assets/images/closelabel.gif',
+    imageBtnPrev: 'http://image.gihyo.co.jp/assets/images/ghPrev.png',
+    imageBtnNext: 'http://image.gihyo.co.jp/assets/images/ghNext.png',
+    txtImage: '',
+    txtOf: '/'
+   });
+});
+</script>
+
+
+<script type="text/javascript">(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/plusone.js';po.innerHTML="{lang: 'ja'}";var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+<script type="text/javascript" src="http://static.evernote.com/noteit.js" async="async"></script>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript" src="http://connect.facebook.net/ja_JP/all.js#appId=185201618169441&amp;xfbml=1"></script>
+<script type="text/javascript">
+FB.Event.subscribe('edge.create', function(targetUrl) {
+  _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+});
+FB.Event.subscribe('edge.remove', function(targetUrl) {
+  _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]);
+});
+function extractParamFromUri(uri, paramName) {
+  if (!uri) {
+    return;
+  }
+  var uri = uri.split('#')[0];
+  var parts = uri.split('?');
+  if (parts.length == 1) {
+    return;
+  }
+  var query = decodeURI(parts[1]);
+
+  paramName += '=';
+  var params = query.split('&');
+  for (var i = 0, param; param = params[i]; ++i) {
+    if (param.indexOf(paramName) === 0) {
+      return unescape(param.split('=')[1]);
+    }
+  }
+}
+twttr.events.bind('tweet', function(event) {
+  if (event) {
+    var targetUrl;
+    if (event.target && event.target.nodeName == 'IFRAME') {
+      targetUrl = extractParamFromUri(event.target.src, 'url');
+    }
+    _gaq.push(['_trackSocial', 'twitter', 'tweet', targetUrl]);
+  }
+});
+</script>
+<script type="text/javascript">
+<!--
+var adingo_max_count = "6";
+var adingo_source    = "ecnavi_jp_gihyo_im";
+var adingo_type      = "gihyo_im_article";
+var adingo_ctxtids = new Array("boo0000","sof0000","ele0000","car0000","com0000");
+var adingo_ctxtid = adingo_ctxtids[ Math.floor( Math.random() * adingo_ctxtids.length ) ];
+var adingo_url = "http://im.ecnavi.ov.yahoo.co.jp/js_flat/?source="+adingo_source+"&type="+adingo_type+'_'+adingo_ctxtid+"&ctxtId="+adingo_ctxtid+"&maxCount="+adingo_max_count+"&outputCharEnc=utf8&ctxtUrl=" + encodeURIComponent(document.URL) + "&ref=" + encodeURIComponent(document.referrer) + "&gen=&age=";
+var adingo_img_code = "key=ab4c64a10fda2743fc1f6af53fe80dd0/site=ecnavi_jp_adingo_test_im";
+var adingo_ad_count = 1;
+
+document.write('<scr'+'ipt type="text/javascript" src="'+ adingo_url +'"></'+'scr'+'ipt>');
+
+function ShowListings(count, adtype, docid) {
+  if(typeof(zSr) == "undefined"){
+    zSr = new Array;
+  } else {
+    var zsrStart = 6+(adingo_ad_count-1)*6;
+    var zsrEnd   = zsrStart+(count*6);
+    adingo_ad_count = adingo_ad_count + count;
+
+    if (zSr.length > zsrStart){
+      var url = '';
+      var i = '';
+      for (i=zsrStart; i<zsrEnd; i=i+6) {
+        var descr    = zSr[i];
+        var unused1  = zSr[i+1];
+        var clickURL = zSr[i+2];
+        var title    = zSr[i+3];
+        var sitehost = zSr[i+4];
+        var unused2  = zSr[i+5];
+        var classname = 'overtureimone';
+        clickURL = (clickURL == undefined) ? '' : clickURL ;
+        title    = (title    == undefined) ? '' : title    ;
+        descr    = (descr    == undefined) ? '' : descr    ;
+        sitehost = (sitehost == undefined) ? '' : sitehost ;
+        url += '<li>';
+        url += AdingoAdFree( clickURL,title,descr,sitehost );
+        url += '</li>';
+      }
+      url += AdingoAdPrDefault(classname);
+      var ch = document.createElement('ul');
+      ch.className = adtype +' adOverture';
+      ch.innerHTML = url;
+      document.getElementById(docid).appendChild(ch);
+    }
+  }
+}
+
+function AdingoAdFree( clickURL,title,descr,sitehost ) {
+  var tmp = '';
+  tmp += '<a href="' + clickURL + '" target="_new">';
+  tmp += '<span class="adttl">' + title + '</span>';
+  tmp += '<span class="adlink">&nbsp;&ndash;&nbsp;' + sitehost + '</span>';
+  tmp += '<span class="adtext">' + descr + '</span>';
+  tmp += '</a>';
+  return tmp;
+}
+
+function AdingoAdPrDefault(classname) {
+  var tmp = '';
+  tmp += '<div class="'+classname+'"><ul>';
+  tmp += '<li>インタレストマッチ&nbsp;&ndash;&nbsp;</li>';
+  tmp += '<li><a href="http://ov.yahoo.co.jp/service/int/index.html?o=IM0028" target="_blank">広告の掲載について</a></li>';
+  tmp += '</ul></div>';
+  return tmp;
+}
+//-->
+</script>
+
+<script type="text/javascript">
+<!--
+ShowListings(5, 'adingAdFree', 'articleInterestMatch');
+//-->
+</script>
+<script src="http://img.ak.impact-ad.jp/imd/bta_both.js"></script>
+</body>
+</html>

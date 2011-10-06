@@ -1,0 +1,1013 @@
+
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): End tag : expected '>' in Entity, line: 74 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : scr in Entity, line: 74 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : iframe in Entity, line: 77 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix g is not defined in Entity, line: 118 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Tag g:plusone invalid in Entity, line: 118 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix fb is not defined in Entity, line: 120 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Tag fb:like invalid in Entity, line: 120 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 133 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 133 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 133 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 133 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 133 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 133 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): End tag : expected '>' in Entity, line: 252 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : scr in Entity, line: 252 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : iframe in Entity, line: 255 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): ID contentHotspot already defined in Entity, line: 266 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 267 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 267 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 267 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 267 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 267 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 267 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): ID trackback already defined in Entity, line: 315 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): ID comment already defined in Entity, line: 341 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): End tag : expected '>' in Entity, line: 400 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : scr in Entity, line: 400 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : iframe in Entity, line: 403 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 471 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): End tag : expected '>' in Entity, line: 516 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : scr in Entity, line: 516 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : iframe in Entity, line: 519 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 531 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 533 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 533 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 556 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 558 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 558 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 577 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): End tag : expected '>' in Entity, line: 823 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : scr in Entity, line: 823 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : li in Entity, line: 963 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 977 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 978 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : span in Entity, line: 979 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : a in Entity, line: 980 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : li in Entity, line: 987 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : a in Entity, line: 988 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : li in Entity, line: 988 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : ul in Entity, line: 989 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:02:18] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 989 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:02:18] PHP Stack trace:
+[02-Oct-2011 21:02:18] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:02:18] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:09:14] PHP Warning:  DOMDocument::loadHTML(): End tag : expected '>' in Entity, line: 73 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:09:14] PHP Stack trace:
+[02-Oct-2011 21:09:14] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:09:14] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:09:14] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : scr in Entity, line: 73 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:09:14] PHP Stack trace:
+[02-Oct-2011 21:09:14] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:09:14] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:09:14] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : iframe in Entity, line: 76 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:09:14] PHP Stack trace:
+[02-Oct-2011 21:09:14] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:09:14] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:09:14] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 89 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:09:14] PHP Stack trace:
+[02-Oct-2011 21:09:14] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:09:14] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:23:12] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 29 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:23:12] PHP Stack trace:
+[02-Oct-2011 21:23:12] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:23:12] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:23:12] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 30 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:23:12] PHP Stack trace:
+[02-Oct-2011 21:23:12] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:23:12] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:23:12] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : body in Entity, line: 31 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:23:12] PHP Stack trace:
+[02-Oct-2011 21:23:12] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:23:12] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:24:55] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 29 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:24:55] PHP Stack trace:
+[02-Oct-2011 21:24:55] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:24:55] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:24:55] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 30 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:24:55] PHP Stack trace:
+[02-Oct-2011 21:24:55] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:24:55] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:24:55] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : body in Entity, line: 31 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:24:55] PHP Stack trace:
+[02-Oct-2011 21:24:55] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:24:55] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:26:13] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 29 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:26:13] PHP Stack trace:
+[02-Oct-2011 21:26:13] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:26:13] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:26:13] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 30 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:26:13] PHP Stack trace:
+[02-Oct-2011 21:26:13] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:26:13] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:26:13] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : body in Entity, line: 31 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:26:13] PHP Stack trace:
+[02-Oct-2011 21:26:13] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:26:13] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 21:58:39] PHP Warning:  DOMDocument::loadHTML(): Unexpected end tag : div in Entity, line: 73 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 21:58:39] PHP Stack trace:
+[02-Oct-2011 21:58:39] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 21:58:39] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix g is not defined in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): Tag g:plusone invalid in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix fb is not defined in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): Tag fb:like invalid in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): ID contentHotspot already defined in Entity, line: 234 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): ID trackback already defined in Entity, line: 283 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): ID comment already defined in Entity, line: 295 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 397 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 441 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 466 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:00:08] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 487 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:00:08] PHP Stack trace:
+[02-Oct-2011 22:00:08] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:00:08] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix g is not defined in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): Tag g:plusone invalid in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix fb is not defined in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): Tag fb:like invalid in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): ID contentHotspot already defined in Entity, line: 234 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): ID trackback already defined in Entity, line: 283 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): ID comment already defined in Entity, line: 295 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 397 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 441 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 466 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:44:50] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 487 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 12
+[02-Oct-2011 22:44:50] PHP Stack trace:
+[02-Oct-2011 22:44:50] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:44:50] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:12
+[02-Oct-2011 22:46:16] PHP Notice:  Undefined variable: result in /var/www/data/contents_convert/preview/epub_generate/test.php on line 22
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix g is not defined in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): Tag g:plusone invalid in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix fb is not defined in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): Tag fb:like invalid in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): ID contentHotspot already defined in Entity, line: 234 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): ID trackback already defined in Entity, line: 283 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): ID comment already defined in Entity, line: 295 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 397 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 441 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 466 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:16] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 487 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:16] PHP Stack trace:
+[02-Oct-2011 22:46:16] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:16] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix g is not defined in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): Tag g:plusone invalid in Entity, line: 102 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Notice:  DOMDocument::loadHTML(): Namespace prefix fb is not defined in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): Tag fb:like invalid in Entity, line: 104 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 117 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): ID contentHotspot already defined in Entity, line: 234 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 235 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): ID trackback already defined in Entity, line: 283 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): ID comment already defined in Entity, line: 295 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 397 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 441 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: expecting ';' in Entity, line: 443 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 466 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): htmlParseEntityRef: no name in Entity, line: 468 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:46:17] PHP Warning:  DOMDocument::loadHTML(): ID gihyojpSpecial already defined in Entity, line: 487 in /var/www/data/contents_convert/preview/epub_generate/test.php on line 25
+[02-Oct-2011 22:46:17] PHP Stack trace:
+[02-Oct-2011 22:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 22:46:17] PHP   2. DOMDocument->loadHTML() /var/www/data/contents_convert/preview/epub_generate/test.php:25
+[02-Oct-2011 22:52:28] PHP Notice:  Undefined variable: result in /var/www/data/contents_convert/preview/epub_generate/test.php on line 22
+[02-Oct-2011 22:52:28] PHP Stack trace:
+[02-Oct-2011 22:52:28] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 23:26:25] PHP Fatal error:  Call to undefined method DOMElement::importNode() in /var/www/data/contents_convert/preview/epub_generate/test.php on line 94
+[02-Oct-2011 23:26:25] PHP Stack trace:
+[02-Oct-2011 23:26:25] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 23:26:25] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:27
+[02-Oct-2011 23:33:48] PHP Fatal error:  Call to undefined method DOMElement::importNode() in /var/www/data/contents_convert/preview/epub_generate/test.php on line 94
+[02-Oct-2011 23:33:48] PHP Stack trace:
+[02-Oct-2011 23:33:48] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 23:33:48] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:27
+[02-Oct-2011 23:34:10] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:94
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(94): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 94
+[02-Oct-2011 23:34:41] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:94
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(94): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 94
+[02-Oct-2011 23:34:50] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:94
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(94): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 94
+[02-Oct-2011 23:35:23] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:94
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(94): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 94
+[02-Oct-2011 23:46:17] PHP Warning:  DOMXPath::query(): Invalid predicate in /var/www/data/contents_convert/preview/epub_generate/test.php on line 88
+[02-Oct-2011 23:46:17] PHP Stack trace:
+[02-Oct-2011 23:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 23:46:17] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:27
+[02-Oct-2011 23:46:17] PHP   3. DOMXPath->query() /var/www/data/contents_convert/preview/epub_generate/test.php:88
+[02-Oct-2011 23:46:17] PHP Warning:  DOMXPath::query(): Invalid expression in /var/www/data/contents_convert/preview/epub_generate/test.php on line 88
+[02-Oct-2011 23:46:17] PHP Stack trace:
+[02-Oct-2011 23:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 23:46:17] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:27
+[02-Oct-2011 23:46:17] PHP   3. DOMXPath->query() /var/www/data/contents_convert/preview/epub_generate/test.php:88
+[02-Oct-2011 23:46:17] PHP Warning:  Invalid argument supplied for foreach() in /var/www/data/contents_convert/preview/epub_generate/test.php on line 91
+[02-Oct-2011 23:46:17] PHP Stack trace:
+[02-Oct-2011 23:46:17] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[02-Oct-2011 23:46:17] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:27
+[03-Oct-2011 00:06:17] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:98
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(98): DOMDocument->saveHTML(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 98
+[03-Oct-2011 00:12:00] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:99
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(99): DOMDocument->saveHTML(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 99
+[03-Oct-2011 00:13:37] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:99
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(99): DOMDocument->saveHTML(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 99
+[03-Oct-2011 00:14:23] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:99
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(99): DOMDocument->saveHTML(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 99
+[03-Oct-2011 00:14:48] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:96
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(96): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 96
+[03-Oct-2011 00:15:12] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:98
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(98): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 98
+[03-Oct-2011 00:22:53] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:98
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(98): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 98
+[03-Oct-2011 00:24:29] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:98
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(98): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 98
+[03-Oct-2011 00:25:47] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:96
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(96): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 96
+[03-Oct-2011 00:40:05] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:95
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(95): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 95
+[03-Oct-2011 00:44:02] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:96
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(96): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 96
+[03-Oct-2011 00:44:25] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:96
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(96): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 96
+[03-Oct-2011 00:45:02] PHP Fatal error:  Uncaught exception 'DOMException' with message 'Wrong Document Error' in /var/www/data/contents_convert/preview/epub_generate/test.php:96
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(96): DOMNode->appendChild(Object(DOMElement))
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(27): getContentFromDom(Object(DOMDocument))
+#2 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 96
+[03-Oct-2011 02:04:14] PHP Catchable fatal error:  Argument 1 passed to scanResource() must be an instance of DOMElement, instance of DOMText given, called in /var/www/data/contents_convert/preview/epub_generate/test.php on line 191 and defined in /var/www/data/contents_convert/preview/epub_generate/test.php on line 187
+[03-Oct-2011 02:04:14] PHP Stack trace:
+[03-Oct-2011 02:04:14] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:04:14] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:04:14] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:04:14] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:191
+[03-Oct-2011 02:05:49] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:05:49] PHP Stack trace:
+[03-Oct-2011 02:05:49] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:05:49] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:05:49] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:05:49] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP Warning:  file_put_contents(OEBPS/imgs/0.png): failed to open stream: No such file or directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 224
+[03-Oct-2011 02:05:49] PHP Stack trace:
+[03-Oct-2011 02:05:49] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:05:49] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:05:49] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:05:49] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:05:49] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:224
+[03-Oct-2011 02:05:49] PHP Notice:  Undefined variable: entry in /var/www/data/contents_convert/preview/epub_generate/test.php on line 206
+[03-Oct-2011 02:05:49] PHP Stack trace:
+[03-Oct-2011 02:05:49] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:05:49] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:05:49] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:05:49] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP Fatal error:  Call to a member function setAttribute() on a non-object in /var/www/data/contents_convert/preview/epub_generate/test.php on line 206
+[03-Oct-2011 02:05:49] PHP Stack trace:
+[03-Oct-2011 02:05:49] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:05:49] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:05:49] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:05:49] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:05:49] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:06:22] PHP Stack trace:
+[03-Oct-2011 02:06:22] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:22] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:22] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:22] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP Warning:  file_put_contents(OEBPS/imgs/0.png): failed to open stream: No such file or directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 224
+[03-Oct-2011 02:06:22] PHP Stack trace:
+[03-Oct-2011 02:06:22] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:22] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:22] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:22] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:22] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:06:22] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:224
+[03-Oct-2011 02:06:24] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP Warning:  file_put_contents(OEBPS/imgs/1.png): failed to open stream: No such file or directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 224
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:06:24] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:224
+[03-Oct-2011 02:06:24] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP Warning:  file_put_contents(OEBPS/imgs/2.png): failed to open stream: No such file or directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 224
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:06:24] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:224
+[03-Oct-2011 02:06:24] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP Warning:  file_put_contents(OEBPS/imgs/3.png): failed to open stream: No such file or directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 224
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:06:24] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:224
+[03-Oct-2011 02:06:24] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP Warning:  file_put_contents(OEBPS/imgs/4.png): failed to open stream: No such file or directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 224
+[03-Oct-2011 02:06:24] PHP Stack trace:
+[03-Oct-2011 02:06:24] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:06:24] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:06:24] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:06:24] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:06:24] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:06:24] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:224
+[03-Oct-2011 02:07:28] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:07:28] PHP Stack trace:
+[03-Oct-2011 02:07:28] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:07:28] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:07:28] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:07:28] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:28] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:28] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:28] PHP Warning:  file_put_contents(OEBPS/imgs/0.png): failed to open stream: Is a directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 228
+[03-Oct-2011 02:07:28] PHP Stack trace:
+[03-Oct-2011 02:07:28] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:07:28] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:07:28] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:07:28] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:28] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:28] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:28] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:205
+[03-Oct-2011 02:07:28] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:228
+[03-Oct-2011 02:07:30] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:07:30] PHP Stack trace:
+[03-Oct-2011 02:07:30] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:07:30] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:07:30] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:07:30] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:07:30] PHP Stack trace:
+[03-Oct-2011 02:07:30] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:07:30] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:07:30] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:07:30] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:07:30] PHP Stack trace:
+[03-Oct-2011 02:07:30] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:07:30] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:07:30] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:07:30] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP Strict standards:  Only variables should be passed by reference in /var/www/data/contents_convert/preview/epub_generate/test.php on line 201
+[03-Oct-2011 02:07:30] PHP Stack trace:
+[03-Oct-2011 02:07:30] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:07:30] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:07:30] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:07:30] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:07:30] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:08:28] PHP Warning:  file_put_contents(OEBPS/imgs/0.png): failed to open stream: Is a directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 229
+[03-Oct-2011 02:08:28] PHP Stack trace:
+[03-Oct-2011 02:08:28] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[03-Oct-2011 02:08:28] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:28
+[03-Oct-2011 02:08:28] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:96
+[03-Oct-2011 02:08:28] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:08:28] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:08:28] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[03-Oct-2011 02:08:28] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:206
+[03-Oct-2011 02:08:28] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:229

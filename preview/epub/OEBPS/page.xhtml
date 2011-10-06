@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ビジネススピードと信頼性を両立させる システム基盤構築記［by mixi］：第1回　2011年「あけおめアクセス」の対策と結果｜gihyo.jp … 技術評論社</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+</head>
+
+<body>
+
+<h3 id="sec1">はじめに</h3>
+
+<p id="sec1_p1">はじめまして。（株）ミクシィのシステム本部 運用部でアプリ運用を担当している小池知裕です。mixiのシステムの運用／管理業務に従事しています。本連載では，3回にわたってmixi.jpでのシステム運用業務の裏側を紹介します。</p>
+
+<h4 id="sec1_h1">ミクシィの運用部のシゴト</h4>
+<p id="sec1_p2">最初に，（株）ミクシィの運用部という組織について簡単に説明します。運用部には「アプリ運用」「インフラ」「バックオフィス」の3つのグループがあり，それぞれ「ソフトウェア面での運用／管理／改善」「ハードウェア面での運用／管理／改善」「購買／資産管理」の業務を担当しています。</p>
+
+<p id="sec1_p3">そのほか，同じシステム本部には技術部があり，さまざまな研究開発を行う研究開発グループやmixiの<a href="http://alpha.mixi.co.jp/blog/?p=2211">大規模障害</a>で有名になった，たんぽぽグループなどがあります。</p>
+
+<p id="sec1_p4">本連載では，筆者が所属するアプリ運用グループで，mixiサービスのソフトウェアをどのように運用／管理／改善しているかについて取り上げます。</p>
+
+<h3 id="sec2">突然のアクセス集中</h3>
+
+<p id="sec2_p1">mixiは突発的な高負荷（アクセス集中など）がときどき発生します。たとえば毎年12月31日の大晦日から新年1月1日に切り替わる瞬間などです。各携帯キャリアなどでも毎年のように広報される「0時付近での通話やメールなどでの新年のご挨拶はお控えください」と言われるアレです。</p>
+
+<p id="sec2_p2">そこで今回は，「毎年1月1日0時0分になった瞬間にアクセス（書き込み）が爆発的に増える現象」を例にして，ここ数年でどういった障害が起きてきたのか，どう対策したのか，そしてどういう結果になったのかを時系列で紹介します。</p>
+
+<p id="sec2_p3">なお，本稿では「1月1日0時0分になった瞬間」のアクセス集中を「あけおめアクセス」という名で呼びますが，社内用語などではありません。あくまでも個人的にそう呼んでいるだけです。</p>
+
+<h3 id="sec3">例年の傾向と対策</h3>
+
+<h4 id="sec3_h1">2008年の年末</h4>
+<p id="sec3_p1">2008年当時は，まだmixiと言えば日記で，コンテンツは日記が大部分を占めていました。そして，毎年1月1日0時0分になった瞬間に多くの利用者が一斉に日記を書いていました。</p>
+
+<p id="sec3_p2">われわれも当然のことながら，その「あけおめの瞬間」に投稿される日記のアクセス集中対策を行っていました。具体的には，日記のIDを管理する「ID Generatorの改善」です。</p>
+
+<ul id="sec3_o1">
+<li id="sec3_l1">ID Generatorの改善：ID管理用のAPIを用いて大量のクライアントからの接続を行わないように改善</li>
+</ul>
+
+<p id="sec3_p3">もう少し詳しく説明をします。mixiではすべての日記にIDを付与して管理しており，日記の投稿時にそれらを採番してデータベースに保存していました（これは今も変わっていません）。</p>
+
+<div id="sec3_o2" class="codelist">
+<p id="sec3_p4"><strong>リスト1</strong>　idpotテーブル</p>
+<div id="sec3_o3" class="preWrap"><pre><code>create table idpot (
+  id bigint unsigned NOT NULL default '0'
+);</code>
+</pre></div>
+</div>
+
+<p id="sec3_p5"><strong>リスト1</strong>のテーブル（idpot）に対して，日記が投稿されるたびに次のクエリで更新を行い，idの値を次々と更新していきます。</p>
+
+<div id="sec3_o4" class="codelist">
+<div id="sec3_o5" class="preWrap"><pre><code>UPDATE idpot SET id=LAST_INSERT_ID(id+1);</code>
+
+</pre></div>
+</div>
+
+<p id="sec3_p6">そして，更新されたidの値を日記のユニークなIDとして保存します。その日記のIDを管理しているテーブル（リスト1のidpotテーブル）が，あけおめアクセスでの大量アクセスによって多数のクライアントから一斉／大量にMySQLに接続したためエラーになっていました。そこで，<strong>図1</strong>のようにMySQLへの接続本数を減らすように「ID Generatorの改善」を施しました。</p>
+
+<div id="sec3_o6" class="illust">
+<p id="sec3_p7"><strong>図1</strong>　2008年から2010年の対策</p>
+<p id="sec3_p8"><a href="http://image.gihyo.co.jp/assets/images/admin/serial/01/mixi_sd/0001/001.png" rel="lightbox" title="図1　2008年から2010年の対策" class="imgLightbox"><img src="http://image.gihyo.co.jp/assets/images/admin/serial/01/mixi_sd/0001/thumb/TH400_001.png" alt="図1　2008年から2010年の対策" title="図1　2008年から2010年の対策" height="312" width="400"></a></p>
+</div>
+
+<h4 id="sec3_h2">2009年1月1日はどうだったのか？</h4>
+
+<p id="sec3_p9">話は翌年に進みます。図1の対策を取っていましたが，残念ながら2009年1月1日0時過ぎにアクセス集中のため日記投稿でエラーが発生してしまいました。</p>
+
+<p id="sec3_pa">ID管理用のAPIを用いて多数のクライアントからの接続数をコントロールしていても，さらに多くのアクセスが発生したため，MySQLの性能を超えてエラーが発生してしまったためでした。</p>
+
+<p id="sec3_pb">そして，あけおめアクセスの改善はさらに翌年に継続されます。</p>
+
+<h4 id="sec3_h3">2009年の年末</h4>
+<p id="sec3_pc"><a href="http://mixi.jp/recent_voice.pl">mixiボイス</a>がインディーズから正式機能としてリリースされ，mixiボイスの投稿数が上昇していましたが，1月1日0 時0 分の日記投稿はまだまだ多いはずだと予想していました。</p>
+
+<p id="sec3_pd">また，前年の結果を踏まえて，再度，日記のID Generatorの改善を行いました。具体的には「API方式でのアクセスを止め，ID管理用のテーブルをストレージエンジンのInnoDBではなく，MyISAMとすることでパフォーマンスの向上を図る」というものです。</p>
+
+<p id="sec3_pe">現在，MySQLで用いられるストレージエンジンとはInnoDBが主流であり，mixiでもほとんどすべてのMySQLサーバではInnoDBで運用しています。InnoDBはMyISAMになかった次のようなメリット（機能）があります。</p>
+<ul id="sec3_o7">
+<li id="sec3_l2">行単位のロック</li>
+<li id="sec3_l3">大量のデータのあるテーブルのパフォーマンス向上</li>
+<li id="sec3_l4">トランザクション機能</li>
+</ul>
+
+<p id="sec3_pf">ただし，先述したように「ID Generator」は非常に単純なテーブル／クエリであり，データも常に1件しかないテーブルです。そのためこれらの高機能な部分が仇となっていました。われわれはこれらの機能は「ID Generator」には不要と判断し，思いきってストレージエンジンをMyISAMに変更を行いました。</p>
+
+</body>
+</html>

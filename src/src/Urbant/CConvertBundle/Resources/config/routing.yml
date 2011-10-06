@@ -1,0 +1,3 @@
+UrbantCConvertBundle_homepage:
+    pattern:  /
+    defaults: { _controller: UrbantCConvertBundle:Site:index }

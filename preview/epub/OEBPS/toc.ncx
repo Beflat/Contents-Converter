@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta name="dtb:uid" content="contents-converter.urban-theory.net_1000"/>
+    <meta name="dtb:depth" content="1"/>
+    <meta name="dtb:totalPageCount" content="0"/>
+    <meta name="dtb:maxPageNumber" content="0"/>
+  </head>
+  <docTitle>
+    <text>タイトル</text>
+  </docTitle>
+  <docAuthor>
+    <text>著者</text>
+  </docAuthor>
+  <navMap>
+    <navPoint id="page" playOrder="1">
+      <navLabel>
+        <text>Index page</text>
+      </navLabel>
+      <content src="page.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>
