@@ -10,6 +10,17 @@ class SiteController extends Controller
     
     public function indexAction()
     {
-        return $this->render('UrbantCConvertBundle:Site:index.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+        $siteRepo = $em->getRepository('UrbantCConvertBundle:Site');
+        
+        $sites = $siteRepo->getSites();
+        
+        return $this->render('UrbantCConvertBundle:Site:index.html.twig',
+            array('sites' => $sites)
+        );
+    }
+    
+    
+    public function batchAction() {
     }
 }

@@ -1,3 +1,9 @@
 UrbantCConvertBundle_homepage:
     pattern:  /
     defaults: { _controller: UrbantCConvertBundle:Site:index }
+
+UrbantCConvertBundle_site_batch:
+    pattern:  /site/batch
+    defaults: { _controller: UrbantCConvertBundle:Site:batch }
+    requirements:
+        _method: POST

@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class SiteRepository extends EntityRepository
 {
+    
+    public function getSites() {
+        
+       $qb = $this->createQueryBuilder('s')
+           ->select('s')
+           ->addOrderBy('s.created', 'DESC');
+        
+        return $qb->getQuery()->getResult();
+    }
+    
 }
