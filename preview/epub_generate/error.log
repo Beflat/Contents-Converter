@@ -1011,3 +1011,34 @@ Stack trace:
 [03-Oct-2011 02:08:28] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
 [03-Oct-2011 02:08:28] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:206
 [03-Oct-2011 02:08:28] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:229
+[09-Oct-2011 04:07:28] PHP Fatal error:  Uncaught exception 'Exception' with message '<url> malformed' in /var/www/data/contents_convert/preview/epub_generate/test.php:205
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(189): downloadResource('/images/common/...', 'OEBPS/imgs/0.pn...')
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(177): scanResource(Object(DOMElement))
+#2 /var/www/data/contents_convert/preview/epub_generate/test.php(177): scanResource(Object(DOMElement))
+#3 /var/www/data/contents_convert/preview/epub_generate/test.php(177): scanResource(Object(DOMElement))
+#4 /var/www/data/contents_convert/preview/epub_generate/test.php(88): scanResource(Object(DOMElement))
+#5 /var/www/data/contents_convert/preview/epub_generate/test.php(31): getContentFromDom(Object(DOMDocument))
+#6 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 205
+[09-Oct-2011 04:08:41] PHP Fatal error:  Uncaught exception 'Exception' with message 'URL:/images/common/picto/footer_trainings.png
+<url> malformed' in /var/www/data/contents_convert/preview/epub_generate/test.php:205
+Stack trace:
+#0 /var/www/data/contents_convert/preview/epub_generate/test.php(189): downloadResource('/images/common/...', 'OEBPS/imgs/0.pn...')
+#1 /var/www/data/contents_convert/preview/epub_generate/test.php(177): scanResource(Object(DOMElement))
+#2 /var/www/data/contents_convert/preview/epub_generate/test.php(177): scanResource(Object(DOMElement))
+#3 /var/www/data/contents_convert/preview/epub_generate/test.php(177): scanResource(Object(DOMElement))
+#4 /var/www/data/contents_convert/preview/epub_generate/test.php(88): scanResource(Object(DOMElement))
+#5 /var/www/data/contents_convert/preview/epub_generate/test.php(31): getContentFromDom(Object(DOMDocument))
+#6 {main}
+  thrown in /var/www/data/contents_convert/preview/epub_generate/test.php on line 205
+[09-Oct-2011 04:14:11] PHP Warning:  file_put_contents(OEBPS/imgs/0.png): failed to open stream: Is a directory in /var/www/data/contents_convert/preview/epub_generate/test.php on line 217
+[09-Oct-2011 04:14:11] PHP Stack trace:
+[09-Oct-2011 04:14:11] PHP   1. {main}() /var/www/data/contents_convert/preview/epub_generate/test.php:0
+[09-Oct-2011 04:14:11] PHP   2. getContentFromDom() /var/www/data/contents_convert/preview/epub_generate/test.php:31
+[09-Oct-2011 04:14:11] PHP   3. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:88
+[09-Oct-2011 04:14:11] PHP   4. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:177
+[09-Oct-2011 04:14:11] PHP   5. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:177
+[09-Oct-2011 04:14:11] PHP   6. scanResource() /var/www/data/contents_convert/preview/epub_generate/test.php:177
+[09-Oct-2011 04:14:11] PHP   7. downloadResource() /var/www/data/contents_convert/preview/epub_generate/test.php:194
+[09-Oct-2011 04:14:11] PHP   8. file_put_contents() /var/www/data/contents_convert/preview/epub_generate/test.php:217
