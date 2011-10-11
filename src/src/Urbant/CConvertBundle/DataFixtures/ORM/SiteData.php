@@ -12,8 +12,15 @@ class SiteData implements FixtureInterface{
         $site = new Site();
         $site->setName('gihyo.jp');
         $site->setDescription('テスト1号');
-        
         $manager->persist($site);
+        
+        for($i=0;$i<30;$i++) {
+            $site = new Site();
+            $site->setName('test site - ' . $i);
+            $site->setDescription('テスト' . $i . '号');
+            $manager->persist($site);
+        }
+        
         $manager->flush();
     }
     

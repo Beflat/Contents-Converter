@@ -22,4 +22,32 @@ class SiteRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
     
+    
+    
+    /**
+     * 
+     */
+    public function deleteSiteForIds($ids) {
+        
+        if(!is_array($ids) || count($ids) == 0) {
+            throw new \UnexpectedValueException('Target ID list was empty.');
+        }
+        
+        $qb = $this->createQueryBuilder('s')
+            ->delete('UrbantCConvertBundle:Site', 's');
+        
+        $idConditions = array();
+        $idParams = array();
+        foreach($ids as $index=>$id) {
+            $key = 's_id' . $index;
+            $idConditions[] = ':' . $key;
+            $idParams[$key] = $id;
+        }
+        
+        $qb->where('s.id IN ( ' . implode(' , ', $idConditions) . ' )');
+        $qb->setParameters($idParams);
+        
+        return $qb->getQuery()->execute();
+    }
+    
 }

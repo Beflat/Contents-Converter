@@ -3,24 +3,112 @@
 namespace Urbant\CConvertBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Urbant\CConvertBundle\Form\SiteSearchType;
+use Urbant\CConvertBundle\Entity\Site;
+use Urbant\CConvertBundle\Form\SiteType;
 
-
-class SiteController extends Controller
+class SiteController extends BaseAdminController
 {
+
     
-    public function indexAction()
+    protected $pageCatId = 'site';
+    
+    /**
+     * サイトの一覧表示
+     * @param unknown_type $page
+     */
+    public function indexAction($page)
     {
+        $this->pageId = 'list';
+        
         $em = $this->getDoctrine()->getEntityManager();
         $siteRepo = $em->getRepository('UrbantCConvertBundle:Site');
-        
+
+        //         $paginator = new \Zend_Paginator(new \Zend_Paginator_Adapter_Null(30));
+        //         $paginator->setCurrentPageNumber($page);
+        //         $paginator->setItemCountPerPage(10);
+
         $sites = $siteRepo->getSites();
-        
+
+        $form = $this->createForm(new SiteSearchType(), new Site());
+
         return $this->render('UrbantCConvertBundle:Site:index.html.twig',
-            array('sites' => $sites)
+        array('sites' => $sites, 'search_form' => $form->createView(),
+        )
         );
     }
-    
-    
-    public function batchAction() {
+
+
+    /**
+     * 削除等の処理の一括実行
+     */
+    public function batchAction($page) {
+
+        $this->pageId = 'list';
+        
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('UrbantCConvertBundle:Site');
+        $type = $request->get('type');
+
+        switch($type) {
+            case 'd':
+                $repository->deleteSiteForIds($request->get('ids'));
+                $this->get('session')->setFlash('message', '選択したデータを削除しました。');
+                break;
+            default:
+                $this->get('session')->setFlash('message', '無効な区分です：' . $type);
+        }
+
+        return $this->indexAction($page);
     }
+
+    /**
+     * 新規登録画面の表示
+     */
+    public function addAction() {
+
+        $this->pageId = 'add';
+        
+        $site = new Site();
+        $form = $this->createForm(new SiteType(), $site);
+        $vars = array(
+            'form' => $form->createView(),
+        );
+        return $this->render('UrbantCConvertBundle:Site:add.html.twig', $vars);
+    }
+
+
+    /**
+     * 新規登録書利の実行
+     */
+    public function createAction() {
+
+        $this->pageId = 'add';
+        
+        $site = new Site();
+        $form = $this->createForm(new SiteType(), $site);
+
+        $request = $this->getRequest();
+        $form->bindRequest($request);
+        if($form->isValid()) {
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($site);
+            $em->flush();
+
+            $this->get('session')->setFlash('message', '登録しました。');
+            return $this->redirect($this->generateUrl('UrbantCConvertBundle_site_add'));
+        } else {
+            throw new Exception('aaa');
+        }
+
+
+        $vars = array(
+            'form' => $form->createView(),
+        );
+        return $this->render('UrbantCConvertBundle:Site:add.html.twig', $vars);
+    }
+
+
 }

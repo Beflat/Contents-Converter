@@ -7,6 +7,33 @@
     </div>
     <!-- end page-heading -->
 
+<div class="search-form">
+    <form action="{{ path('UrbantCConvertBundle_site_list') }}" method="GET" >
+    {{ form_widget(search_form) }}
+    
+    <input type="submit" value="SEARCH" />
+    
+    </form>
+</div>
+
+<div class="pagination">
+
+</div>
+
+
+{% if app.session.hasFlash('message') %}
+                <!--  start message-green -->
+                <div id="message-green">
+                <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="green-left">{{ app.session.flash('message') }}</td>
+                    <td class="green-right"><a class="close-green"><img src="{{ asset('bundles/urbantcconvert/images/table/icon_close_green.gif') }}"   alt="" /></a></td>
+                </tr>
+                </table>
+                </div>
+                <!--  end message-green -->
+{% endif %}
+
     <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
     <tr>
         <th rowspan="3" class="sized"><img src="{{ asset('bundles/urbantcconvert/images/shared/side_shadowleft.jpg') }}" width="20" height="300" alt="" /></th>
@@ -21,11 +48,11 @@
         <!--  start content-table-inner ...................................................................... START -->
         <div id="content-table-inner">
         
+        <form id="mainform" action="{{ path('UrbantCConvertBundle_site_batch') }}" method="POST" >
             <!--  start table-content  -->
             <div id="table-content">
             
                 <!--  start product-table ..................................................................................... -->
-                <form id="mainform" action="{{ path('UrbantCConvertBundle_site_batch') }}" method="POST" >
                 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
                 <tr>
                     <th class="table-header-check"><a id="toggle-all" ></a> </th>
@@ -35,7 +62,7 @@
                 </tr>
 {% for site in sites %}
                 <tr>
-                    <td><input type="checkbox" value="{{ site.id }}" /></td>
+                    <td><input type="checkbox" name="ids[]" value="{{ site.id }}" /></td>
                     <td>{{ site.name }}</td>
                     <td>{{ site.description }}</td>
                     <td class="options-width">
@@ -52,21 +79,21 @@
 
                 </table>
                 <!--  end product-table................................... --> 
-                </form>
             </div>
             <!--  end content-table  -->
         
             <!--  start actions-box ............................................... -->
             <div id="actions-box">
-                <a href="" class="action-slider"></a>
-                <div id="actions-box-slider">
-                    <a href="" class="action-edit">Edit</a>
-                    <a href="" class="action-delete">Delete</a>
-                </div>
-                <div class="clear"></div>
+                <select name="type">
+                    <option value="d">DELETE</option>
+                </select>
+                
+                <input type="submit" name="submit" value="実行" />
+                
             </div>
             <!-- end actions-box........... -->
-            
+        </form>
+
             <!--  start paging..................................................... -->
             <table border="0" cellpadding="0" cellspacing="0" id="paging-table">
             <tr>

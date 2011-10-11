@@ -1,9 +1,23 @@
 UrbantCConvertBundle_homepage:
     pattern:  /
-    defaults: { _controller: UrbantCConvertBundle:Site:index }
+    defaults: { _controller: UrbantCConvertBundle:Site:index, page: 1 }
+
+UrbantCConvertBundle_site_list:
+    pattern:  /site
+    defaults: { _controller: UrbantCConvertBundle:Site:index, page: 1 }
+
+UrbantCConvertBundle_site_add:
+    pattern:  /site/add
+    defaults: { _controller: UrbantCConvertBundle:Site:add }
+
+UrbantCConvertBundle_site_create:
+    pattern:  /site/create
+    defaults: { _controller: UrbantCConvertBundle:Site:create }
+    requirements:
+        _method: POST
 
 UrbantCConvertBundle_site_batch:
     pattern:  /site/batch
-    defaults: { _controller: UrbantCConvertBundle:Site:batch }
+    defaults: { _controller: UrbantCConvertBundle:Site:batch, page: 1 }
     requirements:
         _method: POST
