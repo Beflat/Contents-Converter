@@ -44,6 +44,8 @@ class SiteController extends BaseAdminController
      */
     public function batchAction($page) {
 
+        //TODO: このままだとページング情報等を引き回せない。
+        
         $this->pageId = 'list';
         
         $request = $this->getRequest();
@@ -99,10 +101,7 @@ class SiteController extends BaseAdminController
 
             $this->get('session')->setFlash('message', '登録しました。');
             return $this->redirect($this->generateUrl('UrbantCConvertBundle_site_add'));
-        } else {
-            throw new Exception('aaa');
         }
-
 
         $vars = array(
             'form' => $form->createView(),
@@ -111,4 +110,52 @@ class SiteController extends BaseAdminController
     }
 
 
+    /**
+     * 編集画面の表示
+     */
+    public function editAction($id) {
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('UrbantCConvertBundle:Site');
+        
+        $site = $repository->find($id);
+        if(!$site) {
+            throw new $this->createNotFoundException('ID:' . $id . 'のサイトは存在しません。');
+        }
+        
+        $form = $this->createForm(new SiteType(), $site);
+        
+        $vars = array(
+            'siteId' => $id,
+            'form' => $form->createView(),
+        );
+        return $this->render('UrbantCConvertBundle:Site:edit.html.twig', $vars);
+    }
+    
+    
+    public function updateAction($id) {
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $site = $em->getRepository('UrbantCConvertBundle:Site')->find($id);
+        if(!$site) {
+            throw new $this->createNotFoundException('ID:' . $id . 'のサイトは存在しません。');
+         }
+        $form = $this->createForm(new SiteType(), $site);
+        
+        $request = $this->getRequest();
+        $form->bindRequest($request);
+        
+        if($form->isValid()) {
+            $em->flush();
+            
+            $this->get('session')->setFlash('message', 'サイト情報を更新しました。');
+            $this->redirect($this->generateUrl('UrbantCConvertBundle_site_edit', array('id' => $id), true));
+        }
+        
+        $vars = array(
+            'siteId' => $id,
+            'form' => $form->createView()
+        );
+        return $this->render('UrbantCConvertBundle:Site:edit.html.twig', $vars);
+    }
 }

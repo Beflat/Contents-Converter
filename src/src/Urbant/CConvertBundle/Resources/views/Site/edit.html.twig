@@ -3,7 +3,7 @@
 {% block body %}
 
 
-<div id="page-heading"><h1>Add site</h1></div>
+<div id="page-heading"><h1>Edit site</h1></div>
 
 {% if app.session.hasFlash('message') %}
 <!--  start message-green -->
@@ -40,10 +40,10 @@
 
 <div class="form">
 
-    <form action="{{ path('UrbantCConvertBundle_site_create') }}" method="post" {{ form_enctype(form) }} >
+    <form action="{{ path('UrbantCConvertBundle_site_update', {'id': siteId}) }}" method="post" {{ form_enctype(form) }} >
         {{ form_widget(form) }}
         
-        <input type="submit" value="登録" />
+        <input type="submit" value="保存" />
     </form>
 
 </div>

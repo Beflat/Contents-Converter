@@ -21,3 +21,16 @@ UrbantCConvertBundle_site_batch:
     defaults: { _controller: UrbantCConvertBundle:Site:batch, page: 1 }
     requirements:
         _method: POST
+
+UrbantCConvertBundle_site_edit:
+    pattern:  /site/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:Site:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_site_update:
+    pattern:  /site/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:Site:update }
+    requirements:
+        _method: POST
+        id: \d+

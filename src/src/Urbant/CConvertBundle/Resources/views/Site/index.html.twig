@@ -63,7 +63,7 @@
 {% for site in sites %}
                 <tr>
                     <td><input type="checkbox" name="ids[]" value="{{ site.id }}" /></td>
-                    <td>{{ site.name }}</td>
+                    <td><a href="{{ path('UrbantCConvertBundle_site_edit', {'id': site.id}) }}">{{ site.name }}</a></td>
                     <td>{{ site.description }}</td>
                     <td class="options-width">
                     <a href="" title="Edit" class="icon-1 info-tooltip"></a>
