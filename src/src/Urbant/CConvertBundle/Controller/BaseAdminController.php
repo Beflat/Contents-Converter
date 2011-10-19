@@ -67,6 +67,14 @@ abstract class BaseAdminController extends Controller
                     'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_rule_add')),
                     ),
               ),
+            'request' => array(
+                'name' => 'Request',
+                'url' => $this->generateUrl('UrbantCConvertBundle_request_list'),
+                'sub' => array(
+                    'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_request_list')),
+                    'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_request_add')),
+                    ),
+              ),
         );
     }
     
@@ -90,5 +98,18 @@ abstract class BaseAdminController extends Controller
             $this->templateParams[$key] = $value;
         }
         return parent::render($view, $this->templateParams, $response);
+    }
+    
+    
+    //---------------------------------------------------------------------
+    //各コントローラで共通して呼び出す処理のショートカット
+    
+    protected function getEntityManager() {
+        return $this->getDoctrine()->getEntityManager();
+    }
+    
+    
+    protected function getRepository($entityName) {
+        return $this->getEntityManager()->getRepository($entityName);
     }
 }
