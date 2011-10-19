@@ -261,7 +261,7 @@ $(document).pngFix( );
         {% set isCurrentCat = (menuCatId == _catId) ? 1 : 0 %}
         {% set menuClass = isCurrentCat ? 'current' : 'select' %}
         {% set subMenuDivClass = isCurrentCat ? 'show' : '' %}
-        <ul class="{{ menuClass }}"><li><a href="#"><b>{{ menuCat.name }}</b></a>
+        <ul class="{{ menuClass }}"><li><a href="{{ menuCat.url }}"><b>{{ menuCat.name }}</b></a>
         <div class="select_sub {{ subMenuDivClass }}">
             <ul class="sub">
         {% for menuPageId, menuPage in menuCat.sub %}

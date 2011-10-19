@@ -34,3 +34,35 @@ UrbantCConvertBundle_site_update:
     requirements:
         _method: POST
         id: \d+
+
+UrbantCConvertBundle_rule_list:
+    pattern:  /rule
+    defaults: { _controller: UrbantCConvertBundle:Rule:list }
+
+UrbantCConvertBundle_rule_add:
+    pattern:  /rule/add
+    defaults: { _controller: UrbantCConvertBundle:Rule:add }
+
+UrbantCConvertBundle_rule_create:
+    pattern:  /rule/create
+    defaults: { _controller: UrbantCConvertBundle:Rule:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_rule_batch:
+    pattern:  /rule/batch
+    defaults: { _controller: UrbantCConvertBundle:Rule:batch, page: 1 }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_rule_edit:
+    pattern:  /rule/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:Rule:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_rule_update:
+    pattern:  /rule/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:Rule:update }
+    requirements:
+        id: \d+

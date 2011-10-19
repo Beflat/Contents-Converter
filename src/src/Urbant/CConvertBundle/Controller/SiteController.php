@@ -28,14 +28,18 @@ class SiteController extends BaseAdminController
         //         $paginator->setCurrentPageNumber($page);
         //         $paginator->setItemCountPerPage(10);
 
-        $sites = $siteRepo->getSites();
 
-        $form = $this->createForm(new SiteSearchType(), new Site());
+        $form = $this->createForm(new SiteSearchType());
+        $request = $this->getRequest();
+        $form->bindRequest($request);
+        
+        $searchConditions = $form->getData();
+        
+        $sites = $siteRepo->getSites($searchConditions);
 
         return $this->render('UrbantCConvertBundle:Site:index.html.twig',
-        array('sites' => $sites, 'search_form' => $form->createView(),
-        )
-        );
+            array('sites' => $sites, 'search_form' => $form->createView(),
+        ));
     }
 
 

@@ -37,6 +37,12 @@ class Site
     private $description;
 
     /**
+     * @ORM\Column(name="cookie", type="text")
+     * @var string $cookie
+     */
+    private $cookie;
+    
+    /**
      * @var datetime $created
      *
      * @ORM\Column(name="created", type="datetime")
@@ -158,4 +164,24 @@ class Site
       $this->setUpdated(new \DateTime());
     }
     
+
+    /**
+     * Set cookie
+     *
+     * @param text $cookie
+     */
+    public function setCookie($cookie)
+    {
+        $this->cookie = $cookie;
+    }
+
+    /**
+     * Get cookie
+     *
+     * @return text 
+     */
+    public function getCookie()
+    {
+        return $this->cookie;
+    }
 }

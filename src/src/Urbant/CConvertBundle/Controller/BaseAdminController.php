@@ -46,6 +46,7 @@ abstract class BaseAdminController extends Controller
         $this->menues = array(
             'dashboard' => array(
                 'name' => 'Dash Board',
+                    'url' => '#',
                 'sub' => array(
                     'list' => array('name' => 'LIST', 'url' => ''),
                    ),
@@ -56,6 +57,14 @@ abstract class BaseAdminController extends Controller
                 'sub' => array(
                     'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_site_list')),
                     'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_site_add')),
+                    ),
+              ),
+            'rule' => array(
+                'name' => 'Rule',
+                'url' => $this->generateUrl('UrbantCConvertBundle_rule_list'),
+                'sub' => array(
+                    'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_rule_list')),
+                    'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_rule_add')),
                     ),
               ),
         );

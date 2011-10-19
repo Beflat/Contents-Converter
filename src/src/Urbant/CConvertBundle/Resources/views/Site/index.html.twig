@@ -58,6 +58,7 @@
                     <th class="table-header-check"><a id="toggle-all" ></a> </th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Name</a>   </th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Description</a></th>
+                    <th class="table-header-repeat line-left minwidth-1"><a href="">Created</a></th>
                     <th class="table-header-options line-left"><a href="">Options</a></th>
                 </tr>
 {% for site in sites %}
@@ -65,6 +66,7 @@
                     <td><input type="checkbox" name="ids[]" value="{{ site.id }}" /></td>
                     <td><a href="{{ path('UrbantCConvertBundle_site_edit', {'id': site.id}) }}">{{ site.name }}</a></td>
                     <td>{{ site.description }}</td>
+                    <td>{{ site.created|date('Y-m-d H:i:s') }}</td>
                     <td class="options-width">
                     <a href="" title="Edit" class="icon-1 info-tooltip"></a>
                     <a href="" title="Edit" class="icon-2 info-tooltip"></a>
