@@ -45,14 +45,14 @@ abstract class BaseAdminController extends Controller
         //TODO:ここではなく定義ファイル等に定義する
         $this->menues = array(
             'dashboard' => array(
-                'name' => 'Dash Board',
+                'name' => 'DASH BOARD',
                     'url' => '#',
                 'sub' => array(
                     'list' => array('name' => 'LIST', 'url' => ''),
                    ),
              ),
             'site' => array(
-                'name' => 'Site',
+                'name' => 'SITE',
                 'url' => $this->generateUrl('UrbantCConvertBundle_site_list'),
                 'sub' => array(
                     'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_site_list')),
@@ -60,7 +60,7 @@ abstract class BaseAdminController extends Controller
                     ),
               ),
             'rule' => array(
-                'name' => 'Rule',
+                'name' => 'RULE',
                 'url' => $this->generateUrl('UrbantCConvertBundle_rule_list'),
                 'sub' => array(
                     'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_rule_list')),
@@ -68,7 +68,7 @@ abstract class BaseAdminController extends Controller
                     ),
               ),
             'request' => array(
-                'name' => 'Request',
+                'name' => 'REQUEST',
                 'url' => $this->generateUrl('UrbantCConvertBundle_request_list'),
                 'sub' => array(
                     'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_request_list')),

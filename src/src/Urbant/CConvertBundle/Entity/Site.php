@@ -57,6 +57,11 @@ class Site
     private $updated;
 
 
+    
+    public function __toString() {
+        return $this->name;
+    }
+    
     /**
      * Get id
      *
