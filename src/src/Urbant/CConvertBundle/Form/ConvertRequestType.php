@@ -13,8 +13,8 @@ class ConvertRequestType extends AbstractType
     {
         $convertRequest = new ConvertRequest();
         $builder
-            ->add('site', 'entity', array(
-                    'class' => 'UrbantCConvertBundle:Site',
+            ->add('rule', 'entity', array(
+                    'class' => 'UrbantCConvertBundle:Rule',
                     'query_builder' => function (EntityRepository $repo) {
                             return $repo->createQueryBuilder('r')->orderBy('r.created', 'DESC');
                             },

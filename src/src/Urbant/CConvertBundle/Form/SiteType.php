@@ -10,9 +10,9 @@ class SiteType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description', 'textarea', array('required'=>false))
-            ->add('cookie', 'text')
+        ->add('name')
+        ->add('description', 'textarea', array('required'=>false))
+        ->add('cookie', 'text')
         ;
     }
 

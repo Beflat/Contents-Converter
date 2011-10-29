@@ -4,20 +4,22 @@ namespace Urbant\CConvertBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Urbant\CConvertBundle\Entity\Content;
 
-class RuleSearchType extends AbstractType
+class ContentSearchType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
+        $content = new Content();
+        
         $builder
-            ->add('name', 'text', array('required'=>false))
-            ->add('site', 'entity', array(
-                    'class' => 'UrbantCConvertBundle:Site',
-                    'query_builder' => function($repo) {
+            ->add('site', 'entity', array('class'=>'UrbantCConvertBundle:Site',
+                'query_builder' => function($repo) {
                         return $repo->createQueryBuilder('s')->orderBy('s.created', 'DESC');
-                        },
-                    'required' => false
-               ))
+                    },
+            		'required'=>false))
+            ->add('url', 'text', array('required'=>false))
+            ->add('status', 'choice', array('choices' => $content->getStatusList(), 'required'=>false))
             ->add('created_from', 'date', array('required'=>false))
             ->add('created_to', 'date', array('required'=>false))
         ;
@@ -25,7 +27,7 @@ class RuleSearchType extends AbstractType
 
     public function getName()
     {
-        return 'urbant_cconvertbundle_rule_search_type';
+        return 'urbant_cconvertbundle_content_search_type';
     }
     
     

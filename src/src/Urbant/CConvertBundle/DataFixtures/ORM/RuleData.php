@@ -2,26 +2,34 @@
 
 namespace Urbant\CConvertBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Urbant\CConvertBundle\Entity\Rule;
 
-class RuleData implements FixtureInterface{
+class RuleData extends AbstractFixture implements OrderedFixtureInterface{
     
     public function load($manager) {
         
-        $rule = new Rule();
-        $rule->setName('gihyo.jp');
-        $rule->setFilePath('sample1.xml');
-        $manager->persist($rule);
+        $rule1 = new Rule();
+        $rule1->setName('gihyo.jp');
+        $rule1->setFilePath('sample1.xml');
+        $rule1->setSite($manager->merge($this->getReference('site_gihyo_jp')));
+        $manager->persist($rule1);
         
-        for($i=0;$i<30;$i++) {
-            $rule = new Rule();
-            $rule->setName('test site - ' . $i);
-            $rule->setFilePath('sample_' . $i . '.xml');
-            $manager->persist($rule);
-        }
+        $rule2 = new Rule();
+        $rule2->setName('nikkei.co.jp');
+        $rule2->setFilePath('sample1.xml');
+        $manager->persist($rule2);
+        
         
         $manager->flush();
+        
+        $this->addReference('rule_gihyo_jp', $rule1);
+        $this->addReference('rule_nikkei', $rule2);
     }
     
+    
+    public function getOrder() {
+        return 40;
+    }
 }

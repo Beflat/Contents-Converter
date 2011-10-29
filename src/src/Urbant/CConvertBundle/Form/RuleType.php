@@ -11,6 +11,13 @@ class RuleType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('site', 'entity', array(
+                    'class' => 'UrbantCConvertBundle:Site',
+                    'query_builder' => function($repo) {
+                            return $repo->createQueryBuilder('s')->orderBy('s.created', 'DESC');
+                        },
+                    'required' => false
+                ))
             ->add('file_path')
         ;
     }

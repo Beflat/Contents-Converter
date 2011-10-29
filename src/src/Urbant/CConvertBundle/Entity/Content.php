@@ -5,30 +5,22 @@ namespace Urbant\CConvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Urbant\CConvertBundle\Entity\ConvertRequest
+ * Urbant\CConvertBundle\Entity\Content
  *
- * @ORM\Table(name="request")
- * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\ConvertRequestRepository")
+ * @ORM\Table(name="content")
+ * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\ContentRepository")
  * @ORM\HasLifecycleCallbacks
  */
-class ConvertRequest
+class Content
 {
     /**
      * @var integer $id
-     *
+      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string $site
-     *
-     * @ORM\ManyToOne(targetEntity="Rule")
-     * @ORM\JoinColumn(name="rule_id", referencedColumnName="id")
-     */
-    private $rule;
 
     /**
      * @var string $url
@@ -37,31 +29,70 @@ class ConvertRequest
      */
     private $url;
 
+    
     /**
+     * 
+     * @ORM\ManyToOne(targetEntity="Rule")
+     * @ORM\JoinColumn(name="rule_id", referencedColumnName="id")
+     */
+    private $rule;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ConvertRequest")
+     * @ORM\JoinColumn(name="request_id", referencedColumnName="id")
+     */
+    private $request;
+    
+    /**
+     * @var integer $status
+     *
      * @ORM\Column(name="status", type="integer")
      */
     private $status;
-    
+
     /**
-     * @var date $created
+     * @var datetime $created
      *
      * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
     /**
-     * @var date $updated
+     * @var datetime $updated
      *
      * @ORM\Column(name="updated", type="datetime")
      */
     private $updated;
 
-    
+
     protected $statusList = array(
-        0 => '未処理',
-        10 => '処理中',
-        20 => '処理完了',
+          0 => '未読',
+        10 => 'DL済',
+        20 => '既読',
     );
+    
+    
+    public function __toString() {
+        return $this->name;
+    }
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist() {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+    
+    
+    /**
+    * @ORM\PreUpdate
+    */
+    public function onPreUpdate() {
+      $this->setUpdated(new \DateTime());
+    }
+    
 
 
     /**
@@ -95,70 +126,6 @@ class ConvertRequest
     }
 
     /**
-     * Set created
-     *
-     * @param date $created
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
-
-    /**
-     * Get created
-     *
-     * @return date 
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param date $updated
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return date 
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist() {
-        $this->setCreated(new \Datetime());
-        $this->setUpdated(new \Datetime());
-    }
-    
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate() {
-        $this->setUpdated(new \Datetime());
-    }
-    
-    public function getStatusList() {
-        return $this->statusList;
-    }
-    
-    public function getStatusName($default='') {
-        return isset($this->statusList[$this->status]) ? $this->statusList[$this->status] : $default;
-    }
-
-    /**
      * Set status
      *
      * @param integer $status
@@ -176,6 +143,76 @@ class ConvertRequest
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set created
+     *
+     * @param datetime $created
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    /**
+     * Get created
+     *
+     * @return datetime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param datetime $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return datetime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set request
+     *
+     * @param Urbant\CConvertBundle\Entity\ConvertRequest $request
+     */
+    public function setRequest(\Urbant\CConvertBundle\Entity\ConvertRequest $request)
+    {
+        $this->request = $request;
+    }
+
+    /**
+     * Get request
+     *
+     * @return Urbant\CConvertBundle\Entity\ConvertRequest 
+     */
+    public function getRequest()
+    {
+        return $this->request;
+    }
+    
+    
+    public function getStatusList() {
+        return $this->statusList;
+    }
+    
+    
+    public function getStatusName($value, $default='') {
+        return isset($this->statusList[$value]) ? $this->statusList[$value] : $default;
     }
 
     /**

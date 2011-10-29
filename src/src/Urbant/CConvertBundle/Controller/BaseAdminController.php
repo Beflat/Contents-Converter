@@ -75,6 +75,13 @@ abstract class BaseAdminController extends Controller
                     'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_request_add')),
                     ),
               ),
+            'content' => array(
+                'name' => 'CONTENT',
+                'url' => $this->generateUrl('UrbantCConvertBundle_content_list'),
+                'sub' => array(
+                    'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_content_list')),
+                    ),
+              ),
         );
     }
     

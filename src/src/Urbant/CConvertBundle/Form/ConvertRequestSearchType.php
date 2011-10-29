@@ -13,11 +13,11 @@ class ConvertRequestSearchType extends AbstractType
         $convertRequest = new ConvertRequest();
         $builder
             ->add('url', 'text', array('required'=>false))
-            ->add('site', 'entity', array(
+            ->add('rule', 'entity', array(
             	'required'=>false,
-            	'class' => 'UrbantCConvertBundle:Site',
+            	'class' => 'UrbantCConvertBundle:Rule',
             	'query_builder' => function ($repo) {
-            	    return $repo->createQueryBuilder('s')->orderBy('s.created', 'DESC');
+            	    return $repo->createQueryBuilder('r')->orderBy('r.created', 'DESC');
                 }
             ))
             ->add('status', 'choice', array('choices'=>$convertRequest->getStatusList(), 'required'=>false))

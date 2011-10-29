@@ -42,6 +42,7 @@ class Site
      */
     private $cookie;
     
+    
     /**
      * @var datetime $created
      *
@@ -189,4 +190,5 @@ class Site
     {
         return $this->cookie;
     }
+
 }

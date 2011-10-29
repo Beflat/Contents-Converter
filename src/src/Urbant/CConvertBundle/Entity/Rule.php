@@ -49,6 +49,13 @@ class Rule
      * @ORM\Column(name="updated", type="date")
      */
     private $updated;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Site")
+     * @ORM\JoinColumn(name="site_id", referencedColumnName="id")
+     */
+    private $site;
 
 
     /**
@@ -155,5 +162,30 @@ class Rule
      */
     public function onPreUpdate() {
         $this->setUpdated(new \Datetime());
+    }
+    
+    
+    public function __toString() {
+        return $this->name;
+    }
+
+    /**
+     * Set site
+     *
+     * @param Urbant\CConvertBundle\Entity\Site $site
+     */
+    public function setSite(\Urbant\CConvertBundle\Entity\Site $site)
+    {
+        $this->site = $site;
+    }
+
+    /**
+     * Get site
+     *
+     * @return Urbant\CConvertBundle\Entity\Site 
+     */
+    public function getSite()
+    {
+        return $this->site;
     }
 }

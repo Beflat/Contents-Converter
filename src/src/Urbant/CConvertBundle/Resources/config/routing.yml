@@ -93,8 +93,7 @@ UrbantCConvertBundle_request_edit:
     requirements:
         id: \d+
 
-UrbantCConvertBundle_request_update:
-    pattern:  /request/update/{id}
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:update }
-    requirements:
-        id: \d+
+UrbantCConvertBundle_content_list:
+    pattern:  /content
+    defaults: { _controller: UrbantCConvertBundle:Content:list }
+
