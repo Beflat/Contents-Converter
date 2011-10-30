@@ -5,13 +5,16 @@ ini_set('log_errors', 1);
 ini_set('error_log', './error.log');
 
 //gihyo.jp
-$url = 'http://gihyo.jp/admin/serial/01/mixi_sd/0001';
+//$url = 'http://gihyo.jp/admin/serial/01/mixi_sd/0001';
+$url = 'http://symfony.com/doc/current/cookbook/bundles/best_practices.html';
 $responseBody = getContentFromUrl($url);
 $responseBody = mb_convert_encoding($responseBody, 'HTML-ENTITIES', 'ASCII, JIS, UTF-8, EUC-JP, SJIS');
 $domDoc = new DOMDocument('1.0', 'UTF-8');
 @$domDoc->loadHTML($responseBody);
 
-$urls = findPagingUrls($domDoc);
+//gihyo.jp
+//$urls = findPagingUrls($domDoc);
+$urls = array($url);
 
 $result = '';
 foreach($urls as $url)
@@ -69,10 +72,13 @@ function getContentFromDom($domDoc)
 {
   $domXPath = new DOMXPath($domDoc);
 
-  $entries = $domXPath->query("//div[contains(concat(' ',normalize-space(@class),' '), 'readingContent01')]/*");
+  //gihyo
+  //$entries = $domXPath->query("//div[contains(concat(' ',normalize-space(@class),' '), 'readingContent01')]/*");
   //$entries = $domXPath->query("//div[@class='readingContent01 autopagerize_page_element']/*");
 
-
+  //symfony2-cookbook
+  $entries = $domXPath->query("//div[contains(concat(' ',normalize-space(@class),' '), 'column_02')]/*");
+  
   $content = '';
   $document = new DomDocument('1.0','UTF-8');
   $baseElement = $document->createElement('html');
@@ -180,6 +186,11 @@ function scanResource(DOMElement $element) {
     $baseDir = 'OEBPS/imgs';
     $destImgPath = sprintf('%s/%s.%s', $baseDir, $resNo, $ext);
 
+    if(substr($imgSource, 0, 4) != 'http') {
+        $urlPrefix = 'http://symfony.com';
+        $imgSource = $urlPrefix . $imgSource;
+    }
+    
     downloadResource($imgSource, $destImgPath);
     $element->setAttribute('src', $destImgPath);
 
@@ -196,7 +207,7 @@ function downloadResource($sourceURL, $savePath) {
 
   $response = curl_exec($ch);
   if(!$response) {
-    throw new Exception(curl_error($ch));
+    throw new Exception("URL:" . $sourceURL . "\n" . curl_error($ch));
   }
 
   if(!is_dir(dirname($savePath))) {

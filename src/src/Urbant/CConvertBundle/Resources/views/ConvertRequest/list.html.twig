@@ -3,12 +3,12 @@
 {% block body %}
     <!--  start page-heading -->
     <div id="page-heading">
-        <h1>Sites</h1>
+        <h1>Requets</h1>
     </div>
     <!-- end page-heading -->
 
 <div class="search-form">
-    <form action="{{ path('UrbantCConvertBundle_site_list') }}" method="GET" >
+    <form action="{{ path('UrbantCConvertBundle_request_list') }}" method="GET" >
     {{ form_widget(search_form) }}
     
     <input type="submit" value="SEARCH" />
@@ -21,12 +21,12 @@
 </div>
 
 
-{% if app.session.hasFlash('message') %}
+{% if app.session.hasFlash('convert_request_message') %}
                 <!--  start message-green -->
                 <div id="message-green">
                 <table border="0" width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                    <td class="green-left">{{ app.session.flash('message') }}</td>
+                    <td class="green-left">{{ app.session.flash('convert_request_message') }}</td>
                     <td class="green-right"><a class="close-green"><img src="{{ asset('bundles/urbantcconvert/images/table/icon_close_green.gif') }}"   alt="" /></a></td>
                 </tr>
                 </table>
@@ -48,7 +48,7 @@
         <!--  start content-table-inner ...................................................................... START -->
         <div id="content-table-inner">
         
-        <form id="mainform" action="{{ path('UrbantCConvertBundle_site_batch') }}" method="POST" >
+        <form id="mainform" action="{{ path('UrbantCConvertBundle_request_batch') }}" method="POST" >
             <!--  start table-content  -->
             <div id="table-content">
             
@@ -56,17 +56,19 @@
                 <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
                 <tr>
                     <th class="table-header-check"><a id="toggle-all" ></a> </th>
-                    <th class="table-header-repeat line-left minwidth-1"><a href="">Name</a>   </th>
-                    <th class="table-header-repeat line-left minwidth-1"><a href="">Description</a></th>
+                    <th class="table-header-repeat line-left minwidth-1"><a href="">Rule</a>   </th>
+                    <th class="table-header-repeat line-left minwidth-1"><a href="">URL</a></th>
+                    <th class="table-header-repeat line-left minwidth-1"><a href="">Status</a></th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Created</a></th>
                     <th class="table-header-options line-left"><a href="">Options</a></th>
                 </tr>
-{% for site in sites %}
+{% for request in requests %}
                 <tr>
-                    <td><input type="checkbox" name="ids[]" value="{{ site.id }}" /></td>
-                    <td><a href="{{ path('UrbantCConvertBundle_site_edit', {'id': site.id}) }}">{{ site.name }}</a></td>
-                    <td>{{ site.description }}</td>
-                    <td>{{ site.created|date('Y-m-d H:i:s') }}</td>
+                    <td><input type="checkbox" name="ids[]" value="{{ request.id }}" /></td>
+                    <td><a href="{{ path('UrbantCConvertBundle_rule_edit', {'id': request.rule.id}) }}">{{ request.rule ? request.rule.name : '' }}</a></td>
+                    <td><a href="{{ path('UrbantCConvertBundle_request_edit', {'id': request.id}) }}">{{ request.url }}</a></td>
+                    <td>{{ request.getStatusName() }}</td>
+                    <td>{{ request.created|date('Y-m-d H:i:s') }}</td>
                     <td class="options-width">
                     <a href="" title="Edit" class="icon-1 info-tooltip"></a>
                     <a href="" title="Edit" class="icon-2 info-tooltip"></a>
@@ -74,7 +76,7 @@
                 </tr>
 {% else %}
             <tr>
-            <td colspan="4">No item found.</td>
+            <td colspan="6">No item found.</td>
             </tr>
 
 {% endfor %}
@@ -90,7 +92,7 @@
                     <option value="d">DELETE</option>
                 </select>
                 
-                <input type="submit" name="submit" value="実行" />
+                <input type="submit" name="submit" value="保存" />
                 
             </div>
             <!-- end actions-box........... -->

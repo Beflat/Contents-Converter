@@ -7,14 +7,12 @@
    <dc:contributor opf:role="prt">contributor</dc:contributor>
    <dc:language>ja</dc:language>
    <dc:publisher>出版社</dc:publisher>
-   <dc:identifier id="BookId">urn:uuid:contents-converter.urban-theory.net_1000</dc:identifier>
+   <dc:identifier id="BookId">urn:uuid:contents-converter.urban-theory.net_1001</dc:identifier>
  </metadata>
  <manifest>
   <item id="ncx" href="toc.ncx" media-type="text/xml" />
   <item id="style" href="style.css" media-type="text/css" />
   <item id="page" href="page.xhtml" media-type="application/xhtml+xml" />
-  <item id="img01" href="images/fig42378_01.png" media-type="image/png"/>
-  <item id="img02" href="images/fig42378_02.png" media-type="image/png"/>
  </manifest>
  <spine toc="ncx">
   <itemref idref="page" />

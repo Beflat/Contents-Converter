@@ -1,3 +1,99 @@
 UrbantCConvertBundle_homepage:
     pattern:  /
-    defaults: { _controller: UrbantCConvertBundle:Site:index }
+    defaults: { _controller: UrbantCConvertBundle:Site:index, page: 1 }
+
+UrbantCConvertBundle_site_list:
+    pattern:  /site
+    defaults: { _controller: UrbantCConvertBundle:Site:index, page: 1 }
+
+UrbantCConvertBundle_site_add:
+    pattern:  /site/add
+    defaults: { _controller: UrbantCConvertBundle:Site:add }
+
+UrbantCConvertBundle_site_create:
+    pattern:  /site/create
+    defaults: { _controller: UrbantCConvertBundle:Site:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_site_batch:
+    pattern:  /site/batch
+    defaults: { _controller: UrbantCConvertBundle:Site:batch, page: 1 }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_site_edit:
+    pattern:  /site/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:Site:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_site_update:
+    pattern:  /site/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:Site:update }
+    requirements:
+        _method: POST
+        id: \d+
+
+UrbantCConvertBundle_rule_list:
+    pattern:  /rule
+    defaults: { _controller: UrbantCConvertBundle:Rule:list }
+
+UrbantCConvertBundle_rule_add:
+    pattern:  /rule/add
+    defaults: { _controller: UrbantCConvertBundle:Rule:add }
+
+UrbantCConvertBundle_rule_create:
+    pattern:  /rule/create
+    defaults: { _controller: UrbantCConvertBundle:Rule:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_rule_batch:
+    pattern:  /rule/batch
+    defaults: { _controller: UrbantCConvertBundle:Rule:batch, page: 1 }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_rule_edit:
+    pattern:  /rule/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:Rule:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_rule_update:
+    pattern:  /rule/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:Rule:update }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_request_list:
+    pattern:  /request
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:list }
+
+UrbantCConvertBundle_request_add:
+    pattern:  /request/add
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:add }
+
+UrbantCConvertBundle_request_create:
+    pattern:  /request/create
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_request_batch:
+    pattern:  /request/batch
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:batch, page: 1 }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_request_edit:
+    pattern:  /request/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_content_list:
+    pattern:  /content
+    defaults: { _controller: UrbantCConvertBundle:Content:list }
+

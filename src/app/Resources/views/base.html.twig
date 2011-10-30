@@ -256,8 +256,28 @@ $(document).pngFix( );
         <div class="nav">
         <div class="table">
         
-        <ul class="select"><li><a href="#nogo"><b>Dashboard</b><!--[if IE 7]><!--></a><!--<![endif]-->
-        <!--[if lte IE 6]><table><tr><td><![endif]-->
+
+{% for menuCatId, menuCat in _menues %}
+        {% set isCurrentCat = (menuCatId == _catId) ? 1 : 0 %}
+        {% set menuClass = isCurrentCat ? 'current' : 'select' %}
+        {% set subMenuDivClass = isCurrentCat ? 'show' : '' %}
+        <ul class="{{ menuClass }}"><li><a href="{{ menuCat.url }}"><b>{{ menuCat.name }}</b></a>
+        <div class="select_sub {{ subMenuDivClass }}">
+            <ul class="sub">
+        {% for menuPageId, menuPage in menuCat.sub %}
+            {% set pageClass = (menuPageId == _pageId) ? 'sub_show' : '' %}
+                <li class="{{ pageClass }}"><a href="{{ menuPage.url }}">{{ menuPage.name }}</a></li>
+        {% endfor %}
+            </ul>
+        </div>
+        </li>
+        </ul>
+        <div class="nav-divider">&nbsp;</div>
+
+{% endfor %}
+
+<!--
+        <ul class="select"><li><a href="#nogo"><b>Dashboard</b></a>
         <div class="select_sub">
             <ul class="sub">
                 <li><a href="#nogo">Dashboard Details 1</a></li>
@@ -265,51 +285,23 @@ $(document).pngFix( );
                 <li><a href="#nogo">Dashboard Details 3</a></li>
             </ul>
         </div>
-        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
         </li>
         </ul>
         
         <div class="nav-divider">&nbsp;</div>
                             
-        <ul class="current"><li><a href="#nogo"><b>Sites</b><!--[if IE 7]><!--></a><!--<![endif]-->
-        <!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul class="current"><li><a href="#nogo"><b>Sites</b></a>
         <div class="select_sub show">
             <ul class="sub">
                 <li class="sub_show"><a href="#nogo">List</a></li>
-                <li><a href="#nogo">Add Site</a></li>
+                <li><a href="{{ path('UrbantCConvertBundle_site_add') }}">Add Site</a></li>
             </ul>
         </div>
-        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
         </li>
         </ul>
         
         <div class="nav-divider">&nbsp;</div>
-                            
-        <ul class="select"><li><a href="#nogo"><b>Contents</b><!--[if IE 7]><!--></a><!--<![endif]-->
-        <!--[if lte IE 6]><table><tr><td><![endif]-->
-        <div class="select_sub show">
-            <ul class="sub">
-                <li class="sub_show"><a href="#nogo">List</a></li>
-            </ul>
-        </div>
-        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
-        </li>
-        </ul>
-        
-        <div class="nav-divider">&nbsp;</div>
-                            
-        <ul class="select"><li><a href="#nogo"><b>Users</b><!--[if IE 7]><!--></a><!--<![endif]-->
-        <!--[if lte IE 6]><table><tr><td><![endif]-->
-        <div class="select_sub show">
-            <ul class="sub">
-                <li class="sub_show"><a href="#nogo">List</a></li>
-                <li class="sub_show"><a href="#nogo">Add User</a></li>
-            </ul>
-        </div>
-        <!--[if lte IE 6]></td></tr></table></a><![endif]-->
-        </li>
-        </ul>
-        
+-->        
         <div class="clear"></div>
         </div>
         <div class="clear"></div>

@@ -3,42 +3,42 @@
 namespace Urbant\CConvertBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Urbant\CConvertBundle\Form\SiteSearchType;
-use Urbant\CConvertBundle\Entity\Site;
+use Urbant\CConvertBundle\Form\ContentSearchType;
+use Urbant\CConvertBundle\Entity\Content;
 use Urbant\CConvertBundle\Form\SiteType;
 
-class SiteController extends BaseAdminController
+class ContentController extends BaseAdminController
 {
 
     
-    protected $pageCatId = 'site';
+    protected $pageCatId = 'content';
     
     /**
-     * サイトの一覧表示
+     * コンテンツの一覧表示
      * @param unknown_type $page
      */
-    public function indexAction($page)
+    public function listAction()
     {
         $this->pageId = 'list';
         
         $em = $this->getDoctrine()->getEntityManager();
-        $siteRepo = $em->getRepository('UrbantCConvertBundle:Site');
+        $siteRepo = $em->getRepository('UrbantCConvertBundle:Content');
 
         //         $paginator = new \Zend_Paginator(new \Zend_Paginator_Adapter_Null(30));
         //         $paginator->setCurrentPageNumber($page);
         //         $paginator->setItemCountPerPage(10);
 
 
-        $form = $this->createForm(new SiteSearchType());
+        $form = $this->createForm(new ContentSearchType());
         $request = $this->getRequest();
         $form->bindRequest($request);
         
         $searchConditions = $form->getData();
         
-        $sites = $siteRepo->getSites($searchConditions);
+        $contents = $siteRepo->getContents($searchConditions);
 
-        return $this->render('UrbantCConvertBundle:Site:index.html.twig',
-            array('sites' => $sites, 'search_form' => $form->createView(),
+        return $this->render('UrbantCConvertBundle:Content:list.html.twig',
+            array('contents' => $contents, 'search_form' => $form->createView(),
         ));
     }
 

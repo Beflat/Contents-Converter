@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="site")
  * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\SiteRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Site
 {
@@ -36,6 +37,13 @@ class Site
     private $description;
 
     /**
+     * @ORM\Column(name="cookie", type="text")
+     * @var string $cookie
+     */
+    private $cookie;
+    
+    
+    /**
      * @var datetime $created
      *
      * @ORM\Column(name="created", type="datetime")
@@ -50,6 +58,11 @@ class Site
     private $updated;
 
 
+    
+    public function __toString() {
+        return $this->name;
+    }
+    
     /**
      * Get id
      *
@@ -139,4 +152,43 @@ class Site
     {
         return $this->updated;
     }
+    
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function onPrePersist() {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+    
+    
+    /**
+    * @ORM\PreUpdate
+    */
+    public function onPreUpdate() {
+      $this->setUpdated(new \DateTime());
+    }
+    
+
+    /**
+     * Set cookie
+     *
+     * @param text $cookie
+     */
+    public function setCookie($cookie)
+    {
+        $this->cookie = $cookie;
+    }
+
+    /**
+     * Get cookie
+     *
+     * @return text 
+     */
+    public function getCookie()
+    {
+        return $this->cookie;
+    }
+
 }
