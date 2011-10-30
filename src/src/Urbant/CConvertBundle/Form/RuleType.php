@@ -18,6 +18,8 @@ class RuleType extends AbstractType
                         },
                     'required' => false
                 ))
+            ->add('xpath')
+            ->add('paginate_xpath')
             ->add('file_path')
         ;
     }

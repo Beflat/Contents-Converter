@@ -26,6 +26,10 @@ class ConvertRequestRepository extends EntityRepository
            $qb->andWhere("r.created <= :created_to");
            $qb->setParameter('created_to', $searchConditions['created_to']);
        }
+       if(isset($searchConditions['status']) && $searchConditions['status'] !== '') {
+           $qb->andWhere("r.status = :status");
+           $qb->setParameter('status', $searchConditions['status']);
+       }
        
         return $qb->getQuery()->getResult();
     }

@@ -23,14 +23,6 @@ class Content
     private $id;
 
     /**
-     * @var string $url
-     *
-     * @ORM\Column(name="url", type="string", length=1024)
-     */
-    private $url;
-
-    
-    /**
      * 
      * @ORM\ManyToOne(targetEntity="Rule")
      * @ORM\JoinColumn(name="rule_id", referencedColumnName="id")
@@ -67,9 +59,11 @@ class Content
 
 
     protected $statusList = array(
-          0 => '未読',
-        10 => 'DL済',
-        20 => '既読',
+         0 => '作成中',
+        10 => '作成失敗',
+        20 => '未読',
+        30 => 'DL済',
+        40 => '既読',
     );
     
     
@@ -103,26 +97,6 @@ class Content
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**
@@ -233,5 +207,10 @@ class Content
     public function getRule()
     {
         return $this->rule;
+    }
+    
+    
+    public function getDataDirPath() {
+        return sprintf('/%010d', $this->id);
     }
 }

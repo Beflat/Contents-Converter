@@ -18,14 +18,6 @@ class ContentRepository extends EntityRepository
            ->select('s')
            ->addOrderBy('s.created', 'DESC');
         
-       if(isset($searchConditions['name']) && $searchConditions['name'] != '') {
-           $qb->andWhere("s.name LIKE :name_cond");
-           $qb->setParameter('name_cond', '%' . $searchConditions['name'] . '%');
-       }
-       if(isset($searchConditions['description']) && $searchConditions['description'] != '') {
-           $qb->andWhere("s.description LIKE :desc_cond");
-           $qb->setParameter('desc_cond', '%' . $searchConditions['description'] . '%');
-       }
        if(isset($searchConditions['created_from']) && $searchConditions['created_from'] != '') {
            $qb->andWhere("s.created >= :created_from");
            $qb->setParameter('created_from', $searchConditions['created_from']);

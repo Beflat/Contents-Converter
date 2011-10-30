@@ -18,7 +18,6 @@ class ContentSearchType extends AbstractType
                         return $repo->createQueryBuilder('s')->orderBy('s.created', 'DESC');
                     },
             		'required'=>false))
-            ->add('url', 'text', array('required'=>false))
             ->add('status', 'choice', array('choices' => $content->getStatusList(), 'required'=>false))
             ->add('created_from', 'date', array('required'=>false))
             ->add('created_to', 'date', array('required'=>false))

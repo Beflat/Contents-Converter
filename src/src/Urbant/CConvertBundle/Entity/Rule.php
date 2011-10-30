@@ -56,6 +56,21 @@ class Rule
      * @ORM\JoinColumn(name="site_id", referencedColumnName="id")
      */
     private $site;
+    
+    
+    /**
+     * @ORM\Column(name="xpath", type="string", length="255")
+     * 
+     * TODO: 本来はフィールドとしては持たず設定情報の一分として持たせる
+     */
+    private $xpath;
+
+
+    /**
+     * @ORM\Column(name="paginate_xpath", type="string", length="255")
+     * TODO: 本来はフィールドとしては持たず設定情報の一分として持たせる
+     */
+    private $paginate_xpath;
 
 
     /**
@@ -187,5 +202,45 @@ class Rule
     public function getSite()
     {
         return $this->site;
+    }
+
+    /**
+     * Set xpath
+     *
+     * @param string $xpath
+     */
+    public function setXpath($xpath)
+    {
+        $this->xpath = $xpath;
+    }
+
+    /**
+     * Get xpath
+     *
+     * @return string 
+     */
+    public function getXpath()
+    {
+        return $this->xpath;
+    }
+
+    /**
+     * Set paginate_xpath
+     *
+     * @param string $paginateXpath
+     */
+    public function setPaginateXpath($paginateXpath)
+    {
+        $this->paginate_xpath = $paginateXpath;
+    }
+
+    /**
+     * Get paginate_xpath
+     *
+     * @return string 
+     */
+    public function getPaginateXpath()
+    {
+        return $this->paginate_xpath;
     }
 }
