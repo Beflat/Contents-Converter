@@ -45,13 +45,51 @@ class EpubConvertEngine {
     
     public function execute() {
         
-        //TODO:作業ディレクトリを走査する
+        //作業ディレクトリを走査する
+        $resourceDirPath = $this->workDirPath . '/res';
         //(作業ディレクトリ/res等をリソース用のディレクトリに決めて、その中を走査するべき？)
+        if(!is_dir($resourceDirPath)) {
+            //TODO: 例外はどのように扱うべきか、他のライブラリ等を見て参考にする。
+            throw new Exception('作業ディレクトリが存在しません。Path=' . $resourceDirPath);
+        }
         
-            //TODO:コンテンツタイプを取得する
-            //Itemを生成、コレクションに追加
-
         //各種ファイルを作業ディレクトリ上に出力
+        
+        //META-INF/container.xml
+        $metaDir = $this->workDirPath . '/META-INF';
+        if(!is_dir($metaDir)) {
+            if(!mkdir($metaDir, 0777, true)) {
+                throw new Exception('ディレクトリの作成に失敗。Path=' . $metaDir);
+            }
+        }
+        $containerXmlString = $this->getContainerXmlString();
+        $containerXmlPath = $metaDir . '/container.xml';
+        if(!file_put_contents($containerXmlPath, $containerXmlString)) {
+            throw new Exception('container.xmlの作成に失敗。Path=' . $containerXmlPath);
+        }
+        
+        //package.opf
+        $packageOpfString = $this->getPackageOpfString($items);
+        $packageOpfPath = $this->workDirPath . '/package.opf';
+        if(!file_put_contents($packageOpfPath, $packageOpfString)) {
+            throw new Exception('package.opfの作成に失敗。Path=' . $packageOpfPath);
+        }
+        
+        //toc.ncx
+        $tocString = $this->getTocString();
+        $tocPath = $this->workDirPath . '/toc.ncx';
+        if(!file_put_contents($tocPath, $tocString)) {
+            throw new Exception('toc.ncxの作成に失敗。Path=' . $tocPath);
+        }
+        
+        //mimetype
+        $mimeTypeString = $this->getMimeTypeString();
+        $mimeTypePath = $this->workDirPath . '/mimetype';
+        if(!file_put_contents($mimeTypePath, $mimeTypeString)) {
+            throw new Exception('mimetypeの作成に失敗。Path=' . $mimeTypePath);
+        }
+        
+        
         //zip up. 
         //リネームして出力ディレクトリにコピー
     }
@@ -87,7 +125,7 @@ class EpubConvertEngine {
         return '<?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="urn:oasis:names:tc:opendocument:xmlns:container" version="1.0">
   <rootfiles>
-    <rootfile full-path="OEBPS/package.opf" media-type="application/oebps-package+xml" />
+    <rootfile full-path="package.opf" media-type="application/oebps-package+xml" />
   </rootfiles>
 </container>';
     }
@@ -99,6 +137,7 @@ class EpubConvertEngine {
         $title = '';
         $author = 'Epub Generate Engine';
         
+        //TODO: $this->itemsを参照しない方法を考える
         $contentXhtmlName = '';
         $mainContent = $this->items->getItem($this->mainContentId);
         if(!is_null($mainContent)) {
@@ -162,4 +201,10 @@ class EpubConvertEngine {
     }
     
     
+    /**
+     * mimetypeファイルの文字列を返す
+     */
+    public function getMimeTypeString() {
+        return 'application/epub+zip';
+    }
 }

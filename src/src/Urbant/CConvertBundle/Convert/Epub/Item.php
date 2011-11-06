@@ -60,4 +60,10 @@ class Item {
         
         return '<item id="' . htmlentities($id, ENT_QUOTES) . '" href="' . htmlentities($href, ENT_QUOTES) . '" media-type="' . htmlentities($mediaType, ENT_QUOTES) . '" />';
     }
+    
+    
+    public function slugify($text) {
+        $text = str_replace(' ', '_', $text);
+        return $text;
+    }
 }
