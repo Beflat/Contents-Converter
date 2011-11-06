@@ -40,45 +40,77 @@ class ScrapingEngine {
         
         foreach($this->orders as &$order) {
             
-            //指定されたファイルを開いてHTMLをロードし、
-            //Orderで指定されたXPath設定で絞り込みをかけ、
-            //その結果をOrderに返す。
-            //TODO: 最終的には、XPathで絞り込む以外の操作も
-            //Orderで指定すれば出きるようにする。どのようにコンテンツを
-            //加工するかについてもOrderが設定を持つようにする。
-            
-            //TODO: URL以外のパス情報も扱えるように
-            //TODO:異常系の実装。解析できなかったなど
-            $file = $order->getTargetFile();
-            $xPathString = $order->getXPathString();
-            $htmlText = $this->loadContentText($file);
-            
-            //XPathで絞り込みを行う
-            $domDoc = new \DOMDocument();
-            @$domDoc->loadHtml($htmlText);
-            
-            $scrapedNodes = $this->extractContent($domDoc, $xPathString);
-            
-            $order->onEvent(self::ON_SCRAPING_DONE, array('node_list'=>$scrapedNodes));
-            
-            $content = '';
-            $document = new \DOMDocument('1.0','UTF-8');
-            $baseElement = $document->createElement('html');
-            $document->importNode($baseElement, true);
-            foreach($scrapedNodes as $entry) {
-                $document->appendChild($document->importNode($entry, true));
+            try {
+                //指定されたファイルを開いてHTMLをロードし、
+                //Orderで指定されたXPath設定で絞り込みをかけ、
+                //その結果をOrderに返す。
+                //TODO: 最終的には、XPathで絞り込む以外の操作も
+                //Orderで指定すれば出きるようにする。どのようにコンテンツを
+                //加工するかについてもOrderが設定を持つようにする。
+                
+                //TODO: URL以外のパス情報も扱えるように
+                //TODO:異常系の実装。解析できなかったなど
+                $file = $order->getTargetFile();
+                $xPathString = $order->getXPathString();
+                $htmlText = $this->loadContentText($file);
+                
+                //XPathで絞り込みを行う
+                $domDoc = new \DOMDocument('1.0', 'UTF-8');
+                @$domDoc->loadHtml($htmlText);
+                
+                $scrapedNodes = $this->extractContent($domDoc, $xPathString);
+                
+                $order->onEvent(self::ON_SCRAPING_DONE, array('node_list'=>$scrapedNodes));
+                
+                $content = '';
+                $document = new \DOMDocument('1.0','UTF-8');
+                $baseElement = $document->createElement('html');
+                $document->importNode($baseElement, true);
+                foreach($scrapedNodes as $entry) {
+                    $document->appendChild($document->importNode($entry, true));
+                }
+                
+                $scrapedHtmlText = $document->saveHtml();
+                $order->setResult($scrapedHtmlText);
+                $order->setStatus(Order::STATE_SUCCEED);
+            } catch(Exception $e) {
+                $order->setError($e->getMessage());
+                $order->setStatus(Order::STATE_ERROR);
             }
-            
-            $scrapedHtmlText = $document->saveHtml();
-            $order->setResult($scrapedHtmlText);
-            $order->setStatus(Order::STATE_SUCCEED);
         }
-        
-        
         //TODO:全オーダーが正常に完了した事を確認する。
         //TODO:ファイルへの保存を行うか、Engineの利用側でOrderの一覧にする手段を提供する
     }
     
+    
+    public function getJoinedResult($delimiter = "\n") {
+        
+        $result = '';
+        foreach($this->orders as $order) {
+            $result .= $order->getResult() . $delimiter;
+        }
+        
+        return $result;
+    }
+    
+    
+    public function getOrders() {
+        return $this->orders;
+    }
+    
+    
+    public function hasError() {
+    }
+    
+    public function hasWarning() {
+    }
+    
+    
+    public function getJoinedError() {
+    }
+    
+    public function getJoinedWarning() {
+    }
     
     /**
      * 指定されたファイルをロードして文字列で返す。
@@ -96,6 +128,7 @@ class ScrapingEngine {
         //TODO: CURLではなくSymfonyの機能を使用する。
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     
         $response = curl_exec($ch);
         if(!$response) {
@@ -169,6 +202,7 @@ class ScrapingEngine {
     
         return $this->stripComment($content);
     }
+    
     
     
 }

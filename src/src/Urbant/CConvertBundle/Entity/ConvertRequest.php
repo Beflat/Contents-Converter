@@ -60,7 +60,8 @@ class ConvertRequest
     protected $statusList = array(
         0 => '未処理',
         10 => '処理中',
-        20 => '処理完了',
+        20 => '処理成功',
+        30 => '処理失敗',
     );
 
 
