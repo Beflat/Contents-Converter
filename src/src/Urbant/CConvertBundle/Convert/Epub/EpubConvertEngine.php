@@ -48,10 +48,10 @@ class EpubConvertEngine {
         //作業ディレクトリを走査する
         $resourceDirPath = $this->workDirPath . '/res';
         //(作業ディレクトリ/res等をリソース用のディレクトリに決めて、その中を走査するべき？)
-        if(!is_dir($resourceDirPath)) {
-            //TODO: 例外はどのように扱うべきか、他のライブラリ等を見て参考にする。
-            throw new Exception('作業ディレクトリが存在しません。Path=' . $resourceDirPath);
-        }
+//         if(!is_dir($resourceDirPath)) {
+//            //TODO: 例外はどのように扱うべきか、他のライブラリ等を見て参考にする。
+//             throw new \Exception('作業ディレクトリが存在しません。Path=' . $resourceDirPath);
+//         }
         
         //各種ファイルを作業ディレクトリ上に出力
         
@@ -59,34 +59,34 @@ class EpubConvertEngine {
         $metaDir = $this->workDirPath . '/META-INF';
         if(!is_dir($metaDir)) {
             if(!mkdir($metaDir, 0777, true)) {
-                throw new Exception('ディレクトリの作成に失敗。Path=' . $metaDir);
+                throw new \Exception('ディレクトリの作成に失敗。Path=' . $metaDir);
             }
         }
         $containerXmlString = $this->getContainerXmlString();
         $containerXmlPath = $metaDir . '/container.xml';
         if(!file_put_contents($containerXmlPath, $containerXmlString)) {
-            throw new Exception('container.xmlの作成に失敗。Path=' . $containerXmlPath);
+            throw new \Exception('container.xmlの作成に失敗。Path=' . $containerXmlPath);
         }
         
         //package.opf
-        $packageOpfString = $this->getPackageOpfString($items);
+        $packageOpfString = $this->getPackageOpfString();
         $packageOpfPath = $this->workDirPath . '/package.opf';
         if(!file_put_contents($packageOpfPath, $packageOpfString)) {
-            throw new Exception('package.opfの作成に失敗。Path=' . $packageOpfPath);
+            throw new \Exception('package.opfの作成に失敗。Path=' . $packageOpfPath);
         }
         
         //toc.ncx
         $tocString = $this->getTocString();
         $tocPath = $this->workDirPath . '/toc.ncx';
         if(!file_put_contents($tocPath, $tocString)) {
-            throw new Exception('toc.ncxの作成に失敗。Path=' . $tocPath);
+            throw new \Exception('toc.ncxの作成に失敗。Path=' . $tocPath);
         }
         
         //mimetype
         $mimeTypeString = $this->getMimeTypeString();
         $mimeTypePath = $this->workDirPath . '/mimetype';
         if(!file_put_contents($mimeTypePath, $mimeTypeString)) {
-            throw new Exception('mimetypeの作成に失敗。Path=' . $mimeTypePath);
+            throw new \Exception('mimetypeの作成に失敗。Path=' . $mimeTypePath);
         }
         
         
@@ -95,19 +95,23 @@ class EpubConvertEngine {
     }
     
     
-    public function setOutputPath() {
+    public function setOutputPath($path) {
+        $this->outputPath = $path;
     }
     
     
     public function getOutputPath() {
+        return $this->outputPath;
     }
     
     
     public function getWorkDirPath() {
+        return $this->workDirPath;
     }
     
     
-    public function setWorkDirPath() {
+    public function setWorkDirPath($path) {
+        $this->workDirPath = $path;
     }
     
     
@@ -173,11 +177,12 @@ class EpubConvertEngine {
     protected function getPackageOpfString() {
         $uuid = '';
         $title = '';
+        $publisher = 'Epub Generate Engine';
         $author = 'Epub Generate Engine';
         
-        $itemsString = array();
+        $itemString = array();
         foreach($this->items->getItems() as $item) {
-            $itemString .= $item->getDataAsXml() . "\n";
+            $itemString .= $item->getDataByXml() . "\n";
         }
         
         return '<?xml version="1.0" encoding="UTF-8"?>

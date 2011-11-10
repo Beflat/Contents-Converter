@@ -11,9 +11,6 @@ class ScrapingEngine {
     protected $outputDir;
     
     
-    //イベント識別子
-    const ON_SCRAPING_DONE = 'on_scraping_done';
-    
     public function __construct() {
         
         $this->orders = array();
@@ -60,7 +57,7 @@ class ScrapingEngine {
                 
                 $scrapedNodes = $this->extractContent($domDoc, $xPathString);
                 
-                $order->onEvent(self::ON_SCRAPING_DONE, array('node_list'=>$scrapedNodes));
+                $order->onEvent('on_scraping_done', $this, array('file' => $file, 'node_list'=>$scrapedNodes));
                 
                 $content = '';
                 $document = new \DOMDocument('1.0','UTF-8');

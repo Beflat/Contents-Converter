@@ -8,6 +8,11 @@ namespace Urbant\CConvertBundle\Scraping;
  */
 class Order {
     
+    /**
+     * スクレイピングの対象となるファイルのURLやパス情報
+     * 今現在はURLにのみ対応。
+     * @var string
+     */
     protected $targetFile;
     
     //TODO: XMLか何かの設定情報を保持するようにする。
@@ -31,6 +36,9 @@ class Order {
     }
     
     
+    /**
+     * スクレイピングの対象となるファイル名を取得する。
+     */
     public function getTargetFile() {
         return $this->targetFile;
     }
@@ -77,7 +85,9 @@ class Order {
         }
         
         foreach($this->filters[$eventName] as $filter) {
-            $filter->execute($eventArgs);
+            if(!$filter->execute($eventArgs)) {
+                return false;
+            }
         }
     }
     

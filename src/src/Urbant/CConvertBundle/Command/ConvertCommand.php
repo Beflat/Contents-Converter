@@ -12,8 +12,11 @@ use Urbant\CConvertBundle\Entity\ConvertRequest;
 use Urbant\CConvertBundle\Entity\Content;
 use Urbant\CConvertBundle\Scraping\Order;
 use Urbant\CConvertBundle\Scraping\ScrapingEngine;
+use Urbant\CConvertBundle\Scraping\LocalifyFilter;
 
 use Urbant\CConvertBundle\Convert\Epub\EpubConvertEngine;
+use Urbant\CConvertBundle\Convert\Epub\ContentTypeDetector;
+use Urbant\CConvertBundle\Convert\Epub\Item;
 
 
 class ConvertCommand extends ContainerAwareCommand {
@@ -66,10 +69,14 @@ class ConvertCommand extends ContainerAwareCommand {
             //保存先ディレクトリの決定
             //TODO:基準ディレクトリの取得方法を考える
             $outputDir = '/var/www/data/contents_convert/src/app/cache/dev/epub' . $content->getDataDirPath();
-            $workDir = $outputDir .= '/work';
-            if(!is_dir($workDir)) {
-                if(!@mkdir($workDir, 0777, true)) {
-                    throw new \Exception('ディレクトリ「' . $workDir . '」の作成に失敗');
+            $workDir = $outputDir . '/work';
+            $resDir = $workDir . '/res';
+            if(!is_dir($resDir)) {
+                if(!@mkdir($resDir, 0777, true)) {
+                    throw new \Exception('ディレクトリ「' . $resDir . '」の作成に失敗');
+                }
+                if(!chmod($workDir, 0777)) {
+                    throw new \Exception('ディレクトリ「' . $workDir . '」の権限変更に失敗');
                 }
                 if(!chmod($outputDir, 0777)) {
                     throw new \Exception('ディレクトリ「' . $outputDir . '」の権限変更に失敗');
@@ -78,6 +85,8 @@ class ConvertCommand extends ContainerAwareCommand {
             
             
             //TODO:リソースダウンロードフィルタの設定
+            $localifyFilter = new LocalifyFilter($resDir);
+            $order->addFilter('on_scraping_done', $localifyFilter);
             
             //スクレイピングエンジンの初期化
             $scrapingEngine = new ScrapingEngine();
@@ -124,7 +133,7 @@ class ConvertCommand extends ContainerAwareCommand {
                 throw new Exception('ファイル「' . $contentPath . '」の保存に失敗');
             }
             $item = new Item();
-            $item->setData('page', 'page.xhtml', $contentTypeDetector->detectFromExtension('xhtml'));
+            $item->setData('page', 'page.xhtml', $contentTypeDetector->detectFromExt('xhtml'));
             $epubEngine->addItem($item);
             $epubEngine->setMainContentId('page');
             

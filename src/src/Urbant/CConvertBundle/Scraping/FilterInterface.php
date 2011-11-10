@@ -8,5 +8,13 @@ namespace Urbant\CConvertBundle\Scraping;
  */
 interface FilterInterface {
     
-    public function execute($eventArgs);
+    /**
+     * フィルター処理を実行する
+     * @param string $eventName イベント名
+     * @param ScrapingEngine $engine スクレイピングエンジン
+     * @param array $eventArgs パラメータ
+     * 
+     * @return boolean 後続のフィルターも実行させたい場合はtrue
+     */
+    public function execute($eventName, $engine, $eventArgs);
 }

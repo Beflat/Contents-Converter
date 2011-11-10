@@ -19,18 +19,22 @@ class Item {
     
     
     public function setId($id) {
+        $this->id = $id;
     }
     
     
     public function getId() {
+        return $this->id;
     }
     
     
     public function setHref($href) {
+        $this->href = $href;
     }
     
     
     public function getHref() {
+        return $this->href;
     }
     
     
@@ -54,9 +58,9 @@ class Item {
      */
     public function getDataByXml() {
         
-        $id = '';
-        $style = '';
-        $mediaType = '';
+        $id = $this->id;
+        $href = $this->href;
+        $mediaType = $this->mediaType;
         
         return '<item id="' . htmlentities($id, ENT_QUOTES) . '" href="' . htmlentities($href, ENT_QUOTES) . '" media-type="' . htmlentities($mediaType, ENT_QUOTES) . '" />';
     }

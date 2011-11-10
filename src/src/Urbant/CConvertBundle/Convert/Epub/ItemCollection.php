@@ -12,7 +12,7 @@ class ItemCollection {
     
     
     public function add(Item $item) {
-        $this->items[$item->getId()]->$item;
+        $this->items[$item->getId()] = $item;
     }
     
     
@@ -21,7 +21,7 @@ class ItemCollection {
              return null;
         }
         
-        return $this->items;
+        return $this->items[$id];
     }
     
     
