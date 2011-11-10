@@ -79,13 +79,13 @@ class Order {
      * addEventListenerでフックしている場合はその処理が呼び出される。
      * イベントの一覧はScrapingEngine::On_XXを参照。
      */
-    public function onEvent($eventName, $eventArgs) {
+    public function onEvent($eventName, $engine, $eventArgs) {
         if(!isset($this->filters[$eventName])) {
             return true;
         }
         
         foreach($this->filters[$eventName] as $filter) {
-            if(!$filter->execute($eventArgs)) {
+            if(!$filter->execute($eventName, $engine, $eventArgs)) {
                 return false;
             }
         }

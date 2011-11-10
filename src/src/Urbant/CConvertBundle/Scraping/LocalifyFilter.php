@@ -11,11 +11,17 @@ class LocalifyFilter implements FilterInterface{
     
     protected $outputPath = '';
     
+    /**
+     * epubのコンテンツ内から三章するための、画像データなどへの相対パス
+     * @var string
+     */
+    protected $absolutePath = '';
     
     protected $resourceSeq = 0;
     
-    public function __construct($outputPath) {
+    public function __construct($outputPath, $absolutePath=null) {
         $this->outputPath = $outputPath;
+        $this->absolutePath = $absolutePath;
         $this->resourceSeq = 0;
     }
     
@@ -47,16 +53,16 @@ class LocalifyFilter implements FilterInterface{
      * 
      * @param unknown_type $nodeList
      */
-    protected function scanNodes($file, $nodeList) {
+    protected function scanNodes($file, $element) {
         
         //URLのホスト名を抜き出す
         $hostName = parse_url($file, PHP_URL_HOST);
         
-        foreach($nodeList as &$element) {
+//         foreach($nodeList as $element) {
             
-            if(!is_a($element, 'DOMNode')) {
-                throw new Exception('element is not a type of DomNode. ' . var_export($element, true));
-            }
+//             if(!is_a($element, 'DOMNode')) {
+//                 throw new Exception('element is not a type of DomNode. ' . var_export($element, true));
+//             }
             
             //TODO: この処理は再帰的に呼び出す必要があるので別メソッドとして独立させる
             //TODO: リソースファイル名のフォーマットは外部から設定出きるように
@@ -65,7 +71,7 @@ class LocalifyFilter implements FilterInterface{
                     if($child->nodeType != XML_ELEMENT_NODE) {
                         continue;
                     }
-                    $this->scanResource($child);
+                    $this->scanNodes($file, $child);
                 }
             }
             if($element->nodeName == 'img') {
@@ -75,19 +81,23 @@ class LocalifyFilter implements FilterInterface{
                 $pathParts = explode('.', $imgSource);
                 $ext = array_pop($pathParts);
                 $baseDir = $this->outputPath;
-                $destImgPath = sprintf('%s/%s.%s', $baseDir, $this->resourceSeq, $ext);
-        
+                $destImgPath = sprintf('%s/%04d.%s', $baseDir, $this->resourceSeq, $ext);
+                
+                //相対パスを取得する。
+                //epub内では相対パス形式で参照することになるため。
+                $absPath = (is_null($this->absolutePath)) ? $baseDir : $this->absolutePath;
+                $absDestImgPath = sprintf('%s/%04d.%s', $absPath, $this->resourceSeq, $ext);
+                
                 if(substr($imgSource, 0, 4) != 'http') {
                     $urlPrefix = 'http://' . $hostName;
                     $imgSource = $urlPrefix . $imgSource;
                 }
         
                 $this->downloadResource($imgSource, $destImgPath);
-                $element->setAttribute('src', $destImgPath);
+                $element->setAttribute('src', $absDestImgPath);  //絶対パスではなく相対パスで置き換え
         
                 $this->resourceSeq++;
             }
-        }
         
     }
     

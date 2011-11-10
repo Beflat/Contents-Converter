@@ -15,7 +15,8 @@ class ContentTypeDetector {
      * @return string epubで使用できるContent-Type
      */
     public function detectFromFileName($fileName) {
-        $extension = array_pop(explode('.', $fileName));
+        $explode = explode('.', $fileName);
+        $extension = array_pop($explode);
         return $this->detectFromExt($extension);
     }
     

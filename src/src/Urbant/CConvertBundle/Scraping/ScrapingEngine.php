@@ -11,10 +11,17 @@ class ScrapingEngine {
     protected $outputDir;
     
     
+    /**
+     * 変換結果のDomDocument
+     * @var \DomDocument
+     */
+    protected $resultDoc;
+    
     public function __construct() {
         
         $this->orders = array();
         
+        $this->resultDoc = new \DOMDocument('1.0','UTF-8');
     }
     
     
@@ -35,7 +42,9 @@ class ScrapingEngine {
      */
     public function execute() {
         
-        foreach($this->orders as &$order) {
+        $bodyTag = null;
+        
+        foreach($this->orders as $idx=>$order) {
             
             try {
                 //指定されたファイルを開いてHTMLをロードし、
@@ -55,20 +64,26 @@ class ScrapingEngine {
                 $domDoc = new \DOMDocument('1.0', 'UTF-8');
                 @$domDoc->loadHtml($htmlText);
                 
-                $scrapedNodes = $this->extractContent($domDoc, $xPathString);
-                
-                $order->onEvent('on_scraping_done', $this, array('file' => $file, 'node_list'=>$scrapedNodes));
-                
-                $content = '';
-                $document = new \DOMDocument('1.0','UTF-8');
-                $baseElement = $document->createElement('html');
-                $document->importNode($baseElement, true);
-                foreach($scrapedNodes as $entry) {
-                    $document->appendChild($document->importNode($entry, true));
+                //最初の１回だけ、結果格納用ドキュメントの初期化処理を呼び出す
+                //HTMLタグ、HEADタグなどの初期化
+                if($idx == 0) {
+                    $this->initResultDocument($domDoc);
+                    
+                    //bodyタグを取得
+                    $bodyTag = $this->resultDoc->getElementsByTagName('body')->item(0);
                 }
                 
-                $scrapedHtmlText = $document->saveHtml();
-                $order->setResult($scrapedHtmlText);
+                $scrapedNodes = $this->extractContent($domDoc, $xPathString);
+                
+                foreach($scrapedNodes as $scrapedNode) {
+                    $order->onEvent('on_scraping_done', $this, array('file' => $file, 'node_list'=>$scrapedNode));
+                }
+                
+                $content = '';
+                foreach($scrapedNodes as $entry) {
+                    $bodyTag->appendChild($this->resultDoc->importNode($entry, true));
+                }
+                
                 $order->setStatus(Order::STATE_SUCCEED);
             } catch(Exception $e) {
                 $order->setError($e->getMessage());
@@ -80,14 +95,8 @@ class ScrapingEngine {
     }
     
     
-    public function getJoinedResult($delimiter = "\n") {
-        
-        $result = '';
-        foreach($this->orders as $order) {
-            $result .= $order->getResult() . $delimiter;
-        }
-        
-        return $result;
+    public function getResult() {
+        return $this->resultDoc->saveXML();
     }
     
     
@@ -201,6 +210,47 @@ class ScrapingEngine {
     }
     
     
-    
+    /**
+     * 結果格納用のドキュメントのHTMLタグ、HEADタグを、スクレイピング対象のドキュメント
+     * を基に作成する。
+     * 
+     * @param \DomDocumrent $srcDoc スクレイピング対象のドキュメント
+     */
+    protected function initResultDocument(\DomDocument $srcDoc) {
+        //TODO: DOCTYPE宣言の取得も行う
+        
+        $baseElement = $this->resultDoc->createElement('html');
+        //$this->resultDoc->importNode($baseElement, true);
+        
+        //htmlタグ属性の一覧を取得する。
+        $attributes = $srcDoc->getElementsByTagName('html')->item(0)->attributes;
+        foreach($attributes as $attrName=>$attr) {
+            $baseElement->setAttribute($attrName, $attr->value);
+        }
+        
+        
+        $headElement = $this->resultDoc->createElement('head');
+        $baseElement->appendChild($headElement);
+        
+        //metaタグの一覧を取得する。
+        $metaTags = $srcDoc->getElementsByTagName('meta');
+        foreach($metaTags as $metaTag) {
+            $importedMetaTag = $this->resultDoc->importNode($metaTag, true);
+            //DomDocument<meta>
+            $headElement->appendChild($importedMetaTag);
+        }
+        
+        //titleタグを取得する
+        $titleTag = $srcDoc->getElementsByTagName('title')->item(0);
+        if($titleTag) {
+            $importedTitleTag = $this->resultDoc->importNode($titleTag, true);
+            $headElement->appendChild($importedTitleTag);
+        }
+        
+        $bodyElement = $this->resultDoc->createElement('body');
+        $baseElement->appendChild($bodyElement);
+        
+        $this->resultDoc->appendChild($baseElement);
+    }
 }
 

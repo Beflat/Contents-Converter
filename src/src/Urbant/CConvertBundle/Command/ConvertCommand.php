@@ -85,7 +85,7 @@ class ConvertCommand extends ContainerAwareCommand {
             
             
             //TODO:リソースダウンロードフィルタの設定
-            $localifyFilter = new LocalifyFilter($resDir);
+            $localifyFilter = new LocalifyFilter($resDir, 'res');
             $order->addFilter('on_scraping_done', $localifyFilter);
             
             //スクレイピングエンジンの初期化
@@ -115,20 +115,30 @@ class ConvertCommand extends ContainerAwareCommand {
             
             //画像やCSSなどの関連リソースを追加する
             $contentTypeDetector = new ContentTypeDetector();
-            foreach(glob($workDir . '/*.*') as $file) {
-                //TODO:コンテンツタイプを取得する
-                $contentType = $contentTypeDetector->detectFromFileName($file);
-            
-                //Itemを生成、コレクションに追加
-                $item = new Item();
-                $id = $item->slugify($id);
-                $item->setData($id, 'res/' . basename($file), $contentType);
-                $epubEngine->addItem($item);
+            $workDirFiles = array($workDir . '/*');
+            while(count($workDirFiles) != 0) {
+                $dir = array_shift($workDirFiles);
+                $globedDir = glob($dir);
+                foreach($globedDir as $dirItem) {
+                    if(is_dir($dirItem)) {
+                        $workDirFiles[] = $dirItem . '/*';
+                        continue;
+                    }
+                    
+                    //TODO:コンテンツタイプを取得する
+                    $contentType = $contentTypeDetector->detectFromFileName($dirItem);
+                    
+                    //Itemを生成、コレクションに追加
+                    $item = new Item();
+                    $id = $item->slugify(basename($dirItem));
+                    $item->setData($id, 'res/' . basename($dirItem), $contentType);
+                    $epubEngine->addItem($item);
+                }
             }
             
             //スクレイピング後のコンテンツを保存して登録する。
             $contentPath = $workDir . '/page.xhtml';
-            $scrapedContent = $scrapingEngine->getJoinedResult();
+            $scrapedContent = $scrapingEngine->getResult();
             if(!file_put_contents($contentPath, $scrapedContent)) {
                 throw new Exception('ファイル「' . $contentPath . '」の保存に失敗');
             }

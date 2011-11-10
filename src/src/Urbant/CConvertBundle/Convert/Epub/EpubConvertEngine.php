@@ -40,6 +40,7 @@ class EpubConvertEngine {
     
     public function __construct() {
         $this->items = new ItemCollection();
+        $this->uuid = $this->generateUuid();
     }
     
     
@@ -137,7 +138,7 @@ class EpubConvertEngine {
     
     protected function getTocString() {
         
-        $uuid = '';
+        $uuid = $this->uuid;
         $title = '';
         $author = 'Epub Generate Engine';
         
@@ -175,12 +176,12 @@ class EpubConvertEngine {
     
     
     protected function getPackageOpfString() {
-        $uuid = '';
+        $uuid = $this->uuid;
         $title = '';
         $publisher = 'Epub Generate Engine';
         $author = 'Epub Generate Engine';
         
-        $itemString = array();
+        $itemString = '';
         foreach($this->items->getItems() as $item) {
             $itemString .= $item->getDataByXml() . "\n";
         }
@@ -211,5 +212,10 @@ class EpubConvertEngine {
      */
     public function getMimeTypeString() {
         return 'application/epub+zip';
+    }
+    
+    
+    protected function generateUuid() {
+        return uniqid('cconvert_');
     }
 }
