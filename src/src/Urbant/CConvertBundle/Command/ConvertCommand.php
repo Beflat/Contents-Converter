@@ -19,6 +19,12 @@ use Urbant\CConvertBundle\Convert\Epub\ContentTypeDetector;
 use Urbant\CConvertBundle\Convert\Epub\Item;
 
 
+/**
+ * 変換を実行するコマンド。
+ * 将来的には、変換処理は管理画面などからルールを登録する時に
+ * 「試しに実行してみる」といった事をさせてみたいため、
+ * 変換処理はなるべくバッチ処理に依存しないようにしたい。
+ */
 class ConvertCommand extends ContainerAwareCommand {
     
     protected function configure() {
@@ -52,15 +58,12 @@ class ConvertCommand extends ContainerAwareCommand {
             $output->writeln('Rule name:' . $request->getRule()->getName());
             
             //TODO:ルール設定情報のロード
-            //Orderを生成
-            $order = new Order();
-            $order->setTargetFile($request->getUrl());
-            $order->setXPathString($rule->getXPath());
             
             //コンテンツ(Model)の生成(処理中状態で)
             $content = new Content();
             $content->setRequest($request);
             $content->setRule($rule);
+            $content->setTitle('');
             $content->setStatus(0);  //TODO:状態コードを定義する
             
             $em->persist($content);
@@ -84,34 +87,46 @@ class ConvertCommand extends ContainerAwareCommand {
             }
             
             
-            //TODO:リソースダウンロードフィルタの設定
+            //リソースダウンロードフィルタの初期化
             $localifyFilter = new LocalifyFilter($resDir, 'res');
-            $order->addFilter('on_scraping_done', $localifyFilter);
             
             //スクレイピングエンジンの初期化
             $scrapingEngine = new ScrapingEngine();
+            
+            if($rule->getCookie() != '') {
+                $scrapingEngine->setCookie($rule->getCookie());
+            }
+            
             //$scrapingEngine->setOutputPath($outputDir);
-            $scrapingEngine->addOrder($order);
+            //Orderを生成
+            
+            $urlList = array();
+            $urlList[] = $request->getUrl();
+            if($rule->getPaginateXpath() != '') {
+                $urlList = array_merge($urlList, $scrapingEngine->getUrlListFromXPath($request->getUrl(), $rule->getPaginateXpath()));
+            }
+            
+            foreach($urlList as $url) {
+                $order = new Order();
+                $order->setTargetFile($url);
+                $order->setXPathString($rule->getXPath());
+                $order->addFilter('on_scraping_done', $localifyFilter);
+                $scrapingEngine->addOrder($order);
+            }
             
             //スクレイピングの結果を取得
             $scrapingEngine->execute();
-            
-//             $fp = @fopen($outputDir . '/' . 'result.txt', 'w');
-//             if(!$fp) {
-//                 throw new \Exception('ファイル「' . $outputDir . '/' . 'result.txt' . '」の作成に失敗');
-//             }
-//             @fputs($fp, $order->getResult());
-//             @fclose($fp);
-//             $output->writeln('<info>Scraping has done.</info>');
             
             //コンテンツ変換エンジンの初期化
             //TODO: より簡単に変換処理が実施できるようにする。
             //    方針としては、
             $epubEngine = new EpubConvertEngine();
             
-            //出力先設定
+            //出力先設定など
             $epubEngine->setOutputPath($outputDir);
             $epubEngine->setWorkDirPath($workDir);
+            $contentTitle = $scrapingEngine->getTitle();
+            $epubEngine->setTitle($contentTitle);
             
             //画像やCSSなどの関連リソースを追加する
             $contentTypeDetector = new ContentTypeDetector();
@@ -146,17 +161,22 @@ class ConvertCommand extends ContainerAwareCommand {
             $item->setData('page', 'page.xhtml', $contentTypeDetector->detectFromExt('xhtml'));
             $epubEngine->addItem($item);
             $epubEngine->setMainContentId('page');
+            $epubEngine->setEpubFileName($content->getDataFileName());
             
             //変換の実行
             $epubEngine->execute();
             
             //コンテンツ(Model)の更新(状態、ファイル名)
             $content->setStatus(20);
+            $content->setTitle($contentTitle);
             $em->persist($content);
-            $em->flush();            
+            $em->flush();
         }
         
     }
+    
+    
+    
 }
 
 

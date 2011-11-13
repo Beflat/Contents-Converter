@@ -21,6 +21,7 @@ class RuleType extends AbstractType
             ->add('xpath')
             ->add('paginate_xpath')
             ->add('file_path')
+            ->add('cookie')
         ;
     }
 

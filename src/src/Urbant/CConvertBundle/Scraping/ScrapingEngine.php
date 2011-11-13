@@ -17,6 +17,9 @@ class ScrapingEngine {
      */
     protected $resultDoc;
     
+    
+    protected $cookie = '';
+    
     public function __construct() {
         
         $this->orders = array();
@@ -118,6 +121,55 @@ class ScrapingEngine {
     public function getJoinedWarning() {
     }
     
+    
+    /**
+     * タイトルを解析して返す。
+     * @return string タイトル
+     * 
+     * 
+     */
+    public function getTitle() {
+        $titleTag = $this->resultDoc->getElementsByTagName('title')->item(0);
+        if(!$titleTag) {
+            return '';
+        }
+        return $titleTag->nodeValue;
+    }
+    
+    
+    /**
+    * 指定されたURLに対してXPathを適用して絞り込んだ結果から
+    * URLの一覧(ページング用)を生成する。
+    * @param string $url
+    * @param string $xpath
+    *
+    * @return array Orderの配列
+    */
+    public function getUrlListFromXPath($url, $xpathQuery) {
+    
+        $htmlText = $this->loadContentText($url);
+        
+        $domDoc = new \DOMDocument('1.0', 'UTF-8');
+        @$domDoc->loadHtml($htmlText);
+        $domXPath = new \DOMXPath($domDoc);
+    
+        $entries = $domXPath->query($xpathQuery);
+        
+        //抜き出した結果が属性値であると仮定してURLのリストを作る
+        $urlList = array();
+        foreach($entries as $entry) {
+            $urlList[] = $this->getCompleteUrl($url, $entry->nodeValue);
+        }
+        
+        return $urlList;
+    }
+    
+    
+    public function setCookie($cookie) {
+        $this->cookie = $cookie;
+    }
+    
+    
     /**
      * 指定されたファイルをロードして文字列で返す。
      * 現在の所HTTPのURLのみ対応。
@@ -136,6 +188,10 @@ class ScrapingEngine {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     
+        if($this->cookie != '') {
+            curl_setopt($ch, CURLOPT_COOKIE, $this->cookie);
+        }
+        
         $response = curl_exec($ch);
         if(!$response) {
             throw new \Exception(curl_error($ch) . "\nURL:" . $url);
@@ -179,7 +235,6 @@ class ScrapingEngine {
         //$entries = $domXPath->query("//div[@class='readingContent01 autopagerize_page_element']/*");
     
         //symfony2-cookbook
-        //TODO: 設定情報をOrderから取得する。
         $entries = $domXPath->query($xPathQuery);
         return $entries;
     }
@@ -227,18 +282,23 @@ class ScrapingEngine {
         foreach($attributes as $attrName=>$attr) {
             $baseElement->setAttribute($attrName, $attr->value);
         }
+        $baseElement->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
         
         
         $headElement = $this->resultDoc->createElement('head');
         $baseElement->appendChild($headElement);
         
         //metaタグの一覧を取得する。
-        $metaTags = $srcDoc->getElementsByTagName('meta');
-        foreach($metaTags as $metaTag) {
-            $importedMetaTag = $this->resultDoc->importNode($metaTag, true);
-            //DomDocument<meta>
-            $headElement->appendChild($importedMetaTag);
-        }
+//         $metaTags = $srcDoc->getElementsByTagName('meta');
+//         foreach($metaTags as $metaTag) {
+//             $importedMetaTag = $this->resultDoc->importNode($metaTag, true);
+//            DomDocument<meta>
+//             $headElement->appendChild($importedMetaTag);
+//         }
+        $importedMetaTag = $this->resultDoc->createElement('meta');
+        $importedMetaTag->setAttribute('http-equiv', 'Content-Type');
+        $importedMetaTag->setAttribute('content', 'application/xhtml+xml; charset=UTF-8');
+        $headElement->appendChild($importedMetaTag);
         
         //titleタグを取得する
         $titleTag = $srcDoc->getElementsByTagName('title')->item(0);
@@ -251,6 +311,32 @@ class ScrapingEngine {
         $baseElement->appendChild($bodyElement);
         
         $this->resultDoc->appendChild($baseElement);
+    }
+    
+    
+    /**
+     * 相対URLを絶対URLに置換して返す。
+     * @param string $baseUrl 絶対URL表記の基となるURL:。(例：http://www.www.www/xxx/xxx)
+     * @param string $absUrl 変換の対象となるURL (例: /aaa.php)
+     */
+    protected function getCompleteUrl($baseUrl, $absUrl) {
+        $hostName = parse_url($baseUrl, PHP_URL_HOST);
+        $dirPath = parse_url($baseUrl, PHP_URL_PATH);
+        
+        $result = '';
+        if(substr($absUrl, 0, 7) != 'http://') {
+            if(substr($absUrl, 0, 1) == '/') {
+                $urlPrefix = 'http://' . $hostName;
+                $result = $urlPrefix . $absUrl;
+            } else {
+                $urlPrefix = 'http://' . $hostName . $dirPath;
+                $result = $urlPrefix . '/' . $absUrl;
+            }
+        } else {
+            $result = absUrl;
+        }
+        
+        return $result;
     }
 }
 

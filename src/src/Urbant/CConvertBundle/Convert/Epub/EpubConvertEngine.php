@@ -12,10 +12,15 @@ class EpubConvertEngine {
     protected $outputPath;
     
     
-    //-- epub固有 --
-    
     //epubのテンプレートが格納されたパス
     protected $workDirPath;
+    
+    
+    /**
+     * epubファイルの名称
+     * @var string
+     */
+    protected $epubFileName;
     
     
     /**
@@ -33,10 +38,19 @@ class EpubConvertEngine {
     
     
     /**
+     * タイトル
+     * @var string
+     */
+    protected $title;
+    
+    /**
      * 本文のコンテンツを表すID
      * @var unknown_type
      */
     protected $mainContentId;
+    
+    
+    const ZIP_COMMAND = '/usr/bin/zip';
     
     public function __construct() {
         $this->items = new ItemCollection();
@@ -92,7 +106,14 @@ class EpubConvertEngine {
         
         
         //zip up. 
+        $epubFilePath = $this->workDirPath . '/' . $this->epubFileName;
+        $this->zipUpDir($epubFilePath, $this->workDirPath);
+        
         //リネームして出力ディレクトリにコピー
+        if(!@rename($epubFilePath, $this->outputPath.'/'.$this->epubFileName)) {
+            throw new \Exception('epubファイルのリネームに失敗。：' . $epubFilePath
+                . ' -> ' . $this->outputPath . '/');
+        }
     }
     
     
@@ -121,8 +142,17 @@ class EpubConvertEngine {
     }
     
     
+    public function setEpubFileName($name) {
+        $this->epubFileName = $name;
+    }
+    
     public function addItem(Item $item) {
         $this->items->add($item);
+    }
+    
+    
+    public function setTitle($title) {
+        $this->title = $title;
     }
     
     protected function getContainerXmlString() {
@@ -139,7 +169,7 @@ class EpubConvertEngine {
     protected function getTocString() {
         
         $uuid = $this->uuid;
-        $title = '';
+        $title = $this->title;
         $author = 'Epub Generate Engine';
         
         //TODO: $this->itemsを参照しない方法を考える
@@ -158,10 +188,10 @@ class EpubConvertEngine {
     <meta name="dtb:maxPageNumber" content="0"/>
   </head>
   <docTitle>
-    <text>' . htmlentities($title, ENT_QUOTES) . '</text>
+    <text>' . htmlentities($title, ENT_QUOTES, 'UTF-8') . '</text>
   </docTitle>
   <docAuthor>
-    <text>' . htmlentities($author, ENT_QUOTES) . '</text>
+    <text>' . htmlentities($author, ENT_QUOTES, 'UTF-8') . '</text>
   </docAuthor>
   <navMap>
     <navPoint id="page" playOrder="1">
@@ -177,7 +207,7 @@ class EpubConvertEngine {
     
     protected function getPackageOpfString() {
         $uuid = $this->uuid;
-        $title = '';
+        $title = $this->title;
         $publisher = 'Epub Generate Engine';
         $author = 'Epub Generate Engine';
         
@@ -189,10 +219,10 @@ class EpubConvertEngine {
         return '<?xml version="1.0" encoding="UTF-8"?>
 <package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
-   <dc:title>' . htmlentities($title, ENT_QUOTES) . '</dc:title>
-   <dc:creator opf:role="aut">' . htmlentities($author, ENT_QUOTES) . '</dc:creator>
+   <dc:title>' . htmlentities($title, ENT_QUOTES, 'UTF-8') . '</dc:title>
+   <dc:creator opf:role="aut">' . htmlentities($author, ENT_QUOTES, 'UTF-8') . '</dc:creator>
    <dc:language>ja</dc:language>
-   <dc:publisher>' . htmlentities($publisher, ENT_QUOTES) . '</dc:publisher>
+   <dc:publisher>' . htmlentities($publisher, ENT_QUOTES, 'UTF-8') . '</dc:publisher>
    <dc:identifier id="BookId">urn:uuid:' . $uuid . '</dc:identifier>
  </metadata>
  <manifest>' . $itemString . ' </manifest>
@@ -217,5 +247,33 @@ class EpubConvertEngine {
     
     protected function generateUuid() {
         return uniqid('cconvert_');
+    }
+    
+    
+    protected function zipUpDir($zipFileName, $targetDir) {
+        
+        if($zipFileName == '') {
+            throw new \Exception('Zipファイル名が空白：' . $zipFileName);
+        }
+        
+        //zipコマンドは、作業ディレクトリの場所が圧縮ファイルに影響するので、
+        //CDで対象の場所まで移動する
+        $currentDir = getcwd();
+        
+        if(!@chdir($targetDir)) {
+            @chdir($currentDir);
+            throw new \Exception('ディレクトリの移動に失敗：' . $targetDir);
+        }
+        
+        $output = array();
+        $retVal = '';
+        $zipCommand = sprintf('%s -r %s * 2>&1', self::ZIP_COMMAND, escapeshellarg($zipFileName));
+        if(!exec($zipCommand, $output, $retVal)) {
+            throw new \Exception('Zipコマンドの実行に失敗：' . $zipCommand."\n"
+                . "実行結果：" . var_export($output, true) . "\n"
+                . "ステータスコード：" . $retVal . "\n");
+        }
+        
+        @chdir($currentDir);
     }
 }
