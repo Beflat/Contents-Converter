@@ -55,9 +55,6 @@ class LocalifyFilter implements FilterInterface{
      */
     protected function scanNodes($file, $element) {
         
-        //URLのホスト名を抜き出す
-        $hostName = parse_url($file, PHP_URL_HOST);
-        
 //         foreach($nodeList as $element) {
             
 //             if(!is_a($element, 'DOMNode')) {
@@ -75,11 +72,22 @@ class LocalifyFilter implements FilterInterface{
                 }
             }
             if($element->nodeName == 'img') {
-        
+                
                 $imgSource = $element->getAttribute('src');
+                
+                if(preg_match('/base64/i', $imgSource)) {
+                    return;
+                }
+                
                 //TODO:拡張子はコンテンツタイプで決定する
                 $pathParts = explode('.', $imgSource);
                 $ext = array_pop($pathParts);
+                
+                if(strlen($ext) > 4) {
+                    //拡張子が5文字以上の場合は正しく判定できていない可能性がある。今の時点ではスキップする。
+                    return;
+                }
+                
                 $baseDir = $this->outputPath;
                 $destImgPath = sprintf('%s/%04d.%s', $baseDir, $this->resourceSeq, $ext);
                 
@@ -88,10 +96,7 @@ class LocalifyFilter implements FilterInterface{
                 $absPath = (is_null($this->absolutePath)) ? $baseDir : $this->absolutePath;
                 $absDestImgPath = sprintf('%s/%04d.%s', $absPath, $this->resourceSeq, $ext);
                 
-                if(substr($imgSource, 0, 4) != 'http') {
-                    $urlPrefix = 'http://' . $hostName;
-                    $imgSource = $urlPrefix . $imgSource;
-                }
+                $imgSource = $this->getCompleteUrl($file, $imgSource);
         
                 $this->downloadResource($imgSource, $destImgPath);
                 $element->setAttribute('src', $absDestImgPath);  //絶対パスではなく相対パスで置き換え
@@ -109,7 +114,7 @@ class LocalifyFilter implements FilterInterface{
     
         $response = curl_exec($ch);
         if(!$response) {
-            throw new Exception("URL:" . $sourceURL . "\n" . curl_error($ch));
+            throw new \Exception("URL:" . $sourceURL . "\n" . curl_error($ch));
         }
     
         if(!is_dir(dirname($savePath))) {
@@ -117,8 +122,34 @@ class LocalifyFilter implements FilterInterface{
         }
     
         if(!file_put_contents($savePath, $response)) {
-            throw new Exception('Failed to save file: ' . $savePath);
+            throw new \Exception('Failed to save file: ' . $savePath);
         }
+    }
+    
+    
+    /**
+    * 相対URLを絶対URLに置換して返す。
+    * @param string $baseUrl 絶対URL表記の基となるURL:。(例：http://www.www.www/xxx/xxx)
+    * @param string $absUrl 変換の対象となるURL (例: /aaa.php)
+    */
+    protected function getCompleteUrl($baseUrl, $absUrl) {
+        $hostName = parse_url($baseUrl, PHP_URL_HOST);
+        $dirPath = parse_url($baseUrl, PHP_URL_PATH);
+    
+        $result = '';
+        if(substr($absUrl, 0, 7) != 'http://') {
+            if(substr($absUrl, 0, 1) == '/') {
+                $urlPrefix = 'http://' . $hostName;
+                $result = $urlPrefix . $absUrl;
+            } else {
+                $urlPrefix = 'http://' . $hostName . $dirPath;
+                $result = $urlPrefix . '/' . $absUrl;
+            }
+        } else {
+            $result = $absUrl;
+        }
+    
+        return $result;
     }
     
 }

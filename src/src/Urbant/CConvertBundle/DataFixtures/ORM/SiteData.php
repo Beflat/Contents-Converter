@@ -22,10 +22,17 @@ class SiteData extends AbstractFixture implements OrderedFixtureInterface{
         $site2->setCookie('');
         $manager->persist($site2);
         
+        $site3 = new Site();
+        $site3->setName('日経Biz');
+        $site3->setDescription('Symfony');
+        $site3->setCookie('');
+        $manager->persist($site3);
+        
         $manager->flush();
         
         $this->addReference('site_gihyo_jp', $site1);
         $this->addReference('site_symfony', $site2);
+        $this->addReference('site_nikkei_biz', $site3);
     }
     
     

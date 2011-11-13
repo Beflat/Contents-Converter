@@ -71,6 +71,12 @@ class Rule
      * TODO: 本来はフィールドとしては持たず設定情報の一分として持たせる
      */
     private $paginate_xpath;
+    
+    
+    /**
+     * @ORM\Column(name="cookie", type="text", length="4096")
+     */
+    private $cookie;
 
 
     /**
@@ -242,5 +248,25 @@ class Rule
     public function getPaginateXpath()
     {
         return $this->paginate_xpath;
+    }
+
+    /**
+     * Set cookie
+     *
+     * @param text $cookie
+     */
+    public function setCookie($cookie)
+    {
+        $this->cookie = $cookie;
+    }
+
+    /**
+     * Get cookie
+     *
+     * @return text 
+     */
+    public function getCookie()
+    {
+        return $this->cookie;
     }
 }

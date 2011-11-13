@@ -57,6 +57,7 @@
                 <tr>
                     <th class="table-header-check"><a id="toggle-all" ></a> </th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Rule</a>   </th>
+                    <th class="table-header-repeat line-left minwidth-1"><a href="">Title</a>   </th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Status</a></th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Created</a></th>
                     <th class="table-header-options line-left"><a href="">Options</a></th>
@@ -70,6 +71,7 @@
                             -
                         {% endif %}
                     </td>
+                    <td>{{ content.title }}</td>
                     <td>{{ content.getStatusName(content.status) }}</td>
                     <td>{{ content.created|date('Y-m-d H:i:s') }}</td>
                     <td class="options-width">
@@ -79,7 +81,7 @@
                 </tr>
 {% else %}
             <tr>
-            <td colspan="5">No item found.</td>
+            <td colspan="6">No item found.</td>
             </tr>
 
 {% endfor %}

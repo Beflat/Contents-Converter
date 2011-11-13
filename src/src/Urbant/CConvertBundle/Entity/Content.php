@@ -42,6 +42,11 @@ class Content
      * @ORM\Column(name="status", type="integer")
      */
     private $status;
+    
+    /**
+     * @ORM\Column(name="title", type="string")
+     */
+    private $title;
 
     /**
      * @var datetime $created
@@ -212,5 +217,34 @@ class Content
     
     public function getDataDirPath() {
         return sprintf('/%010d', $this->id);
+    }
+
+    
+    public function getDataFileName() {
+        return sprintf('cc_%06d.epub', $this->id);
+    }
+    
+    public function getDataFilePath() {
+        return sprintf('%s/cc_%06d.epub', $this->getDataDirPath(), $this->getDataFileName());
+    }
+    
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 }
