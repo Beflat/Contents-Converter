@@ -36,6 +36,18 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         $req4->setStatus(0);
         $manager->persist($req4);
         
+        $req5 = new ConvertRequest();
+        $req5->setRule($manager->merge($this->getReference('rule_nikkei_co_jp')));
+        $req5->setUrl('http://www.nikkeibp.co.jp/article/column/20111104/289495/');
+        $req5->setStatus(0);
+        $manager->persist($req5);
+        
+        $req6 = new ConvertRequest();
+        $req6->setRule($manager->merge($this->getReference('rule_nikkei_itpro')));
+        $req6->setUrl('http://itpro.nikkeibp.co.jp/article/COLUMN/20110407/359227/?ST=develop');
+        $req6->setStatus(0);
+        $manager->persist($req6);
+        
         //         $req2 = new ConvertRequest();
 //         $req2->setRule($manager->merge($this->getReference('rule_gihyo_jp')));
 //         $req2->setUrl('http://gihyo.jp/lifestyle/serial/01/android-walking/0048?skip');
@@ -46,7 +58,9 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         
         $this->addReference('req_symfony_1', $req1);
         $this->addReference('req_nikkei_pc_1', $req3);
-         $this->addReference('req_nikkei_bussiness_1', $req4);
+        $this->addReference('req_nikkei_bussiness_1', $req4);
+        $this->addReference('req_nikkei_co_jp_1', $req5);
+        $this->addReference('req_nikkei_itpro_1', $req6);
     }
     
     

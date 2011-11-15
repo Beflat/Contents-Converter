@@ -42,6 +42,12 @@ class ConvertRequest
      */
     private $status;
     
+    
+    /**
+     * @ORM\Column(name="log", type="text", length="4096")
+     */
+    private $log;
+    
     /**
      * @var date $created
      *
@@ -64,6 +70,10 @@ class ConvertRequest
         30 => '処理失敗',
     );
 
+    const STATE_WAIT = 0;
+    const STATE_INPROCESS = 10;
+    const STATE_SUCCEEDED = 20;
+    const STATE_FAILED = 40;
 
     /**
      * Get id
@@ -142,6 +152,9 @@ class ConvertRequest
     public function prePersist() {
         $this->setCreated(new \Datetime());
         $this->setUpdated(new \Datetime());
+        if(is_null($this->getLog())) {
+            $this->setLog('');
+        }
     }
     
     /**
@@ -197,5 +210,25 @@ class ConvertRequest
     public function getRule()
     {
         return $this->rule;
+    }
+
+    /**
+     * Set log
+     *
+     * @param text $log
+     */
+    public function setLog($log)
+    {
+        $this->log = $log;
+    }
+
+    /**
+     * Get log
+     *
+     * @return text 
+     */
+    public function getLog()
+    {
+        return $this->log;
     }
 }

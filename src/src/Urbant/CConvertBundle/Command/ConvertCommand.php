@@ -44,9 +44,7 @@ class ConvertCommand extends ContainerAwareCommand {
         $requestLogRepo = $em->getRepository('UrbantCConvertBundle:ConvertRequest');
         
         $request = new ConvertRequest();
-        
-        
-        $requests = $requestLogRepo->getRequests(array());
+        $requests = $requestLogRepo->getRequests(array('status'=>$request::STATE_WAIT));
         $output->writeln('Total count:' . count($requests));
         //ループが長いので複数のブロックに分解する
         foreach($requests as $request) {
@@ -55,6 +53,7 @@ class ConvertCommand extends ContainerAwareCommand {
             
             //ルールを取得
             $rule = $request->getRule();
+            $request->setStatus($request::STATE_INPROCESS);
             $output->writeln('Rule name:' . $request->getRule()->getName());
             
             //TODO:ルール設定情報のロード
@@ -66,6 +65,7 @@ class ConvertCommand extends ContainerAwareCommand {
             $content->setTitle('');
             $content->setStatus(0);  //TODO:状態コードを定義する
             
+            $em->persist($request);
             $em->persist($content);
             $em->flush();
             
@@ -168,8 +168,10 @@ class ConvertCommand extends ContainerAwareCommand {
             
             //コンテンツ(Model)の更新(状態、ファイル名)
             $content->setStatus(20);
+            $request->setStatus($request::STATE_SUCCEEDED);
             $content->setTitle($contentTitle);
             $em->persist($content);
+            $em->persist($request);
             $em->flush();
         }
         

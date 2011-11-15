@@ -62,6 +62,10 @@ class Content
      */
     private $updated;
 
+    
+    const STATE_UNREAD = 20;
+    const STATE_DOWNLOADED = 30;
+    const STATE_READ = 40;
 
     protected $statusList = array(
          0 => '作成中',
@@ -225,7 +229,7 @@ class Content
     }
     
     public function getDataFilePath() {
-        return sprintf('%s/cc_%06d.epub', $this->getDataDirPath(), $this->getDataFileName());
+        return sprintf('%s/%s', $this->getDataDirPath(), $this->getDataFileName());
     }
     
     /**
@@ -246,5 +250,10 @@ class Content
     public function getTitle()
     {
         return $this->title;
+    }
+    
+    
+    public function isDone() {
+        return in_array($this->status, array(self::STATE_DOWNLOADED, self::STATE_UNREAD, self::STATE_READ));
     }
 }

@@ -196,7 +196,7 @@ class ScrapingEngine {
         if(!$response) {
             throw new \Exception(curl_error($ch) . "\nURL:" . $url);
         }
-    
+        
         //  $response = file_get_contents('response.txt');
     
         //コメントを全て取り除く。こうしないと
@@ -208,10 +208,6 @@ class ScrapingEngine {
         //   $response = str_replace('<g:', '<g', $response);
         //   facebook 対策
         //   $response = str_replace('<fb:', '<fb', $response);
-    
-        //   $fp = fopen('response.txt','w');
-        //   fputs($fp, $response);
-        //   fclose($fp);
     
         return $response;
     }

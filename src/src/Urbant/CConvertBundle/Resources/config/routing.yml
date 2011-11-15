@@ -97,3 +97,8 @@ UrbantCConvertBundle_content_list:
     pattern:  /content
     defaults: { _controller: UrbantCConvertBundle:Content:list }
 
+UrbantCConvertBundle_content_dl:
+    pattern:  /content/download/{id}
+    defaults: { _controller: UrbantCConvertBundle:Content:download }
+    requirements:
+        id: \d+

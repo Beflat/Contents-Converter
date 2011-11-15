@@ -75,8 +75,9 @@
                     <td>{{ content.getStatusName(content.status) }}</td>
                     <td>{{ content.created|date('Y-m-d H:i:s') }}</td>
                     <td class="options-width">
-                    <a href="" title="Edit" class="icon-1 info-tooltip"></a>
-                    <a href="" title="Edit" class="icon-2 info-tooltip"></a>
+                    {% if content.isDone()  %}
+                        <a href="{{ path('UrbantCConvertBundle_content_dl', {'id': content.id}) }}" title="Download" class="icon-1 info-tooltip"></a>
+                    {% endif %}
                     </td>
                 </tr>
 {% else %}
