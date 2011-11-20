@@ -5,8 +5,11 @@ namespace Urbant\CConvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Urbant\CConvertBundle\Entity\Rule
- *
+ * 変換ルール1件分を表すデータオブジェクト。
+ * 
+ * EntityManagerやRepositoryとの依存関係を持たせたくないため、
+ * これらのオブジェクトとの連携が必要な処理はRuleServiceに記述する。
+
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\RuleRepository")
  * @ORM\HasLifecycleCallbacks
@@ -35,6 +38,13 @@ class Rule
      * @ORM\Column(name="file_path", type="string", length=255)
      */
     private $file_path;
+
+    /**
+     * リクエストログ(のURL)と変換ルールのマッチングに使用する
+     * 正規表現文字列
+     * @ORM\Column(name="matching_rule", type="string", length=255)
+     */
+    private $matching_rule;
 
     /**
      * @var date $created
@@ -268,5 +278,25 @@ class Rule
     public function getCookie()
     {
         return $this->cookie;
+    }
+
+    /**
+     * Set matching_rule
+     *
+     * @param string $matchingRule
+     */
+    public function setMatchingRule($matchingRule)
+    {
+        $this->matching_rule = $matchingRule;
+    }
+
+    /**
+     * Get matching_rule
+     *
+     * @return string 
+     */
+    public function getMatchingRule()
+    {
+        return $this->matching_rule;
     }
 }

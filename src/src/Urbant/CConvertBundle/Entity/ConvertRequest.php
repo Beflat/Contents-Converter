@@ -5,8 +5,11 @@ namespace Urbant\CConvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Urbant\CConvertBundle\Entity\ConvertRequest
- *
+ * リクエストログ1件分を表すデータオブジェクト。
+ * 
+ * EntityManagerやRepositoryとの依存関係を持たせたくないため、
+ * これらのオブジェクトとの連携が必要な処理はConvertRequestServiceに記述する。
+ * 
  * @ORM\Table(name="request")
  * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\ConvertRequestRepository")
  * @ORM\HasLifecycleCallbacks
@@ -222,6 +225,15 @@ class ConvertRequest
         $this->log = $log;
     }
 
+    
+    public function appendLog($log, $delimiter="----------\n") {
+        if($this->log != '') {
+            $this->log .= $delimiter;
+        }
+        
+        $this->log .= $log;
+    }
+    
     /**
      * Get log
      *
@@ -231,4 +243,6 @@ class ConvertRequest
     {
         return $this->log;
     }
+    
+    
 }

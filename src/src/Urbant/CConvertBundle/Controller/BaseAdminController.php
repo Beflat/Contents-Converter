@@ -44,21 +44,21 @@ abstract class BaseAdminController extends Controller
         //メニュー定義。generateUrlを使用するとコンストラクタでは定義できない。
         //TODO:ここではなく定義ファイル等に定義する
         $this->menues = array(
-            'dashboard' => array(
-                'name' => 'DASH BOARD',
-                    'url' => '#',
-                'sub' => array(
-                    'list' => array('name' => 'LIST', 'url' => ''),
-                   ),
-             ),
-            'site' => array(
-                'name' => 'SITE',
-                'url' => $this->generateUrl('UrbantCConvertBundle_site_list'),
-                'sub' => array(
-                    'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_site_list')),
-                    'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_site_add')),
-                    ),
-              ),
+//             'dashboard' => array(
+//                 'name' => 'DASH BOARD',
+//                     'url' => '#',
+//                 'sub' => array(
+//                     'list' => array('name' => 'LIST', 'url' => ''),
+//                    ),
+//              ),
+//             'site' => array(
+//                 'name' => 'SITE',
+//                 'url' => $this->generateUrl('UrbantCConvertBundle_site_list'),
+//                 'sub' => array(
+//                     'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_site_list')),
+//                     'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_site_add')),
+//                     ),
+//               ),
             'rule' => array(
                 'name' => 'RULE',
                 'url' => $this->generateUrl('UrbantCConvertBundle_rule_list'),

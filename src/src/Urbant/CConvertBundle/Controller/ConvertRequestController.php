@@ -97,7 +97,11 @@ class ConvertRequestController extends BaseAdminController
         if($form->isValid()) {
 
             $em = $this->getEntityManager();
-            $em->persist($convertRequest);
+            $convertRequestService = $this->get('urbant_cconvert.convert_request_service');
+            
+            //変換ルールの自動判定などを行ってから保存
+            $convertRequestService->saveRequest($convertRequest);
+            
             $em->flush();
 
             $this->get('session')->setFlash('request_add_message', '登録しました。');
@@ -146,6 +150,11 @@ class ConvertRequestController extends BaseAdminController
         $form->bindRequest($request);
         
         if($form->isValid()) {
+            $convertRequestService = $this->get('urbant_cconvert.convert_request_service');
+            
+            //変換ルールの自動判定などを行ってから保存
+            $convertRequestService->saveRequest($coevnrtRequest);
+            
             $em->flush();
             
             $this->get('session')->setFlash('request_edit_message', 'サイト情報を更新しました。');

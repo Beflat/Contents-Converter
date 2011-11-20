@@ -1,7 +1,11 @@
 parameters:
 #    urbant_c_convert.example.class: Urbant\CConvertBundle\Example
+    urbant_cconvert.convert_request_service.class: Urbant\CConvertBundle\Service\ConvertRequestService
 
 services:
 #    urbant_c_convert.example:
-#        class: %urbant_c_convert.example.class%
+#        class: %urbant_cconvert.convert.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    urbant_cconvert.convert_request_service:
+        class: %urbant_cconvert.convert_request_service.class%
+        arguments: [@doctrine.orm.entity_manager]

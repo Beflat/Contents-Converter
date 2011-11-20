@@ -13,6 +13,7 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $rule1 = new Rule();
         $rule1->setName('gihyo.jp');
         $rule1->setFilePath('gihyo.xml');
+        $rule1->setMatchingRule('/gihyo\.jp/');
         $rule1->setSite($manager->merge($this->getReference('site_gihyo_jp')));
         $rule1->setXpath("//div[contains(concat(' ',normalize-space(@class),' '), 'readingContent01')]/*");
         $rule1->setPaginateXpath('');
@@ -22,6 +23,7 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $rule2 = new Rule();
         $rule2->setName('Symfony The Book');
         $rule2->setFilePath('symfony_book.xml');
+        $rule2->setMatchingRule('/symfony\.com/');
         $rule2->setSite($manager->merge($this->getReference('site_symfony')));
         $rule2->setXpath("//div[contains(concat(' ',normalize-space(@class),' '), 'column_02')]/*");
         $rule2->setPaginateXpath('');
@@ -31,22 +33,25 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $rule3 = new Rule();
         $rule3->setName('nikkei.co.jp');
         $rule3->setFilePath('nikkei.xml');
+        $rule3->setMatchingRule('/nikkei\.co\.jp/');
         $rule3->setXpath("//div[contains(concat(' ',normalize-space(@class),' '), 'readingContent01')]/");
         $rule3->setPaginateXpath('');
         $rule3->setCookie('');
         $manager->persist($rule3);
 
-        $rule4 = new Rule();
-        $rule4->setName('nikkei_biz');
-        $rule4->setFilePath('nikkei_biz.xml');
-        $rule4->setXpath("//div[contains(concat(' ',normalize-space(@class),' '), 'edu-article-text')]/*");
-        $rule4->setPaginateXpath("//span[contains(concat(' ', normalize-space(@class), ' '), 'edu-page-no')]/a/@href");
-        $rule4->setCookie('');
-        $manager->persist($rule4);
+// HTMLが色々とおかしい、なぜか文字化けする
+//         $rule4 = new Rule();
+//         $rule4->setName('nikkei_biz');
+//         $rule4->setFilePath('nikkei_biz.xml');
+//         $rule4->setXpath("//div[contains(concat(' ',normalize-space(@class),' '), 'edu-article-text')]/*");
+//         $rule4->setPaginateXpath("//span[contains(concat(' ', normalize-space(@class), ' '), 'edu-page-no')]/a/@href");
+//         $rule4->setCookie('');
+//         $manager->persist($rule4);
 
         $rule5 = new Rule();
         $rule5->setName('nikkei_pc');
         $rule5->setFilePath('nikkei_pc.xml');
+        $rule5->setMatchingRule('/pc\.nikkeibp\.co\.jp/');
         $rule5->setXpath("//div[@id='co_explain']/*");
         $rule5->setPaginateXpath("//div[@id='co_explainLink']/a/@href");
         $rule5->setCookie('');
@@ -55,6 +60,7 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $rule6 = new Rule();
         $rule6->setName('nikkei_bussiness');
         $rule6->setFilePath('nikkei_pc.xml');
+        $rule6->setMatchingRule('/business\.nikkeibp\.co\.jp/');
         $rule6->setXpath("//div[@id='articlebody']/*");
         $rule6->setPaginateXpath("//div[@class='pageNumber']/a[@class='']/@href");
         $rule6->setCookie('DEUserID=c0a84914-4024-1321190602-1; wabwb2011=1321244538; vlink=; '
@@ -77,6 +83,7 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $rule7 = new Rule();
         $rule7->setName('nikkei_co_jp');
         $rule7->setFilePath('nikkei_pc.xml');
+        $rule7->setMatchingRule('/www\.nikkeibp\.co\.jp/');
         $rule7->setXpath("//div[contains(concat(' ', normalize-space(@class), ' '), 'article-entry')]/*");
         $rule7->setPaginateXpath("//div[@class='article-pagination']/p[@class='msp']/a/@href");
         $rule7->setCookie('DEUserID=c0a84914-4024-1321190602-1; vlink=; ssoa=kVTrFBur5b5wWJqdfsSc8GOI4XHL6Fp-'
@@ -96,6 +103,7 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $rule8 = new Rule();
         $rule8->setName('nikkei_itpro');
         $rule8->setFilePath('nikkei_pc.xml');
+        $rule8->setMatchingRule('/itpro\.nikkeibp\.co\.jp/');
         $rule8->setXpath("//div[@id='kiji']/*");
         $rule8->setPaginateXpath("//div[@id='naviBottom']/div[@class='pageNumber']/a[@class='']/@href");
         $rule8->setCookie('DEUserID=c0a84914-4024-1321190602-1; vlink=; ssoa=IJKKaoDIx7ouSOUQQSm2hZ-'
@@ -117,16 +125,28 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         
         $manager->persist($rule8);
         
+        $rule9 = new Rule();
+        $rule9->setName('ibm.com');
+        $rule9->setFilePath('nikkei_pc.xml');
+        $rule9->setMatchingRule('/ibm\.com/');
+        $rule9->setXpath("//div[@class='ibm-container']/*");
+        $rule9->setPaginateXpath("");
+        $rule9->setCookie('');
+        $manager->persist($rule9);
+        
+        //
+        
         $manager->flush();
 
         $this->addReference('rule_gihyo_jp', $rule1);
         $this->addReference('rule_symfony', $rule2);
         $this->addReference('rule_nikkei', $rule3);
-        $this->addReference('rule_nikkei_biz', $rule4);
+        //$this->addReference('rule_nikkei_biz', $rule4);
         $this->addReference('rule_nikkei_pc', $rule5);
         $this->addReference('rule_nikkei_bussiness', $rule6);
         $this->addReference('rule_nikkei_co_jp', $rule7);
         $this->addReference('rule_nikkei_itpro', $rule8);
+        $this->addReference('rule_ibm_com', $rule9);
     }
 
 

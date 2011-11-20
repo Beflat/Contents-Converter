@@ -5,7 +5,10 @@ namespace Urbant\CConvertBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Urbant\CConvertBundle\Entity\Content
+ * 変換後のコンテンツ1件分を表すデータオブジェクト。
+ * 
+ * EntityManagerやRepositoryとの依存関係を持たせたくないため、
+ * これらのオブジェクトとの連携が必要な処理はContentServiceに記述する。
  *
  * @ORM\Table(name="content")
  * @ORM\Entity(repositoryClass="Urbant\CConvertBundle\Repository\ContentRepository")

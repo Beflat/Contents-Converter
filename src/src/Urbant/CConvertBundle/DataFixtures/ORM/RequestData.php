@@ -48,11 +48,12 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         $req6->setStatus(0);
         $manager->persist($req6);
         
-        //         $req2 = new ConvertRequest();
-//         $req2->setRule($manager->merge($this->getReference('rule_gihyo_jp')));
-//         $req2->setUrl('http://gihyo.jp/lifestyle/serial/01/android-walking/0048?skip');
-//         $req2->setStatus(0);
-//         $manager->persist($req2);
+//処理中に無限ループ的なものに陥るため一時的にコメントアウト
+//         $req7 = new ConvertRequest();
+//         $req7->setRule($manager->merge($this->getReference('rule_ibm_com')));
+//         $req7->setUrl('https://www.ibm.com/developerworks/jp/web/library/wa-jqmobile/');
+//         $req7->setStatus(0);
+//         $manager->persist($req7);
         
         $manager->flush();
         
@@ -61,6 +62,7 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         $this->addReference('req_nikkei_bussiness_1', $req4);
         $this->addReference('req_nikkei_co_jp_1', $req5);
         $this->addReference('req_nikkei_itpro_1', $req6);
+        $this->addReference('req_ibm_com_1', $req7);
     }
     
     
