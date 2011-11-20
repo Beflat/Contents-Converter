@@ -183,7 +183,7 @@ $(document).pngFix( );
     </div>
     <!-- end logo -->
     
-    <!--  start top-search -->
+    <!--  start top-search 
     <div id="top-search">
         <table border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -219,7 +219,7 @@ $(document).pngFix( );
 <!--  start nav-outer -->
 <div class="nav-outer"> 
 
-        <!-- start nav-right -->
+        <!-- start nav-right 
         <div id="nav-right">
         
             <div class="nav-divider">&nbsp;</div>
@@ -228,7 +228,7 @@ $(document).pngFix( );
             <a href="" id="logout"><img src="{{ asset('bundles/urbantcconvert/images/shared/nav/nav_logout.gif') }}" width="64" height="14" alt="" /></a>
             <div class="clear">&nbsp;</div>
         
-            <!--  start account-content --> 
+            <!--  start account-content 
             <div class="account-content">
             <div class="account-drop-inner">
                 <a href="" id="acc-settings">Settings</a>
@@ -246,7 +246,7 @@ $(document).pngFix( );
                 <a href="" id="acc-stats">Statistics</a> 
             </div>
             </div>
-            <!--  end account-content -->
+            <!--  end account-content
         
         </div>
         <!-- end nav-right -->
@@ -262,6 +262,7 @@ $(document).pngFix( );
         {% set menuClass = isCurrentCat ? 'current' : 'select' %}
         {% set subMenuDivClass = isCurrentCat ? 'show' : '' %}
         <ul class="{{ menuClass }}"><li><a href="{{ menuCat.url }}"><b>{{ menuCat.name }}</b></a>
+    {% if( isCurrentCat ) %}
         <div class="select_sub {{ subMenuDivClass }}">
             <ul class="sub">
         {% for menuPageId, menuPage in menuCat.sub %}
@@ -270,6 +271,7 @@ $(document).pngFix( );
         {% endfor %}
             </ul>
         </div>
+    {% endif %}
         </li>
         </ul>
         <div class="nav-divider">&nbsp;</div>

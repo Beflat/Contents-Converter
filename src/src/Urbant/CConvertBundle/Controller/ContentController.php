@@ -2,6 +2,8 @@
 
 namespace Urbant\CConvertBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Urbant\CConvertBundle\Form\ContentSearchType;
 use Urbant\CConvertBundle\Entity\Content;
@@ -162,4 +164,36 @@ class ContentController extends BaseAdminController
         );
         return $this->render('UrbantCConvertBundle:Site:edit.html.twig', $vars);
     }
+    
+    
+    public function downloadAction($id) {
+        
+        $contentRepo = $this->getRepository('UrbantCConvertBundle:Content');
+        
+        $content = $contentRepo->find($id);
+        if(!$content) {
+            throw $this->createNotFoundException('ID:' . $id . ' was not found.');
+        }
+        
+        //TODO: 基準ディレクトリをどうするか検討する
+        $basePath = '/var/www/data/contents_convert/src/app/cache/dev/epub';
+        $filePath = $basePath . $content->getDataFilePath();
+        
+        if(!is_file($filePath)) {
+            throw $this->createNotFoundException('Content file was not found.' . $filePath);
+        }
+        
+        $contentData = @file_get_contents($filePath);
+        
+        $response = new Response($contentData);
+        //$response->setContent('aaa');
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/epub+zip');
+        $response->headers->set('Content-Disposition', 'attachment;filename="' . basename($filePath) . '"');
+//         prints the HTTP headers followed by the content
+//         $response->send();
+//         @readfile($filePath);
+//         echo 'aaa';
+        return $response;        
+        }
 }
