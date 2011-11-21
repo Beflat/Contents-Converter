@@ -9,3 +9,7 @@ services:
     urbant_cconvert.convert_request_service:
         class: %urbant_cconvert.convert_request_service.class%
         arguments: [@doctrine.orm.entity_manager]
+    twig_extension_text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - {name: twig.extension}
