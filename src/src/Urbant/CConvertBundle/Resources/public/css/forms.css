@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+
+/* --- Search Form ------------------------------------------------------ */
+
+.search-form {
+    margin: 20px 20px;
+    padding: 5px;
+    border: solid 1px #ccc;
+}
+
+.search-form input[type=submit] {
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+.search-form input[type=text] {
+    padding: 3px 3px;
+    width: 20em;
+}
+
+.search-form select {
+    padding: 3px 3px;
+}
+
+.search-form form .field-section {
+    clear:both;
+    margin:1em 0;
+    overflow:hidden;
+}
+        
+.search-form form label{
+    float:left;
+    width:120px;
+    display:block;
+    text-align:right;
+    margin-right:10px;
+}
+.search-form form textarea{  
+    margin:0;   
+    width:250px;
+    border:1px solid #ddd;      
+    padding:3px 5px 3px 5px;
+}
+
+/* --- General Form ------------------------------------------------------ */
+.form {
+    padding: 5px;
+}
+
+.form input[type=submit] {
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+.form input[type=text] {
+    padding: 5px 3px;
+    width: 40em;
+}
+
+.form select {
+    padding: 5px 3px;
+}
+
+.form form .field-section {
+    clear:both;
+    margin:1em 0;
+    overflow:hidden;
+}
+        
+.form form label{
+    float:left;
+    width:120px;
+    display:block;
+    text-align:right;
+    margin-right:10px;
+}
+.form form textarea{  
+    margin:0;   
+    width:250px;
+    border:1px solid #ddd;      
+    padding:3px 5px 3px 5px;
+}

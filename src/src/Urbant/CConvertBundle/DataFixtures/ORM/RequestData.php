@@ -55,6 +55,12 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
 //         $req7->setStatus(0);
 //         $manager->persist($req7);
         
+        $req7 = new ConvertRequest();
+        $req7->setRule($manager->merge($this->getReference('rule_nikkei_co_jp')));
+        $req7->setUrl('http://www.nikkeibp.co.jp/article/column/20111117/290842/');
+        $req7->setStatus(0);
+        $manager->persist($req7);
+        
         $manager->flush();
         
         $this->addReference('req_symfony_1', $req1);
@@ -62,7 +68,7 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         $this->addReference('req_nikkei_bussiness_1', $req4);
         $this->addReference('req_nikkei_co_jp_1', $req5);
         $this->addReference('req_nikkei_itpro_1', $req6);
-        $this->addReference('req_ibm_com_1', $req7);
+        $this->addReference('req_nikkei_co_jp_2', $req7);
     }
     
     
