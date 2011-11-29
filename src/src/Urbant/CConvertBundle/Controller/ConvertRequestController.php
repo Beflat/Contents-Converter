@@ -167,4 +167,20 @@ class ConvertRequestController extends BaseAdminController
         );
         return $this->render('UrbantCConvertBundle:ConvertRequest:edit.html.twig', $vars);
     }
+    
+    
+    public function detailAction($id) {
+        $repo = $this->getRepository('UrbantCConvertBundle:ConvertRequest');
+        
+        $request = $repo->find($id);
+        if(!$request) {
+            throw $this->createNotFoundException('ID:' . $id . ' was not found.');
+        }
+        
+        $vars = array(
+            'request' => $request
+        );
+        
+        return $this->render('UrbantCConvertBundle:ConvertRequest:detail.html.twig', $vars);
+    }
 }

@@ -65,8 +65,14 @@
 {% for request in requests %}
                 <tr>
                     <td><input type="checkbox" name="ids[]" value="{{ request.id }}" /></td>
-                    <td><a href="{{ path('UrbantCConvertBundle_rule_edit', {'id': request.rule.id}) }}">{{ request.rule ? request.rule.name : '' }}</a></td>
-                    <td><a href="{{ path('UrbantCConvertBundle_request_edit', {'id': request.id}) }}">{{ request.url }}</a></td>
+                    <td>
+    {% if request.rule %}
+                        <a href="{{ path('UrbantCConvertBundle_rule_edit', {'id': request.rule.id}) }}">{{ request.rule ? request.rule.name : '' }}</a>
+    {% else %}
+        -
+    {% endif %}
+                    </td>
+                    <td><a href="{{ path('UrbantCConvertBundle_request_detail', {'id': request.id}) }}">{{ request.url }}</a></td>
                     <td>{{ request.getStatusName() }}</td>
                     <td>{{ request.created|date('Y-m-d H:i:s') }}</td>
                     <td class="options-width">

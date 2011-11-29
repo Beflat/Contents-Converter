@@ -87,9 +87,21 @@ UrbantCConvertBundle_request_batch:
     requirements:
         _method: POST
 
+UrbantCConvertBundle_request_detail:
+    pattern:  /request/detail/{id}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:detail }
+    requirements:
+        id: \d+
+
 UrbantCConvertBundle_request_edit:
     pattern:  /request/edit/{id}
     defaults: { _controller: UrbantCConvertBundle:ConvertRequest:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_request_update:
+    pattern:  /request/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:update }
     requirements:
         id: \d+
 
