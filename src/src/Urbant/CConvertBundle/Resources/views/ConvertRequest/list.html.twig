@@ -60,7 +60,6 @@
                     <th class="table-header-repeat line-left minwidth-1"><a href="">URL</a></th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Status</a></th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Created</a></th>
-                    <th class="table-header-options line-left"><a href="">Options</a></th>
                 </tr>
 {% for request in requests %}
                 <tr>
@@ -75,14 +74,10 @@
                     <td><a href="{{ path('UrbantCConvertBundle_request_detail', {'id': request.id}) }}">{{ request.url }}</a></td>
                     <td>{{ request.getStatusName() }}</td>
                     <td>{{ request.created|date('Y-m-d H:i:s') }}</td>
-                    <td class="options-width">
-                    <a href="" title="Edit" class="icon-1 info-tooltip"></a>
-                    <a href="" title="Edit" class="icon-2 info-tooltip"></a>
-                    </td>
                 </tr>
 {% else %}
             <tr>
-            <td colspan="6">No item found.</td>
+            <td colspan="5">No item found.</td>
             </tr>
 
 {% endfor %}

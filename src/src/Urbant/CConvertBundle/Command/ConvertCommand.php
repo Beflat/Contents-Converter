@@ -55,6 +55,13 @@ class ConvertCommand extends ContainerAwareCommand {
             try {
                 //ルールを取得
                 $rule = $request->getRule();
+                if(!$rule) {
+                    $request->setStatus($request::STATE_FAILED);
+                    $em->persist($request);
+                    $em->flush();
+                    continue;
+                }
+                
                 $request->setStatus($request::STATE_INPROCESS);
                 $output->writeln('Rule name:' . $request->getRule()->getName());
                 

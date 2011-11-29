@@ -70,7 +70,7 @@ class ConvertRequest
         0 => '未処理',
         10 => '処理中',
         20 => '処理成功',
-        30 => '処理失敗',
+        40 => '処理失敗',
     );
 
     const STATE_WAIT = 0;

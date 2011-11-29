@@ -60,7 +60,7 @@
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Title</a>   </th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Status</a></th>
                     <th class="table-header-repeat line-left minwidth-1"><a href="">Created</a></th>
-                    <th class="table-header-options line-left"><a href="">Options</a></th>
+                    <th class="table-header-options line-left"><a href="">Download</a></th>
                 </tr>
 {% for content in contents %}
                 <tr>
@@ -76,7 +76,7 @@
                     <td>{{ content.created|date('Y-m-d H:i:s') }}</td>
                     <td class="options-width">
                     {% if content.isDone()  %}
-                        <a href="{{ path('UrbantCConvertBundle_content_dl', {'id': content.id}) }}" title="Download" class="icon-1 info-tooltip"></a>
+                        <a href="{{ path('UrbantCConvertBundle_content_dl', {'id': content.id}) }}" title="Download" class="icon-dl info-tooltip"></a>
                     {% endif %}
                     </td>
                 </tr>

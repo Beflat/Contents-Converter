@@ -176,7 +176,7 @@ class ContentController extends BaseAdminController
         }
         
         //TODO: 基準ディレクトリをどうするか検討する
-        $basePath = '/var/www/data/contents_convert/src/app/cache/dev/epub';
+        $basePath = $this->container->getParameter('urbant_cconvert.content_dir_path');
         $filePath = $basePath . $content->getDataFilePath();
         
         if(!is_file($filePath)) {
@@ -194,6 +194,10 @@ class ContentController extends BaseAdminController
 //         $response->send();
 //         @readfile($filePath);
 //         echo 'aaa';
+        
+        $content->setStatus($content::STATE_DOWNLOADED);
+        $this->getEntityManager()->flush();
+        
         return $response;        
         }
 }
