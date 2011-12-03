@@ -39,15 +39,19 @@ class InitCommand extends ContainerAwareCommand {
         $contentsDirPath = $this->getContainer()->getParameter('urbant_cconvert.content_dir_path');
         
         if(!is_dir($contentsDirPath)) {
-            throw new Exception($contentsDirPath . ' is not directory.');
+            throw new \Exception($contentsDirPath . ' is not directory.');
         }
         
-        $command = 'rm -rf ' . $contentsDirPath . '/* 2>1&';
+        $command = 'rm -rf ' . $contentsDirPath . '/* 2>&1';
         $output->writeln($command);
         
-         if(!exec($command)) {
-             throw new Exception('Failed to execute command: ' . $command);
-         }
+        $result = array();
+        $status = 0;
+        if(exec($command, $result, $status) != 0) {
+            throw new \Exception('Failed to execute command: ' . $command . "\n" 
+                . "Result: " . var_export($result, true) . "\n"
+                . "Status: " . $status);
+        }
     }
     
     

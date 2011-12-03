@@ -37,6 +37,7 @@ class ConvertCommand extends ContainerAwareCommand {
     
     protected function execute(InputInterface $input, OutputInterface $output) {
         
+        $contentService = $this->getContainer()->get('urbant_cconvert.content_service');
         
         //リクエストの一覧を取得する
         $em = $this->getContainer()->get('doctrine')->getEntityManager();
@@ -45,8 +46,6 @@ class ConvertCommand extends ContainerAwareCommand {
         $request = new ConvertRequest();
         $requests = $requestLogRepo->getRequests(array('status'=>$request::STATE_WAIT));
         $output->writeln('Total count:' . count($requests));
-        
-        $contentsRootDir = $this->getContainer()->getParameter('urbant_cconvert.content_dir_path');
         
         //ループが長いので複数のブロックに分解する
         foreach($requests as $request) {
@@ -80,7 +79,7 @@ class ConvertCommand extends ContainerAwareCommand {
                 
                 //保存先ディレクトリの決定
                 //TODO:基準ディレクトリの取得方法を考える
-                $outputDir = $contentsRootDir . $content->getDataDirPath();
+                $outputDir = $contentService->getContentDirPath($content);
                 $workDir = $outputDir . '/work';
                 $resDir = $workDir . '/res';
                 if(!is_dir($resDir)) {
@@ -170,7 +169,7 @@ class ConvertCommand extends ContainerAwareCommand {
                 $item->setData('page', 'page.xhtml', $contentTypeDetector->detectFromExt('xhtml'));
                 $epubEngine->addItem($item);
                 $epubEngine->setMainContentId('page');
-                $epubEngine->setEpubFileName($content->getDataFileName());
+                $epubEngine->setEpubFileName($contentService->getContentFileName($content));
                 
                 //変換の実行
                 $epubEngine->execute();

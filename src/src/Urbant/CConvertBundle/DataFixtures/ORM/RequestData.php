@@ -61,6 +61,18 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         $req7->setStatus(0);
         $manager->persist($req7);
         
+//         $req8 = new ConvertRequest();
+//         $req8->setRule(null);
+//         $req8->setUrl('http://www.sakimura.org/2011/11/1289/');
+//         $req8->setStatus(0);
+//         $manager->persist($req8);
+        
+//         $req9 = new ConvertRequest();
+//         $req9->setRule(null);
+//         $req9->setUrl('');
+//         $req9->setStatus(0);
+//         $manager->persist($req9);
+        
         $manager->flush();
         
         $this->addReference('req_symfony_1', $req1);

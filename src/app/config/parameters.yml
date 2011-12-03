@@ -5,9 +5,9 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     localhost
     database_port:     
-    database_name:     symfony
-    database_user:     root
-    database_password: 
+    database_name:     cc
+    database_user:     cc
+    database_password: cc
 
     mailer_transport:  smtp
     mailer_host:       localhost
@@ -16,4 +16,8 @@ parameters:
 
     locale:            en
 
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            oihjjkdfope90ujnkl
+
+    urbant_cconvert.convert_request_service.class: Urbant\CConvertBundle\Service\ConvertRequestService
+    urbant_cconvert.content_service.class: Urbant\CConvertBundle\Service\ContentService
+    urbant_cconvert.content_dir_path: /var/www/data/contents_convert/src/app/contents

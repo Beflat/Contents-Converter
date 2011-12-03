@@ -168,6 +168,8 @@ class ContentController extends BaseAdminController
     
     public function downloadAction($id) {
         
+        $contentService = $this->get('urbant_cconvert.content_service');
+        
         $contentRepo = $this->getRepository('UrbantCConvertBundle:Content');
         
         $content = $contentRepo->find($id);
@@ -175,9 +177,7 @@ class ContentController extends BaseAdminController
             throw $this->createNotFoundException('ID:' . $id . ' was not found.');
         }
         
-        //TODO: 基準ディレクトリをどうするか検討する
-        $basePath = $this->container->getParameter('urbant_cconvert.content_dir_path');
-        $filePath = $basePath . $content->getDataFilePath();
+        $filePath = $contentService->getContentFilePath($content);
         
         if(!is_file($filePath)) {
             throw $this->createNotFoundException('Content file was not found.' . $filePath);
@@ -190,7 +190,6 @@ class ContentController extends BaseAdminController
         $response->setStatusCode(200);
         $response->headers->set('Content-Type', 'application/epub+zip');
         $response->headers->set('Content-Disposition', 'attachment;filename="' . basename($filePath) . '"');
-//         prints the HTTP headers followed by the content
 //         $response->send();
 //         @readfile($filePath);
 //         echo 'aaa';
@@ -198,6 +197,6 @@ class ContentController extends BaseAdminController
         $content->setStatus($content::STATE_DOWNLOADED);
         $this->getEntityManager()->flush();
         
-        return $response;        
-        }
+        return $response;
+    }
 }
