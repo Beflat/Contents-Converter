@@ -2,10 +2,12 @@
 
 {% block field_row %}
 {% spaceless %}
-    <div class="field-section">
-        {{ form_label(form, label|default(null)) }}
-        {{ form_errors(form) }}
-        {{ form_widget(form) }}
+    <div class="control-group">
+        <label class="control-label">{{ form_label(form, label|default(null)) }}</label>
+        <div class="controls">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+        </div>
     </div>
 {% endspaceless %}
 {% endblock field_row %}
@@ -26,3 +28,19 @@
     {% endif %}
 {% endspaceless %}
 {% endblock datetime_widget %}
+
+{% block date_widget %}
+{% spaceless %}
+    {% if widget == 'single_text' %}
+        {{ block('field_widget') }}
+    {% else %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ date_pattern|replace({
+                '{{ year }}':  form_widget(form.year),
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}':   form_widget(form.day),
+            })|raw }}
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock date_widget %}

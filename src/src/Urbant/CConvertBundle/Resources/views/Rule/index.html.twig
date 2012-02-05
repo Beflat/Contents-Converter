@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'UrbantCConvertBundle:Common:base.html.twig' %}
 
 {% block body %}
     <!--  start page-heading -->
@@ -7,19 +7,24 @@
     </div>
     <!-- end page-heading -->
 
-<div class="search-form">
-    <form action="{{ path('UrbantCConvertBundle_rule_list') }}" method="GET" >
+<div class="well">
+    <form action="{{ path('UrbantCConvertBundle_rule_list') }}" method="GET" class="form-horizontal">
+        <fieldset>
+            <legend>Search</legend>
     {{ form_widget(search_form) }}
     
-    <input type="submit" value="SEARCH" />
+    <input type="submit" value="SEARCH" class="btn-primary" />
     
     </form>
 </div>
 
-<div class="pagination">
+<div class="row">
 
-</div>
-
+{#
+    <div class="pagerfanta">
+        {{ pagerfanta(my_pager) }}
+    </div>
+#}
 
 {% if app.session.hasFlash('rule_message') %}
                 <!--  start message-green -->
@@ -34,65 +39,42 @@
                 <!--  end message-green -->
 {% endif %}
 
-    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
-    <tr>
-        <th rowspan="3" class="sized"><img src="{{ asset('bundles/urbantcconvert/images/shared/side_shadowleft.jpg') }}" width="20" height="300" alt="" /></th>
-        <th class="topleft"></th>
-        <td id="tbl-border-top">&nbsp;</td>
-        <th class="topright"></th>
-        <th rowspan="3" class="sized"><img src="{{ asset('bundles/urbantcconvert/images/shared/side_shadowright.jpg') }}" width="20" height="300" alt="" /></th>
-    </tr>
-    <tr>
-        <td id="tbl-border-left"></td>
-        <td>
-        <!--  start content-table-inner ...................................................................... START -->
-        <div id="content-table-inner">
-        
-        <form id="mainform" action="{{ path('UrbantCConvertBundle_rule_batch') }}" method="POST" >
-            <!--  start table-content  -->
-            <div id="table-content">
-            
-                <!--  start product-table ..................................................................................... -->
-                <table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
-                <tr>
-                    <th class="table-header-check"><a id="toggle-all" ></a> </th>
-                    <th class="table-header-repeat line-left minwidth-1"><a href="">Name</a>   </th>
-                    <th class="table-header-repeat line-left minwidth-1"><a href="">Created</a></th>
-                    <th class="table-header-options line-left"><a href="">Options</a></th>
-                </tr>
+    <form id="mainform" action="{{ path('UrbantCConvertBundle_rule_batch') }}" method="POST" >
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><a id="toggle-all" ></a> </th>
+                <th><a href="">Name</a>   </th>
+                <th><a href="">Created</a></th>
+                <th><a href="">Options</a></th>
+            </tr>
 {% for rule in rules %}
-                <tr>
-                    <td><input type="checkbox" name="ids[]" value="{{ rule.id }}" /></td>
-                    <td><a href="{{ path('UrbantCConvertBundle_rule_edit', {'id': rule.id}) }}">{{ rule.name }}</a></td>
-                    <td>{{ rule.created|date('Y-m-d H:i:s') }}</td>
-                    <td class="options-width">
-                    <a href="" title="Edit" class="icon-1 info-tooltip"></a>
-                    <a href="" title="Edit" class="icon-2 info-tooltip"></a>
-                    </td>
-                </tr>
+            <tr>
+                <td><input type="checkbox" name="ids[]" value="{{ rule.id }}" /></td>
+                <td><a href="{{ path('UrbantCConvertBundle_rule_edit', {'id': rule.id}) }}">{{ rule.name }}</a></td>
+                <td>{{ rule.created|date('Y-m-d H:i:s') }}</td>
+                <td>
+                <a href="" title="Edit"></a>
+                <a href="" title="Edit"></a>
+                </td>
+            </tr>
 {% else %}
             <tr>
-            <td colspan="4">No item found.</td>
+                <td colspan="4">No item found.</td>
             </tr>
-
 {% endfor %}
-
-                </table>
-                <!--  end product-table................................... --> 
-            </div>
-            <!--  end content-table  -->
-        
-            <!--  start actions-box ............................................... -->
-            <div id="actions-box">
-                <select name="type">
-                    <option value="d">DELETE</option>
-                </select>
-                
-                <input type="submit" name="submit" value="実行" />
-                
-            </div>
-            <!-- end actions-box........... -->
-        </form>
+        </table>
+    
+        <!--  start actions-box ............................................... -->
+        <div class="well">
+            <select name="type">
+                <option value="d">DELETE</option>
+            </select>
+            
+            <input type="submit" name="submit" value="実行" />
+            
+        </div>
+        <!-- end actions-box........... -->
+    </form>
 
             <!--  start paging.....................................................
             <table border="0" cellpadding="0" cellspacing="0" id="paging-table">
@@ -116,18 +98,6 @@
             </table>
             <!--  end paging................ -->
             
-            <div class="clear"></div>
-         
-        </div>
-        <!--  end content-table-inner ............................................END  -->
-        </td>
-        <td id="tbl-border-right"></td>
-    </tr>
-    <tr>
-        <th class="sized bottomleft"></th>
-        <td id="tbl-border-bottom">&nbsp;</td>
-        <th class="sized bottomright"></th>
-    </tr>
-    </table>
-    <div class="clear">&nbsp;</div>
+</div>
+
 {% endblock %}

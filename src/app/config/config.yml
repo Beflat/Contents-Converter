@@ -60,3 +60,8 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
+services:
+    pagerfanta.view.default:
+        class: Pagerfanta\View\DefaultView
+        public: false
+        tags: [{ name: pagerfanta.view, alias: default }]

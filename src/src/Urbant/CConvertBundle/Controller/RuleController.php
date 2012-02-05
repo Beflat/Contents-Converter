@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Urbant\CConvertBundle\Form\RuleSearchType;
 use Urbant\CConvertBundle\Form\RuleType;
 use Urbant\CConvertBundle\Entity\Rule;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\ArrayAdapter;
 
 class RuleController extends BaseAdminController
 {
@@ -31,6 +33,18 @@ class RuleController extends BaseAdminController
         
         $rules = $ruleRepo->getRules($searchConditions);
 
+        
+        $adapter = new ArrayAdapter($rules);
+        $pagerfanta = new Pagerfanta($adapter);
+        //$pagerfanta->setMaxPerPage(); // 10 by default
+        $maxPerPage = $pagerfanta->getMaxPerPage();
+        
+        //$pagerfanta->setCurrentPage($currentPage); // 1 by default
+        $currentPage = $pagerfanta->getCurrentPage();
+        
+        $nbResults = $pagerfanta->getNbResults();
+        $currentPageResults = $pagerfanta->getCurrentPageResults();        
+        
         return $this->render('UrbantCConvertBundle:Rule:index.html.twig',
             array('rules' => $rules, 'search_form' => $form->createView(),
         ));
