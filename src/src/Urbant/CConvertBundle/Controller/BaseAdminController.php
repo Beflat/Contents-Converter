@@ -93,11 +93,20 @@ abstract class BaseAdminController extends Controller
         
         $this->initMenues();
         
+        $currentSubMenues = array();
+        foreach ($this->menues as $menuId => $menu) {
+            if($this->pageCatId == $menuId) {
+            	$currentSubMenues = $menu['sub'];
+            }
+            
+        }
+        
         //共通のパラメータ
         $this->templateParams = array(
            '_pageId' => $this->pageId,
            '_catId' => $this->pageCatId,
            '_menues' => $this->menues,
+           '_subMenues' => $currentSubMenues
         );
 
         //呼び出し元のパラメータで上書きする

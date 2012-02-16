@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     
     <link rel="stylesheet" href="{{ asset('bundles/urbantcconvert/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/urbantcconvert/style.css') }}">
     <script type="text/javascript" src="{{ asset('bundles/urbantcconvert/bootstrap/js/bootstrap.min.js') }}"></script>
     
 </head>
@@ -34,8 +35,18 @@
                         </ul>
                     </div>
                 </div>
+                <div class="subnav ">
+                    <div class="subnav-inner ">
+                        <div class="container">
+                            <ul class="nav nav-pills subnav-menues">
+{% for subMenuCatId, subMenuCat in _subMenues %}
+                                <li><a href="{{ subMenuCat.url }}">{{ subMenuCat.name }}</a></li>
+{% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
         </header>
     
     
