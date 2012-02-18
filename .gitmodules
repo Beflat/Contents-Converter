@@ -1,3 +1,6 @@
-[submodule "vendor/bundles/WhiteOctober/PagerfantaBundle"]
-	path = vendor/bundles/WhiteOctober/PagerfantaBundle
+[submodule "src/vendor/pagerfanta"]
+	path = src/vendor/pagerfanta
+	url = http://github.com/whiteoctober/Pagerfanta.git
+[submodule "src/vendor/bundles/WhiteOctober/PagerfantaBundle"]
+	path = src/vendor/bundles/WhiteOctober/PagerfantaBundle
 	url = http://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
