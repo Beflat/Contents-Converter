@@ -1,20 +1,22 @@
 {% extends 'UrbantCConvertBundle:Common:base.html.twig' %}
 
 {% block body %}
-    <h1>Rule</h1>
-
-<div class="well">
-    <form action="{{ path('UrbantCConvertBundle_rule_list') }}" method="GET" class="form-horizontal">
-        <fieldset>
-            <legend>Search</legend>
-    {{ form_widget(search_form) }}
-    
-    <input type="submit" value="SEARCH" class="btn-primary" />
-    
-    </form>
-</div>
 
 <div class="row">
+
+    <h1>Rule</h1>
+
+    <div class="well">
+        <form action="{{ path('UrbantCConvertBundle_rule_list') }}" method="GET" class="form-horizontal">
+            <fieldset>
+                <legend>Search</legend>
+        {{ form_widget(search_form) }}
+        
+        <input type="submit" value="SEARCH" class="btn-primary" />
+        
+        </form>
+    </div>
+
 
 {#
     <div class="pagerfanta">
@@ -23,16 +25,7 @@
 #}
 
 {% if app.session.hasFlash('rule_message') %}
-                <!--  start message-green -->
-                <div id="message-green">
-                <table border="0" width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="green-left">{{ app.session.flash('rule_message') }}</td>
-                    <td class="green-right"><a class="close-green"><img src="{{ asset('bundles/urbantcconvert/images/table/icon_close_green.gif') }}"   alt="" /></a></td>
-                </tr>
-                </table>
-                </div>
-                <!--  end message-green -->
+    <div class="alert alert-success">{{ app.session.flash('rule_message') }}</div>
 {% endif %}
 
     <form id="mainform" action="{{ path('UrbantCConvertBundle_rule_batch') }}" method="POST" >
