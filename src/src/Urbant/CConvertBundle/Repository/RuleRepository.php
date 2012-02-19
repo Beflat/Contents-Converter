@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityRepository;
 class RuleRepository extends EntityRepository
 {
     
-    public function getRules($searchConditions) {
+    public function getQueryBuilderForSearch($searchConditions) {
        $qb = $this->createQueryBuilder('r')
            ->select('r')
            ->addOrderBy('r.created', 'DESC');
@@ -28,7 +28,7 @@ class RuleRepository extends EntityRepository
            $qb->setParameter('created_to', $searchConditions['created_to']);
        }
        
-        return $qb->getQuery()->getResult();
+        return $qb;
     }
     
     

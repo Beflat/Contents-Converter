@@ -13,11 +13,16 @@ use Doctrine\ORM\EntityRepository;
 class ContentRepository extends EntityRepository
 {
     
-    public function getContents($searchConditions) {
+    public function getQueryBuilderForSearch($searchConditions) {
        $qb = $this->createQueryBuilder('s')
            ->select('s')
            ->addOrderBy('s.created', 'DESC');
-        
+       
+       if(isset($searchConditions['status']) && $searchConditions['status'] !== '') {
+           $qb->andWhere('s.status= :status');
+           $qb->setParameter('status', $searchConditions['status']);
+       }
+       
        if(isset($searchConditions['created_from']) && $searchConditions['created_from'] != '') {
            $qb->andWhere("s.created >= :created_from");
            $qb->setParameter('created_from', $searchConditions['created_from']);
@@ -27,7 +32,7 @@ class ContentRepository extends EntityRepository
            $qb->setParameter('created_to', $searchConditions['created_to']);
        }
        
-        return $qb->getQuery()->getResult();
+       return $qb;
     }
     
     

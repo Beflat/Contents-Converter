@@ -7,7 +7,7 @@ use Urbant\CConvertBundle\Form\RuleSearchType;
 use Urbant\CConvertBundle\Form\RuleType;
 use Urbant\CConvertBundle\Entity\Rule;
 use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 
 class RuleController extends BaseAdminController
 {
@@ -31,23 +31,24 @@ class RuleController extends BaseAdminController
         
         $searchConditions = $form->getData();
         
-        $rules = $ruleRepo->getRules($searchConditions);
+        $qb = $ruleRepo->getQueryBuilderForSearch($searchConditions);
 
         
-        $adapter = new ArrayAdapter($rules);
+        $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
-        //$pagerfanta->setMaxPerPage(); // 10 by default
-        $maxPerPage = $pagerfanta->getMaxPerPage();
-        
-        //$pagerfanta->setCurrentPage($currentPage); // 1 by default
-        $currentPage = $pagerfanta->getCurrentPage();
+        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
         
         $nbResults = $pagerfanta->getNbResults();
-        $currentPageResults = $pagerfanta->getCurrentPageResults();        
+        $rules = $pagerfanta->getCurrentPageResults();
         
-        return $this->render('UrbantCConvertBundle:Rule:index.html.twig',
-            array('rules' => $rules, 'search_form' => $form->createView(),
-        ));
+        $vars = array(
+        	'rules' => $rules, 
+        	'search_form' => $form->createView(),
+        	'pager' => $pagerfanta
+        );
+        
+        return $this->render('UrbantCConvertBundle:Rule:index.html.twig', $vars);
     }
 
 

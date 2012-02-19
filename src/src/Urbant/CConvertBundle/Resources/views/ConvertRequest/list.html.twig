@@ -13,14 +13,13 @@
         </form>
     </div>
     
-    <div class="pagination">
-    
-    </div>
-
-
 {% if app.session.hasFlash('convert_request_message') %}
 	<div class="alert alert-success">{{ app.session.flash('convert_request_message') }}</div>
 {% endif %}
+
+    <div class="pagination">
+        {{ pagerfanta(pager, 'twitter_bootstrap') }}
+    </div>
 
     <form action="{{ path('UrbantCConvertBundle_request_batch') }}" method="POST" >
         <table class="table table-bordered table-striped">
@@ -54,6 +53,10 @@
 
         </table>
     </form>
+
+    <div class="pagination">
+        {{ pagerfanta(pager, 'twitter_bootstrap') }}
+    </div>
 
     <div class="well">
         <select name="type">

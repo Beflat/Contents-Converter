@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Urbant\CConvertBundle\Form\ContentSearchType;
 use Urbant\CConvertBundle\Entity\Content;
 use Urbant\CConvertBundle\Form\SiteType;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
 
 class ContentController extends BaseAdminController
 {
@@ -24,24 +26,31 @@ class ContentController extends BaseAdminController
         $this->pageId = 'list';
         
         $em = $this->getDoctrine()->getEntityManager();
-        $siteRepo = $em->getRepository('UrbantCConvertBundle:Content');
-
-        //         $paginator = new \Zend_Paginator(new \Zend_Paginator_Adapter_Null(30));
-        //         $paginator->setCurrentPageNumber($page);
-        //         $paginator->setItemCountPerPage(10);
-
+        $contentRepo = $em->getRepository('UrbantCConvertBundle:Content');
 
         $form = $this->createForm(new ContentSearchType());
         $request = $this->getRequest();
         $form->bindRequest($request);
         
         $searchConditions = $form->getData();
+        $qb = $contentRepo->getQueryBuilderForSearch($searchConditions);
         
-        $contents = $siteRepo->getContents($searchConditions);
-
-        return $this->render('UrbantCConvertBundle:Content:list.html.twig',
-            array('contents' => $contents, 'search_form' => $form->createView(),
-        ));
+        $adapter = new DoctrineORMAdapter($qb);
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
+        
+        $contents = $pagerfanta->getCurrentPageResults();
+        $searchResultsCount = $pagerfanta->getNbResults();
+        $currentPage = $pagerfanta->getCurrentPage();
+        
+        $vars = array(
+            'contents' => $contents,
+            'search_form' => $form->createView(),
+            'pager' => $pagerfanta,
+            'search_results_count' => $searchResultsCount
+        );
+        return $this->render('UrbantCConvertBundle:Content:list.html.twig', $vars);
     }
 
 

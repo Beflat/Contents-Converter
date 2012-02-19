@@ -2,10 +2,14 @@
 
 namespace Urbant\CConvertBundle\Controller;
 
+use Pagerfanta\Pagerfanta;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Urbant\CConvertBundle\Form\ConvertRequestSearchType;
 use Urbant\CConvertBundle\Entity\ConvertRequest;
 use Urbant\CConvertBundle\Form\ConvertRequestType;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+
 
 class ConvertRequestController extends BaseAdminController
 {
@@ -21,23 +25,29 @@ class ConvertRequestController extends BaseAdminController
     {
         $this->pageId = 'list';
         $reqRepo = $this->getRepository('UrbantCConvertBundle:ConvertRequest');
-
-        //         $paginator = new \Zend_Paginator(new \Zend_Paginator_Adapter_Null(30));
-        //         $paginator->setCurrentPageNumber($page);
-        //         $paginator->setItemCountPerPage(10);
-
-
+        
         $form = $this->createForm(new ConvertRequestSearchType());
         $request = $this->getRequest();
         $form->bindRequest($request);
         
         $searchConditions = $form->getData();
         
-        $requests = $reqRepo->getRequests($searchConditions);
+        $qb = $reqRepo->getQueryBuilderForSearch($searchConditions);
+        
+        $adapter = new DoctrineORMAdapter($qb);
+        $pagerfanta = new Pagerfanta($adapter);
+        
+        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
+        $requests = $pagerfanta->getCurrentPageResults();
 
-        return $this->render('UrbantCConvertBundle:ConvertRequest:list.html.twig',
-            array('requests' => $requests, 'search_form' => $form->createView(),
-        ));
+        $vars = array(
+            'requests' => $requests, 
+            'search_form' => $form->createView(),
+            'pager' => $pagerfanta
+        );
+        
+        return $this->render('UrbantCConvertBundle:ConvertRequest:list.html.twig', $vars);
     }
 
 
