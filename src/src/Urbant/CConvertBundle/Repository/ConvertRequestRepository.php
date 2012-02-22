@@ -10,11 +10,20 @@ use Doctrine\ORM\EntityRepository;
 class ConvertRequestRepository extends EntityRepository
 {
     
+    /**
+     * 
+     * @param unknown_type $searchConditions
+     * @return \Doctrine\ORM\QueryBuilder
+     */
     public function getQueryBuilderForSearch($searchConditions) {
        $qb = $this->createQueryBuilder('r')
            ->select('r')
            ->addOrderBy('r.created', 'DESC');
        
+       if(isset($searchConditions['rule']) && $searchConditions['rule'] != '') {
+           $qb->andWhere("r.rule = :rule");
+           $qb->setParameter('rule', $searchConditions['rule']);
+       }
        if(isset($searchConditions['created_from']) && $searchConditions['created_from'] != '') {
            $qb->andWhere("r.created >= :created_from");
            $qb->setParameter('created_from', $searchConditions['created_from']);

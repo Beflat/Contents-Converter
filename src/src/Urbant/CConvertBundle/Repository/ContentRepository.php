@@ -14,21 +14,26 @@ class ContentRepository extends EntityRepository
 {
     
     public function getQueryBuilderForSearch($searchConditions) {
-       $qb = $this->createQueryBuilder('s')
-           ->select('s')
-           ->addOrderBy('s.created', 'DESC');
+       $qb = $this->createQueryBuilder('c')
+           ->select('c')
+           ->addOrderBy('c.created', 'DESC');
+       
+       if(isset($searchConditions['rule']) && $searchConditions['rule'] !== '') {
+           $qb->andWhere('c.rule= :rule');
+           $qb->setParameter('rule', $searchConditions['rule']);
+       }
        
        if(isset($searchConditions['status']) && $searchConditions['status'] !== '') {
-           $qb->andWhere('s.status= :status');
+           $qb->andWhere('c.status= :status');
            $qb->setParameter('status', $searchConditions['status']);
        }
        
        if(isset($searchConditions['created_from']) && $searchConditions['created_from'] != '') {
-           $qb->andWhere("s.created >= :created_from");
+           $qb->andWhere("c.created >= :created_from");
            $qb->setParameter('created_from', $searchConditions['created_from']);
        }
        if(isset($searchConditions['created_to']) && $searchConditions['created_to'] != '') {
-           $qb->andWhere("s.created <= :created_to");
+           $qb->andWhere("c.created <= :created_to");
            $qb->setParameter('created_to', $searchConditions['created_to']);
        }
        

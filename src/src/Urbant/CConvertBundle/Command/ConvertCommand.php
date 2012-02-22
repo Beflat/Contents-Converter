@@ -42,9 +42,10 @@ class ConvertCommand extends ContainerAwareCommand {
         //リクエストの一覧を取得する
         $em = $this->getContainer()->get('doctrine')->getEntityManager();
         $requestLogRepo = $em->getRepository('UrbantCConvertBundle:ConvertRequest');
+        $qbForRequestLog = $requestLogRepo->getQueryBuilderForSearch(array('status'=>$request::STATE_WAIT));
         
         $request = new ConvertRequest();
-        $requests = $requestLogRepo->getRequests(array('status'=>$request::STATE_WAIT));
+        $requests = $qbForRequestLog->getQuery()->getResult();
         $output->writeln('Total count:' . count($requests));
         
         //ループが長いので複数のブロックに分解する

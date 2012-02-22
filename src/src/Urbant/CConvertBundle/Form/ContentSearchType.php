@@ -13,9 +13,9 @@ class ContentSearchType extends AbstractType
         $content = new Content();
         
         $builder
-            ->add('site', 'entity', array('class'=>'UrbantCConvertBundle:Site',
+            ->add('rule', 'entity', array('class'=>'UrbantCConvertBundle:Rule',
                 'query_builder' => function($repo) {
-                        return $repo->createQueryBuilder('s')->orderBy('s.created', 'DESC');
+                        return $repo->createQueryBuilder('r')->orderBy('r.created', 'DESC');
                     },
             		'required'=>false))
             ->add('status', 'choice', array('choices' => $content->getStatusList(), 'required'=>false))
