@@ -118,3 +118,8 @@ UrbantCConvertBundle_content_dl:
 UrbantCConvertBundle_content_batch:
     pattern:  /content/batch
     defaults: { _controller: UrbantCConvertBundle:Content:batch }
+
+
+UrbantCConvertBundle_api_get_content:
+    pattern:  /api/content/get
+    defaults: { _controller: UrbantCConvertBundle:Content:apiGet }

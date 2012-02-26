@@ -65,7 +65,8 @@ class Content
      */
     private $updated;
 
-    
+    const STATE_INPROCESS = 0;
+    const STATE_FAILED = 10;
     const STATE_UNREAD = 20;
     const STATE_DOWNLOADED = 30;
     const STATE_READ = 40;

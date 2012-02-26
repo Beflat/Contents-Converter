@@ -2,6 +2,7 @@
 parameters:
     urbant_cconvert.convert_request_service.class: Urbant\CConvertBundle\Service\ConvertRequestService
     urbant_cconvert.content_service.class: Urbant\CConvertBundle\Service\ContentService
+    urbant_cconvert.content_api_service.class: Urbant\CConvertBundle\Service\ContentApiService
     urbant_cconvert.content_dir_path: /var/www/data/contents_convert/src/app/contents
 
 services:
@@ -11,8 +12,15 @@ services:
     urbant_cconvert.content_service:
         class: %urbant_cconvert.content_service.class%
         arguments: [@doctrine.orm.entity_manager]
+    urbant_cconvert.content_api_service:
+        class: %urbant_cconvert.content_api_service.class%
+
     twig_extension_text:
         class: Twig_Extensions_Extension_Text
+        tags:
+            - {name: twig.extension}
+    twig_extension_debug:
+        class: Twig_Extensions_Extension_Debug
         tags:
             - {name: twig.extension}
 

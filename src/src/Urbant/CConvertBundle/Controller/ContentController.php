@@ -14,9 +14,9 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 class ContentController extends BaseAdminController
 {
 
-    
+
     protected $pageCatId = 'content';
-    
+
     /**
      * コンテンツの一覧表示
      * @param unknown_type $page
@@ -24,26 +24,26 @@ class ContentController extends BaseAdminController
     public function listAction()
     {
         $this->pageId = 'list';
-        
+
         $em = $this->getDoctrine()->getEntityManager();
         $contentRepo = $em->getRepository('UrbantCConvertBundle:Content');
 
         $form = $this->createForm(new ContentSearchType());
         $request = $this->getRequest();
         $form->bindRequest($request);
-        
+
         $searchConditions = $form->getData();
         $qb = $contentRepo->getQueryBuilderForSearch($searchConditions);
-        
+
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage(5);
         $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
-        
+
         $contents = $pagerfanta->getCurrentPageResults();
         $searchResultsCount = $pagerfanta->getNbResults();
         $currentPage = $pagerfanta->getCurrentPage();
-        
+
         $vars = array(
             'contents' => $contents,
             'search_form' => $form->createView(),
@@ -60,9 +60,9 @@ class ContentController extends BaseAdminController
     public function batchAction($page) {
 
         //TODO: このままだとページング情報等を引き回せない。
-        
+
         $this->pageId = 'list';
-        
+
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('UrbantCConvertBundle:Site');
@@ -86,7 +86,7 @@ class ContentController extends BaseAdminController
     public function addAction() {
 
         $this->pageId = 'add';
-        
+
         $site = new Site();
         $form = $this->createForm(new SiteType(), $site);
         $vars = array(
@@ -102,7 +102,7 @@ class ContentController extends BaseAdminController
     public function createAction() {
 
         $this->pageId = 'add';
-        
+
         $site = new Site();
         $form = $this->createForm(new SiteType(), $site);
 
@@ -129,83 +129,108 @@ class ContentController extends BaseAdminController
      * 編集画面の表示
      */
     public function editAction($id) {
-        
+
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('UrbantCConvertBundle:Site');
-        
+
         $site = $repository->find($id);
         if(!$site) {
             throw new $this->createNotFoundException('ID:' . $id . 'のサイトは存在しません。');
         }
-        
+
         $form = $this->createForm(new SiteType(), $site);
-        
+
         $vars = array(
             'siteId' => $id,
             'form' => $form->createView(),
         );
         return $this->render('UrbantCConvertBundle:Site:edit.html.twig', $vars);
     }
-    
-    
+
+
     public function updateAction($id) {
-        
+
         $em = $this->getDoctrine()->getEntityManager();
         $site = $em->getRepository('UrbantCConvertBundle:Site')->find($id);
         if(!$site) {
             throw new $this->createNotFoundException('ID:' . $id . 'のサイトは存在しません。');
-         }
+        }
         $form = $this->createForm(new SiteType(), $site);
-        
+
         $request = $this->getRequest();
         $form->bindRequest($request);
-        
+
         if($form->isValid()) {
             $em->flush();
-            
+
             $this->get('session')->setFlash('message', 'サイト情報を更新しました。');
             $this->redirect($this->generateUrl('UrbantCConvertBundle_site_edit', array('id' => $id), true));
         }
-        
+
         $vars = array(
             'siteId' => $id,
             'form' => $form->createView()
         );
         return $this->render('UrbantCConvertBundle:Site:edit.html.twig', $vars);
     }
-    
-    
+
+
     public function downloadAction($id) {
-        
+
         $contentService = $this->get('urbant_cconvert.content_service');
-        
+
         $contentRepo = $this->getRepository('UrbantCConvertBundle:Content');
-        
+
         $content = $contentRepo->find($id);
         if(!$content) {
             throw $this->createNotFoundException('ID:' . $id . ' was not found.');
         }
-        
+
         $filePath = $contentService->getContentFilePath($content);
-        
+
         if(!is_file($filePath)) {
             throw $this->createNotFoundException('Content file was not found.' . $filePath);
         }
-        
+
         $contentData = @file_get_contents($filePath);
-        
+
         $response = new Response($contentData);
         //$response->setContent('aaa');
         $response->setStatusCode(200);
         $response->headers->set('Content-Type', 'application/epub+zip');
         $response->headers->set('Content-Disposition', 'attachment;filename="' . basename($filePath) . '"');
-//         $response->send();
-//         @readfile($filePath);
-//         echo 'aaa';
-        
+        //         $response->send();
+        //         @readfile($filePath);
+        //         echo 'aaa';
+
         $content->setStatus($content::STATE_DOWNLOADED);
         $this->getEntityManager()->flush();
+
+        return $response;
+    }
+
+
+    /**
+     * WebAPIによるコンテンツ一覧取得
+     */
+    public function apiGetAction()
+    {
+        $this->pageId = 'list';
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $contentRepo = $em->getRepository('UrbantCConvertBundle:Content');
+        
+        $qb = $contentRepo->getQueryBuilderForSearch(array());
+        $contents = $qb->getQuery()->getResult();
+        
+        $contentApiService = $this->get('urbant_cconvert.content_api_service');
+        $xmlContent = $contentApiService->getContentXml($contents);
+        
+        $response = new Response($xmlContent);
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'text/xml');
         
         return $response;
     }
+
 }
