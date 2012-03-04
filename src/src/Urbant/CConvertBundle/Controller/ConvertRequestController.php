@@ -193,4 +193,47 @@ class ConvertRequestController extends BaseAdminController
         
         return $this->render('UrbantCConvertBundle:ConvertRequest:detail.html.twig', $vars);
     }
+    
+    
+    public function apiPostAction() {
+        $urls = $this->getRequest()->request->get('urls');
+        
+        $result = "OK";
+        $errorMessage = "";
+        
+        $em = $this->getEntityManager();
+        $convertRequestService = $this->get('urbant_cconvert.convert_request_service');
+        
+        $logger = $this->get('logger');
+        
+        try {
+            if(is_array($urls)) {
+                foreach($urls as $url) {
+                    
+                    $logger->info($url);
+                    
+                    $convertRequest = null;
+                    $convertRequest = new ConvertRequest();
+                    
+                    $convertRequest->setCreated(new DateTime());
+                    $convertRequest->setUrl($url);
+                    $convertRequest->setStatus(ConvertRequest::STATE_WAIT);
+                    
+                    //変換ルールの自動判定などを行ってから保存
+                    $convertRequestService->saveRequest($convertRequest);
+                    
+                    $em->flush();
+                }
+            }
+        } catch (Exception $e) {
+            $errorMessage = $e->getMessage();
+            $result = "NG";
+        }
+        
+        $vars = array(
+            'result' => $result,
+            'error_message' => $errorMessage
+        );
+        return $this->render('UrbantCConvertBundle:ConvertRequest:api_post.html.twig', $vars);
+    }
 }

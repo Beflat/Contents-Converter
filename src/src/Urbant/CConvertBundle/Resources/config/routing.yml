@@ -123,3 +123,8 @@ UrbantCConvertBundle_content_batch:
 UrbantCConvertBundle_api_get_content:
     pattern:  /api/content/get
     defaults: { _controller: UrbantCConvertBundle:Content:apiGet }
+
+UrbantCConvertBundle_api_request_post:
+    pattern:  /api/request/post
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:apiPost }
+
