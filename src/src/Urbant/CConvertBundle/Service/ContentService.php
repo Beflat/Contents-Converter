@@ -38,7 +38,7 @@ class ContentService extends ContainerAware {
      */
     public function getContentDirPath(Content $content) {
         $basePath = $this->container->getParameter('urbant_cconvert.content_dir_path');
-        return sprintf('%s/%010d', $basePath, $content->getById());
+        return sprintf('%s/%010d', $basePath, $content->getId());
     }
     
     

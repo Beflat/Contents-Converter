@@ -52,20 +52,20 @@
 {% endfor %}
 
         </table>
+
+        <div class="pagination">
+            {{ pagerfanta(pager, 'twitter_bootstrap') }}
+        </div>
+    
+        <div class="well">
+            <select name="type">
+                <option value="d">DELETE</option>
+            </select>
+            
+            <input type="submit" name="submit" value="実行" class="btn-warning" />
+            
+        </div>
     </form>
-
-    <div class="pagination">
-        {{ pagerfanta(pager, 'twitter_bootstrap') }}
-    </div>
-
-    <div class="well">
-        <select name="type">
-            <option value="d">DELETE</option>
-        </select>
-        
-        <input type="submit" name="submit" value="実行" class="btn-warning" />
-        
-    </div>
 
 </div>
 {% endblock %}

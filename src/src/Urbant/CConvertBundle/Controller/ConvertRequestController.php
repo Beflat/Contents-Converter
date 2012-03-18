@@ -62,7 +62,7 @@ class ConvertRequestController extends BaseAdminController
         
         $request = $this->getRequest();
         $repository = $this->getRepository('UrbantCConvertBundle:ConvertRequest');
-        $type = $request->get('type');
+        $type = $request->request->get('type');
 
         switch($type) {
             case 'd':
@@ -210,12 +210,10 @@ class ConvertRequestController extends BaseAdminController
             if(is_array($urls)) {
                 foreach($urls as $url) {
                     
-                    $logger->info($url);
-                    
                     $convertRequest = null;
                     $convertRequest = new ConvertRequest();
                     
-                    $convertRequest->setCreated(new DateTime());
+                    //$convertRequest->setCreated(new DateTime());
                     $convertRequest->setUrl($url);
                     $convertRequest->setStatus(ConvertRequest::STATE_WAIT);
                     
@@ -223,17 +221,15 @@ class ConvertRequestController extends BaseAdminController
                     $convertRequestService->saveRequest($convertRequest);
                     
                     $em->flush();
+                    $logger->info($url);
                 }
             }
         } catch (Exception $e) {
             $errorMessage = $e->getMessage();
             $result = "NG";
+            $logger->info($e->getMessage());
         }
         
-        $vars = array(
-            'result' => $result,
-            'error_message' => $errorMessage
-        );
-        return $this->render('UrbantCConvertBundle:ConvertRequest:api_post.html.twig', $vars);
+        return new Response($result . ":" . $errorMessage);
     }
 }

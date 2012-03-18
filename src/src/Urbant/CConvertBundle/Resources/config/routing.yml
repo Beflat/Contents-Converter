@@ -70,6 +70,8 @@ UrbantCConvertBundle_rule_update:
 UrbantCConvertBundle_request_list:
     pattern:  /request/{page}
     defaults: { _controller: UrbantCConvertBundle:ConvertRequest:list, page: 1 }
+    requirements:
+      page: \d+
 
 UrbantCConvertBundle_request_add:
     pattern:  /request/add

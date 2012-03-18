@@ -12,6 +12,8 @@ services:
     urbant_cconvert.content_service:
         class: %urbant_cconvert.content_service.class%
         arguments: [@doctrine.orm.entity_manager]
+        calls:
+          - [setContainer, [ @service_container ] ]
     urbant_cconvert.content_api_service:
         class: %urbant_cconvert.content_api_service.class%
 
