@@ -199,6 +199,7 @@ class ContentController extends BaseAdminController
         $response->setStatusCode(200);
         $response->headers->set('Content-Type', 'application/epub+zip');
         $response->headers->set('Content-Disposition', 'attachment;filename="' . basename($filePath) . '"');
+        $response->headers->set('Content-Length', strlen($contentData));
         //         $response->send();
         //         @readfile($filePath);
         //         echo 'aaa';
