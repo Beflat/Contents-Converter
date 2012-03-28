@@ -180,11 +180,18 @@ class ConvertCommand extends ContainerAwareCommand {
                 //コンテンツ(Model)の更新(状態、ファイル名)
                 $content->setStatus(20);
                 $request->setStatus($request::STATE_SUCCEEDED);
+                $request->setTitle($contentTitle);
                 $content->setTitle($contentTitle);
                 $em->persist($content);
                 $em->persist($request);
                 $em->flush();
             } catch(Exception $e) {
+                
+                if(is_object($scrapingEngine)) {
+                    $contentTitle = $scrapingEngine->getTitle();
+                    $request->setTitle($contentTitle);
+                }
+                
                 $logger = $this->getContainer()->get('logger');
                 $logger->error($e->getMessage() . "\n" . var_export(debug_backtrace(), true));
                 $request->appendLog($e->getMessage());

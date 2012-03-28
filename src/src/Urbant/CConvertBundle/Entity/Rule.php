@@ -38,7 +38,8 @@ class Rule
      * @ORM\Column(name="file_path", type="string", length=255)
      */
     private $file_path;
-
+    
+    
     /**
      * リクエストログ(のURL)と変換ルールのマッチングに使用する
      * 正規表現文字列
@@ -299,4 +300,5 @@ class Rule
     {
         return $this->matching_rule;
     }
+
 }

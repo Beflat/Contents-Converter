@@ -3,7 +3,7 @@
 namespace Urbant\CConvertBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-
+use Urbant\CConvertBundle\Scraping\HtmlLoader;
 use Urbant\CConvertBundle\Entity\ConvertRequest;
 
 /**
@@ -34,6 +34,8 @@ class ConvertRequestService {
      */
     public function saveRequest(ConvertRequest $request) {
         
+        $this->setHtmlTitle($request);
+        
         if(is_null($request->getRule())) {
             //URLにマッチするルールを検索する。
             $ruleRepo = $this->entityManager->getRepository('UrbantCConvertBundle:Rule');
@@ -51,6 +53,23 @@ class ConvertRequestService {
         if(!$request->getId()) {
             $this->entityManager->persist($request);
         }
+    }
+    
+    
+    private function setHtmlTitle($request) {
+        
+        $htmlLoader = new HtmlLoader($request->getUrl());
+        if(!$htmlLoader->loadHtml()) {
+            $request->appendLog($htmlLoader->getError());
+            return;
+        }
+        
+        $request->setTitle($htmlLoader->getTitle());
+    }
+    
+    
+    private function resolveUrl() {
+        
     }
     
 }

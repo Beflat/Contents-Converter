@@ -32,6 +32,15 @@ class ConvertRequest
      * @ORM\JoinColumn(name="rule_id", referencedColumnName="id")
      */
     private $rule;
+    
+    
+    /**
+     * @var string $title
+     * 
+     * @ORM\Column(name="title", type="text", length="1024")
+     */
+    private $title;
+    
 
     /**
      * @var string $url
@@ -245,4 +254,24 @@ class ConvertRequest
     }
     
     
+
+    /**
+     * Set title
+     *
+     * @param text $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return text 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }

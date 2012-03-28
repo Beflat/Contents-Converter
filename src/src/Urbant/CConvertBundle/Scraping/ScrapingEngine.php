@@ -242,6 +242,11 @@ class ScrapingEngine {
      * @return boolean
      */
     protected function stripComment(&$content) {
+        
+        //この処理は以下で置換できるかもしれな]い
+        //$pattern = "#(<!--(.*?)-->)#";
+        //return preg_replace($pattern, '', $content);
+        
     
         $beginPos = mb_strpos($content, '<!--');
         if($beginPos === false) {
