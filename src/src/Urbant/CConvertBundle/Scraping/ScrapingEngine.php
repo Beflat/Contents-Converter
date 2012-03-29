@@ -244,25 +244,25 @@ class ScrapingEngine {
     protected function stripComment(&$content) {
         
         //この処理は以下で置換できるかもしれな]い
-        //$pattern = "#(<!--(.*?)-->)#";
-        //return preg_replace($pattern, '', $content);
-        
-    
-        $beginPos = mb_strpos($content, '<!--');
-        if($beginPos === false) {
-            return false;
-        }
-    
-        $endPos = mb_strpos($content, '-->', $beginPos+3);
-        if($endPos === false) {
-            return false;
-        }
-    
-        $newContent = mb_substr($content, 0, $beginPos);
-        $newContent .= mb_strcut($content, $endPos+3);
-        $content = $newContent;
-    
-        return $this->stripComment($content);
+        $pattern = "#(<!--(.*?)-->)#";
+        $content = preg_replace($pattern, '', $content);
+//         
+//     
+        // $beginPos = mb_strpos($content, '<!--');
+        // if($beginPos === false) {
+            // return false;
+        // }
+//     
+        // $endPos = mb_strpos($content, '-->', $beginPos+3);
+        // if($endPos === false) {
+            // return false;
+        // }
+//     
+        // $newContent = mb_substr($content, 0, $beginPos);
+        // $newContent .= mb_strcut($content, $endPos+3);
+        // $content = $newContent;
+//     
+        // return $this->stripComment($content);
     }
     
     

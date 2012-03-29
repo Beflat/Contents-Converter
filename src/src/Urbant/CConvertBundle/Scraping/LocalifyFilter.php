@@ -111,6 +111,7 @@ class LocalifyFilter implements FilterInterface{
     
         $ch = curl_init($sourceURL);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     
         $response = curl_exec($ch);
         if(!$response) {

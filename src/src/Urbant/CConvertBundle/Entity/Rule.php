@@ -43,9 +43,9 @@ class Rule
     /**
      * リクエストログ(のURL)と変換ルールのマッチングに使用する
      * 正規表現文字列
-     * @ORM\Column(name="matching_rule", type="string", length=255)
+     * @ORM\Column(name="matching_rule", type="string", length=255, nullable=true)
      */
-    private $matching_rule;
+    private $matching_rule='';
 
     /**
      * @var date $created
@@ -64,7 +64,7 @@ class Rule
     
     /**
      * @ORM\ManyToOne(targetEntity="Site")
-     * @ORM\JoinColumn(name="site_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="site_id", referencedColumnName="id", nullable=true)
      */
     private $site;
     
@@ -78,16 +78,16 @@ class Rule
 
 
     /**
-     * @ORM\Column(name="paginate_xpath", type="string", length="255")
+     * @ORM\Column(name="paginate_xpath", type="string", length="255", nullable=true)
      * TODO: 本来はフィールドとしては持たず設定情報の一分として持たせる
      */
-    private $paginate_xpath;
+    private $paginate_xpath = '';
     
     
     /**
-     * @ORM\Column(name="cookie", type="text", length="4096")
+     * @ORM\Column(name="cookie", type="text", length="4096", nullable=true)
      */
-    private $cookie;
+    private $cookie = '';
 
 
     /**

@@ -101,6 +101,10 @@ class RuleController extends BaseAdminController
         $form->bindRequest($request);
 
         if($form->isValid()) {
+            
+            //ダミー
+            $rule->setMatchingRule(' ');
+            
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($rule);
             
@@ -151,7 +155,7 @@ class RuleController extends BaseAdminController
         if($form->isValid()) {
             $em->flush();
     
-            $this->get('session')->setFlash('form_edit_message', '変換ルールを更新しました。');
+            $this->get('session')->setFlash('rule.edit.message', '変換ルールを更新しました。');
             $this->redirect($this->generateUrl('UrbantCConvertBundle_rule_edit', array('id' => $id), true));
         }
     

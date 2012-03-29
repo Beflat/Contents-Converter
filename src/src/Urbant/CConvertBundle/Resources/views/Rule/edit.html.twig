@@ -5,9 +5,9 @@
 
 <h1>Edit site</h1>
 
-{% if app.session.hasFlash('rule_edit_message') %}
+{% if app.session.hasFlash('rule.edit.message') %}
 <div class="alert alert-success">
-{{ app.session.flash('rule_edit_message') }}
+{{ app.session.flash('rule.edit.message') }}
 </div>
 {% endif %}
 

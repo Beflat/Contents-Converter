@@ -5,8 +5,10 @@
 
 <h1>Add rule</h1>
 
-{% if app.session.hasFlash('rule_add_message') %}
-{{ app.session.flash('rule_add_message') }}
+{% if app.session.hasFlash('rule.add.message') %}
+<div class="alert alert-success">
+{{ app.session.flash('rule.add.message') }}
+</div>
 {% endif %}
 
 

@@ -19,9 +19,10 @@ class RuleType extends AbstractType
                     'required' => false
                 ))
             ->add('xpath')
-            ->add('paginate_xpath')
+            ->add('paginate_xpath', 'text', array('required'=>false))
+            ->add('matching_rule', 'text')
             ->add('file_path')
-            ->add('cookie')
+            ->add('cookie', 'textarea', array('required'=>false))
         ;
     }
 

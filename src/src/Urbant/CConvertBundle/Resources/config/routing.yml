@@ -38,6 +38,8 @@ UrbantCConvertBundle_homepage:
 UrbantCConvertBundle_rule_list:
     pattern:  /rule/{page}
     defaults: { _controller: UrbantCConvertBundle:Rule:list, page: 1 }
+    requirements:
+      page: \d+
 
 UrbantCConvertBundle_rule_add:
     pattern:  /rule/add
