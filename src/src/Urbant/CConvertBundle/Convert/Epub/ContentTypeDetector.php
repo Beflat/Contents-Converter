@@ -48,7 +48,7 @@ class ContentTypeDetector {
                 
             case 'ncx':
                 //epub固有
-                return 'text/xml';
+                return 'application/x-dtbncx+xml';
         }
         
         return false;

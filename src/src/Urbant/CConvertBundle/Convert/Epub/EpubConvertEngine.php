@@ -169,8 +169,10 @@ class EpubConvertEngine {
     protected function getTocString() {
         
         $uuid = $this->uuid;
-        $title = $this->title;
+        $title = htmlentities($this->title, ENT_QUOTES, 'UTF-8');
         $author = 'Epub Generate Engine';
+        
+        EntityEscape::replaceAllEntities($title);
         
         //TODO: $this->itemsを参照しない方法を考える
         $contentXhtmlName = '';
@@ -188,7 +190,7 @@ class EpubConvertEngine {
     <meta name="dtb:maxPageNumber" content="0"/>
   </head>
   <docTitle>
-    <text>' . htmlentities($title, ENT_QUOTES, 'UTF-8') . '</text>
+    <text>' . $title . '</text>
   </docTitle>
   <docAuthor>
     <text>' . htmlentities($author, ENT_QUOTES, 'UTF-8') . '</text>
@@ -207,11 +209,16 @@ class EpubConvertEngine {
     
     protected function getPackageOpfString() {
         $uuid = $this->uuid;
-        $title = $this->title;
+        $title = htmlentities($this->title, ENT_QUOTES, 'UTF-8');
+        EntityEscape::replaceAllEntities($title);
+        
         $publisher = 'Epub Generate Engine';
         $author = 'Epub Generate Engine';
         
-        $itemString = '';
+        $tocItem = new Item();
+        $tocItem->setData('ncx', 'toc.ncx', 'application/x-dtbncx+xml');
+        
+        $itemString = "\n" . $tocItem->getDataByXml()."\n";
         foreach($this->items->getItems() as $item) {
             $itemString .= $item->getDataByXml() . "\n";
         }
@@ -219,7 +226,7 @@ class EpubConvertEngine {
         return '<?xml version="1.0" encoding="UTF-8"?>
 <package version="2.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookId">
  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
-   <dc:title>' . htmlentities($title, ENT_QUOTES, 'UTF-8') . '</dc:title>
+   <dc:title>' . $title . '</dc:title>
    <dc:creator opf:role="aut">' . htmlentities($author, ENT_QUOTES, 'UTF-8') . '</dc:creator>
    <dc:language>ja</dc:language>
    <dc:publisher>' . htmlentities($publisher, ENT_QUOTES, 'UTF-8') . '</dc:publisher>

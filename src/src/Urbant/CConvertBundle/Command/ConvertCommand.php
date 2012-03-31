@@ -156,7 +156,7 @@ class ConvertCommand extends ContainerAwareCommand {
                         
                         //Itemを生成、コレクションに追加
                         $item = new Item();
-                        $id = $item->slugify(basename($dirItem));
+                        $id = 'item_' . $item->slugify(basename($dirItem));
                         $item->setData($id, 'res/' . basename($dirItem), $contentType);
                         $epubEngine->addItem($item);
                     }

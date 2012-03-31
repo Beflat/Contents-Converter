@@ -37,7 +37,7 @@ class ContentController extends BaseAdminController
 
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setMaxPerPage(20);
         $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
 
         $contents = $pagerfanta->getCurrentPageResults();

@@ -58,11 +58,11 @@ class Item {
      */
     public function getDataByXml() {
         
-        $id = $this->id;
+        $id = str_replace('.', '_', htmlentities($this->id, ENT_QUOTES));
         $href = $this->href;
         $mediaType = $this->mediaType;
         
-        return '<item id="' . htmlentities($id, ENT_QUOTES) . '" href="' . htmlentities($href, ENT_QUOTES) . '" media-type="' . htmlentities($mediaType, ENT_QUOTES) . '" />';
+        return '<item id="' . $id . '" href="' . htmlentities($href, ENT_QUOTES) . '" media-type="' . htmlentities($mediaType, ENT_QUOTES) . '" />';
     }
     
     
