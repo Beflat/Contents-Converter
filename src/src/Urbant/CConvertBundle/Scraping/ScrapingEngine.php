@@ -274,6 +274,7 @@ class ScrapingEngine {
      */
     protected function initResultDocument(\DomDocument $srcDoc) {
         //TODO: DOCTYPE宣言の取得も行う
+        //TODO: 元ドキュメントのHTML5のドキュメントはなぜか文字化けする。
         
         $baseElement = $this->resultDoc->createElement('html');
         //$this->resultDoc->importNode($baseElement, true);
@@ -284,6 +285,7 @@ class ScrapingEngine {
             $baseElement->setAttribute($attrName, $attr->value);
         }
         $baseElement->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+        $baseElement->setAttribute('xml:lang', 'ja');
         
         
         $headElement = $this->resultDoc->createElement('head');
@@ -296,6 +298,7 @@ class ScrapingEngine {
 //            DomDocument<meta>
 //             $headElement->appendChild($importedMetaTag);
 //         }
+
         $importedMetaTag = $this->resultDoc->createElement('meta');
         $importedMetaTag->setAttribute('http-equiv', 'Content-Type');
         $importedMetaTag->setAttribute('content', 'application/xhtml+xml; charset=UTF-8');

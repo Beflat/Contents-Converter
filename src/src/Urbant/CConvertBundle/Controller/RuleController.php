@@ -36,7 +36,7 @@ class RuleController extends BaseAdminController
         
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage(5);
+        $pagerfanta->setMaxPerPage(20);
         $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
         
         $nbResults = $pagerfanta->getNbResults();
@@ -101,9 +101,6 @@ class RuleController extends BaseAdminController
         $form->bindRequest($request);
 
         if($form->isValid()) {
-            
-            //ダミー
-            $rule->setMatchingRule(' ');
             
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($rule);
