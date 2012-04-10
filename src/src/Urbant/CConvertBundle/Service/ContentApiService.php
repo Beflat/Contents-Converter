@@ -16,6 +16,7 @@ class ContentApiService {
             $contentTag->setAttribute('id', $content->getId());
             $contentTag->setAttribute('status', $content->getStatus());
             $contentTag->setAttribute('rule', $content->getRule()->getName());
+            $contentTag->setAttribute('date', $content->getCreated()->format('Y-m-d H:i:s'));
             
             $title = $content->getTitle();
             if($title == '') {
