@@ -74,7 +74,7 @@ class ConvertCommand extends ContainerAwareCommand {
                 $content->setRequest($request);
                 $content->setRule($rule);
                 $content->setTitle('');
-                $content->setStatus(0);  //TODO:状態コードを定義する
+                $content->setStatus(Content::STATE_INPROCESS);  //TODO:状態コードを定義する
                 
                 $em->persist($request);
                 $em->persist($content);
@@ -178,8 +178,18 @@ class ConvertCommand extends ContainerAwareCommand {
                 $epubEngine->execute();
                 
                 //コンテンツ(Model)の更新(状態、ファイル名)
-                $content->setStatus(20);
-                $request->setStatus($request::STATE_SUCCEEDED);
+                $contentLength = strlen($scrapedContent);
+                if($contentLength < 500) {
+                    //コンテンツの全体長が極端に短い場合、変換に失敗した可能性があるので、
+                    //コンテンツは保存するがリクエストログはエラーで保存する。
+                    $request->setStatus($request::STATE_FAILED);
+                    $request->appendLog('解析後のコンテンツの長さが' . $contentLength . 'Bでした。解析に失敗している可能性があります。');
+                } else {
+                    $request->setStatus($request::STATE_SUCCEEDED);
+                }
+                $content->setStatus(Content::STATE_UNREAD );
+                
+                
                 $request->setTitle($contentTitle);
                 $content->setTitle($contentTitle);
                 $em->persist($content);
