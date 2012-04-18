@@ -81,7 +81,6 @@ class ConvertCommand extends ContainerAwareCommand {
                 $em->flush();
                 
                 //保存先ディレクトリの決定
-                //TODO:基準ディレクトリの取得方法を考える
                 $outputDir = $contentService->getContentDirPath($content);
                 $workDir = $outputDir . '/work';
                 $resDir = $workDir . '/res';

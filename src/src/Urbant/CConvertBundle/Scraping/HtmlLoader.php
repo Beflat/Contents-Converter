@@ -59,6 +59,9 @@ class HtmlLoader {
             return false;
         }
         
+        //ここでUTF-8に変換しておく
+        $this->content = mb_convert_encoding($this->content, 'UTF-8', 'auto');
+        
         $this->loadFailed = false;
         return true;
     }
@@ -74,6 +77,8 @@ class HtmlLoader {
             return $this->domDoc;
         }
         $this->domDoc = new \DomDocument($version, $encoding);
+        
+        $this->content = preg_replace('|<head>|i', '<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>', $this->content);
         
         $convertedHtml = $this->content;
         $this->stripComment($convertedHtml);

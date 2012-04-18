@@ -63,6 +63,9 @@ class ScrapingEngine {
                 $xPathString = $order->getXPathString();
                 $htmlText = $this->loadContentText($file);
                 
+                //HTML5のコンテンツはmetaタグ
+                $htmlText = preg_replace('|<head>|i', '<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>', $htmlText);
+                
                 //XPathで絞り込みを行う
                 $domDoc = new \DOMDocument('1.0', 'UTF-8');
                 @$domDoc->loadHtml($htmlText);
@@ -196,6 +199,9 @@ class ScrapingEngine {
         if(!$response) {
             throw new \Exception(curl_error($ch) . "\nURL:" . $url);
         }
+        
+        //ここでUTF-8に変換する
+        $response = mb_convert_encoding($response, 'UTF-8', 'auto');
         
         //  $response = file_get_contents('response.txt');
     
