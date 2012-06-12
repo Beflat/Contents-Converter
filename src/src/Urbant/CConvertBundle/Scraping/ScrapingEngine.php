@@ -63,9 +63,6 @@ class ScrapingEngine {
                 $xPathString = $order->getXPathString();
                 $htmlText = $this->loadContentText($file);
                 
-                //HTML5のコンテンツはmetaタグ
-                $htmlText = preg_replace('|<head>|i', '<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>', $htmlText);
-                
                 //XPathで絞り込みを行う
                 $domDoc = new \DOMDocument('1.0', 'UTF-8');
                 @$domDoc->loadHtml($htmlText);
@@ -88,6 +85,7 @@ class ScrapingEngine {
                 $content = '';
                 foreach($scrapedNodes as $entry) {
                     $bodyTag->appendChild($this->resultDoc->importNode($entry, true));
+                    //$this->resultDoc->importNode($entry, true);
                 }
                 
                 $order->setStatus(Order::STATE_SUCCEED);
@@ -160,10 +158,16 @@ class ScrapingEngine {
         
         //抜き出した結果が属性値であると仮定してURLのリストを作る
         $urlList = array();
+        $registeredUrl = array();
         foreach($entries as $entry) {
-            $urlList[] = $this->getCompleteUrl($url, $entry->nodeValue);
+            $url = $this->getCompleteUrl($url, $entry->nodeValue);
+            //重複するURLは除外しながらリストを作っていく。
+            if(isset($registeredUrl[$url])) {
+                continue;
+            }
+            $registeredUrl[$url] = 1;
+            $urlList[] = $url;
         }
-        
         return $urlList;
     }
     
@@ -186,7 +190,6 @@ class ScrapingEngine {
             $url = 'http:' . $url;
         }
         
-        //TODO: CURLではなくSymfonyの機能を使用する。
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -201,7 +204,13 @@ class ScrapingEngine {
         }
         
         //ここでUTF-8に変換する
-        $response = mb_convert_encoding($response, 'UTF-8', 'auto');
+        $response = mb_convert_encoding($response, 'UTF-8', 'SJIS,EUC-JP,JIS,UTF-8,ASCII');
+        
+        //libxmlの文字コードの仕様対策。文字コードをmetaタグのContent-Typeで判定するので、EUC-JPのコンテンツや、HTML5のコンテンツ用に
+        //UTF-8の文字コード指定付きのmetaタグを追加する。
+        //libxml的には最初に見つけたContent-Typeで判定するようなので、charset=EUC-JPなどのmetaタグがすでにある場合でも辛うじてUTF-8として認識させられる。
+        //本来は、オリジナルのmetaタグのcharsetをUTF-8に書き換えた方がよいと思われる。
+        $response = preg_replace('|<head>|i', '<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>', $response);
         
         //  $response = file_get_contents('response.txt');
     

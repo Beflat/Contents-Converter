@@ -60,7 +60,7 @@ class HtmlLoader {
         }
         
         //ここでUTF-8に変換しておく
-        $this->content = mb_convert_encoding($this->content, 'UTF-8', 'auto');
+        $this->content = mb_convert_encoding($this->content, 'UTF-8', 'SJIS,EUC-JP,JIS,UTF-8,ASCII');
         
         $this->loadFailed = false;
         return true;
