@@ -71,3 +71,7 @@
     git=http://github.com/symfony/DoctrineFixturesBundle.git
     target=/bundles/Symfony/Bundle/DoctrineFixturesBundle
 
+
+[BeflatLib]
+    git=git://urban-theory.net/beflat_lib
+

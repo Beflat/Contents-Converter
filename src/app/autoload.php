@@ -15,9 +15,9 @@ $loader->registerNamespaces(array(
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
-    'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
 	'WhiteOctober\PagerfantaBundle' => __DIR__.'/../vendor/bundles',
     'Pagerfanta'                    => __DIR__.'/../vendor/pagerfanta/src',
+    'Beflat' => __DIR__.'/../vendor/BeflatLib/lib',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

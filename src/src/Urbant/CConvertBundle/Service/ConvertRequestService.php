@@ -5,6 +5,9 @@ namespace Urbant\CConvertBundle\Service;
 use Doctrine\ORM\EntityManager;
 use Urbant\CConvertBundle\Scraping\HtmlLoader;
 use Urbant\CConvertBundle\Entity\ConvertRequest;
+use Beflat\HttpClient\HttpClientCurl;
+use Beflat\HttpClient\UrlResolver;
+use Beflat\HttpClient\Exceptions\HttpException;
 
 /**
  * リクエストログに関する共通処理を定義するクラス。
@@ -35,6 +38,19 @@ class ConvertRequestService {
     public function saveRequest(ConvertRequest $request) {
         
         $this->setHtmlTitle($request);
+        
+        //URLの展開を試みる。
+        //リダイレクトがなくなるまでHTTPリクエストを繰り返す。
+        //リダイレクトの指示がなくなった時点でのURLでリクエスト自体のURLを置き換える。
+        try {
+            $httpClient = new HttpClientCurl();
+            $urlResolver = new UrlResolver($httpClient);
+            $urlResolver->init($request->getUrl());
+            $resolvedUrl = $urlResolver->resolve();
+            $request->setUrl($resolvedUrl);
+        } catch(HttpException $httpClientException) {
+            $request->appendLog('URLの自動展開に失敗しました。Status Code=' . $httpClientException->getMessage());
+        }
         
         if(is_null($request->getRule())) {
             //URLにマッチするルールを検索する。

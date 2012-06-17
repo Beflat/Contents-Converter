@@ -240,7 +240,7 @@ class ConvertRequest
             $this->log .= $delimiter;
         }
         
-        $this->log .= $log;
+        $this->log .= sprintf("%s: %s\n", date('Y-m-d H:i:s'), $log);
     }
     
     /**
