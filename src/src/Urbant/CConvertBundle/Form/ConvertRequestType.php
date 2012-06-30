@@ -3,13 +3,13 @@
 namespace Urbant\CConvertBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 use Doctrine\ORM\EntityRepository;
 use Urbant\CConvertBundle\Entity\ConvertRequest;
 
 class ConvertRequestType extends AbstractType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $convertRequest = new ConvertRequest();
         $builder

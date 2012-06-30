@@ -70,7 +70,7 @@ class Rule
     
     
     /**
-     * @ORM\Column(name="xpath", type="string", length="255")
+     * @ORM\Column(name="xpath", type="string", length=255)
      * 
      * TODO: 本来はフィールドとしては持たず設定情報の一分として持たせる
      */
@@ -78,14 +78,14 @@ class Rule
 
 
     /**
-     * @ORM\Column(name="paginate_xpath", type="string", length="255", nullable=true)
+     * @ORM\Column(name="paginate_xpath", type="string", length=255, nullable=true)
      * TODO: 本来はフィールドとしては持たず設定情報の一分として持たせる
      */
     private $paginate_xpath = '';
     
     
     /**
-     * @ORM\Column(name="cookie", type="text", length="4096", nullable=true)
+     * @ORM\Column(name="cookie", type="text", length=4096, nullable=true)
      */
     private $cookie = '';
 

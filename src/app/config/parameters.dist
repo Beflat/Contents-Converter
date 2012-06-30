@@ -1,0 +1,15 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: '3306'
+    database_name: cc
+    database_user: xxx
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: ja
+    secret: xxxxxxxxxxxx
+
+    urbant_cconvert.content_dir_path: [Path to Contents directory]
