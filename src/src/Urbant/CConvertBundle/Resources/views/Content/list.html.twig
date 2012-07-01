@@ -21,9 +21,9 @@
     </div>
 
 
-{% if app.session.hasFlash('content_list_message') %}
-    <div class="alert alert-success">{{ app.session.flash('content_listmessage') }}</div>
-{% endif %}
+{% for flashMessage in app.session.flashbag.get('content_list_message') %}
+<div class="alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
 
     <form action="{{ path('UrbantCConvertBundle_content_batch') }}" method="POST" >
         <table class="table table-bordered table-striped" >

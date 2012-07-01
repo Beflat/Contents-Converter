@@ -5,11 +5,11 @@
 
 <h1>Edit site</h1>
 
-{% if app.session.hasFlash('rule.edit.message') %}
+{% for flashMessage in app.session.flashbag.get('rule.edit.message') %}
 <div class="alert alert-success">
-{{ app.session.flash('rule.edit.message') }}
+{{ flashMessage }}
 </div>
-{% endif %}
+{% endfor %}
 
 
 <div class="form">

@@ -5,11 +5,9 @@
 <div class="row">
     <h1>Add request</h1>
     
-    {% if app.session.hasFlash('request_add_message') %}
-    <div class="alert alert-success">{{ app.session.flash('request_add_message') }}</div>
-    {% endif %}
-
-
+    {% for flashMessage in app.session.flashbag.get('request_add_message') %}
+    <div class="alert alert-success">{{ flashMessage }}</div>
+    {% endfor %}
 
     <form action="{{ path('UrbantCConvertBundle_request_create') }}" method="post" {{ form_enctype(form) }} >
         {{ form_widget(form) }}

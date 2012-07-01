@@ -5,12 +5,11 @@
 
 <h1>Add rule</h1>
 
-{% if app.session.hasFlash('rule.add.message') %}
+{% for flashMessage in app.session.flashbag.get('rule.add.message') %}
 <div class="alert alert-success">
-{{ app.session.flash('rule.add.message') }}
+{{ flashMessage }}
 </div>
-{% endif %}
-
+{% endfor %}
 
 <form action="{{ path('UrbantCConvertBundle_rule_create') }}" method="post" {{ form_enctype(form) }} >
 	{{ form_widget(form) }}

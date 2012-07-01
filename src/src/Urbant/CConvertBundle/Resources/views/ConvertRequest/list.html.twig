@@ -13,9 +13,9 @@
         </form>
     </div>
     
-{% if app.session.hasFlash('convert_request_message') %}
-	<div class="alert alert-success">{{ app.session.flash('convert_request_message') }}</div>
-{% endif %}
+{% for flashMessage in app.session.flashbag.get('convert_request_message') %}
+<div class="alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
 
     <div class="pagination">
         {{ pagerfanta(pager, 'twitter_bootstrap') }}

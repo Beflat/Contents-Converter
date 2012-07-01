@@ -6,11 +6,11 @@
 
 <h1>Edit site</h1>
 
-{% if app.session.hasFlash('message') %}
+{% for flashMessage in app.session.flashbag.get('message') %}
 <div class="alert alert-success">
-{{ app.session.flash('message') }}
+{{ flashMessage }}
 </div>
-{% endif %}
+{% endfor %}
 
 
 <div class="form">

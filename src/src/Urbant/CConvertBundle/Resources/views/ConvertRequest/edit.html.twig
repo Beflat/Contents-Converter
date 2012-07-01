@@ -5,9 +5,9 @@
 <div class="row">
     <h1>Edit request</h1>
 
-{% if app.session.hasFlash('request_edit_message') %}
-	<div class="alert alert-success">{{ app.session.flash('request_edit_message') }}</div>
-{% endif %}
+{% for flashMessage in app.session.flashbag.get('request_edit_message') %}
+<div class="alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
 
 
     <form action="{{ path('UrbantCConvertBundle_request_update', {'id': requestId}) }}" method="post" {{ form_enctype(form) }} >

@@ -22,9 +22,9 @@
         {{ pagerfanta(pager, 'twitter_bootstrap') }}
     </div>
 
-{% if app.session.hasFlash('rule_message') %}
-    <div class="alert alert-success">{{ app.session.flash('rule_message') }}</div>
-{% endif %}
+{% for flashMessage in app.session.flashbag.get('rule_message') %}
+    <div class="alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
 
     <form id="mainform" action="{{ path('UrbantCConvertBundle_rule_batch') }}" method="POST" >
         <table class="table table-bordered table-striped">
