@@ -32,7 +32,7 @@ class ConvertRequestController extends BaseAdminController
         
         $searchConditions = $form->getData();
         
-        $qb = $reqRepo->getQueryBuilderForSearch($searchConditions);
+        $qb = $reqRepo->getQueryBuilderForSearch($searchConditions, array('sort_column'=>'updated', 'sort_dir'=>'desc'));
         
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
@@ -40,7 +40,7 @@ class ConvertRequestController extends BaseAdminController
         $pagerfanta->setMaxPerPage(20);
         $pagerfanta->setCurrentPage($request->attributes->get('page', 1));
         $requests = $pagerfanta->getCurrentPageResults();
-
+        
         $vars = array(
             'requests' => $requests, 
             'search_form' => $form->createView(),

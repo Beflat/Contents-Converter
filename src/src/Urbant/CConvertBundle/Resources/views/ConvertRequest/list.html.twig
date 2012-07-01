@@ -29,6 +29,7 @@
             <th><a href="">Title/URL</a></th>
             <th><a href="">Status</a></th>
             <th><a href="">Created</a></th>
+            <th><a href="">Updated</a></th>
         </tr>
 {% for request in requests %}
         <tr>
@@ -42,16 +43,17 @@
             </td>
             <td>
     {% if request.title != '' %}
-                <div >{{ request.title }}</div>
+                <p><a href="{{ path('UrbantCConvertBundle_request_detail', {'id': request.id}) }}">{{ request.title|default('無題')|mb_truncate(30) }}</a></p>
     {% endif %}
-                <a href="{{ path('UrbantCConvertBundle_request_detail', {'id': request.id}) }}">{{ request.url }}</a>
+                <p>{{ request.url|mb_truncate_middle(40) }}<a class="request-link" href="{{ request.url }}" title="{{ request.url }}" target="_blank"><i class="icon-share"></i></a></p>
             </td>
             <td>{{ request.getStatusName() }}</td>
             <td>{{ request.created|date('Y-m-d H:i:s') }}</td>
+            <td>{{ request.updated|date('Y-m-d H:i:s') }}</td>
         </tr>
 {% else %}
             <tr>
-            <td colspan="5">No item found.</td>
+            <td colspan="6">No item found.</td>
         </tr>
 
 {% endfor %}

@@ -2,8 +2,6 @@ imports:
     - { resource: config.yml }
 
 parameters:
-    database_name:     cc_prod
-    urbant_cconvert.content_dir_path: /var/www/data/cc.urban-theory.net/src/app/contents
 
 #doctrine:
 #    orm:

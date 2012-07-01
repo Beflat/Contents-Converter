@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class RuleControllerTest extends WebTestCase
 {
-    /*
     public function testCompleteScenario()
     {
+    /*
         // Create a new client to browse the application
         $client = static::createClient();
 
@@ -49,6 +49,6 @@ class RuleControllerTest extends WebTestCase
 
         // Check the entity has been delete on the list
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
-    }
     */
+    }
 }

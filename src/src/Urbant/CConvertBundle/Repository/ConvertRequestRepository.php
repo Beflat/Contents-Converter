@@ -15,10 +15,8 @@ class ConvertRequestRepository extends EntityRepository
      * @param unknown_type $searchConditions
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function getQueryBuilderForSearch($searchConditions) {
-       $qb = $this->createQueryBuilder('r')
-           ->select('r')
-           ->addOrderBy('r.created', 'DESC');
+    public function getQueryBuilderForSearch($searchConditions, $options=array()) {
+       $qb = $this->createQueryBuilder('r')->select('r');
        
        if(isset($searchConditions['rule']) && $searchConditions['rule'] != '') {
            $qb->andWhere("r.rule = :rule");
@@ -37,7 +35,12 @@ class ConvertRequestRepository extends EntityRepository
            $qb->setParameter('status', $searchConditions['status']);
        }
        
-        return $qb;
+       if(isset($options['sort_column'])) {
+           $sortDirection = (isset($options['sort_dir']) ? $options['sort_dir'] : 'ASC');
+           $qb->addOrderBy('r.' . $options['sort_column'], $sortDirection);
+       }
+       
+       return $qb;
     }
     
     

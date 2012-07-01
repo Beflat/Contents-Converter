@@ -25,6 +25,11 @@ services:
         class: Twig_Extensions_Extension_Debug
         tags:
             - {name: twig.extension}
+    
+    urbant_twig_extension_text:
+        class: Urbant\CConvertBundle\Twig\TextExtension
+        tags:
+            - {name: twig.extension}
 
     pagerfanta.view.default:
         class: Pagerfanta\View\DefaultView
