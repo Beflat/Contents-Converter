@@ -4,8 +4,8 @@
         {
             "package": "beflat/beflat_lib",
             "version": "dev-master",
-            "source-reference": "56c57453dfca107e82bd42c92d3ba45418a5e9c1",
-            "commit-date": "1341075795"
+            "source-reference": "1762ab0c820d0f8c782b62935db3655b8161f4fb",
+            "commit-date": "1341161536"
         },
         {
             "package": "doctrine/common",
@@ -98,8 +98,8 @@
         {
             "package": "sensio/framework-extra-bundle",
             "version": "dev-master",
-            "source-reference": "b9f630e35059f661a59ec4e0f5505b067fed4e55",
-            "commit-date": "1340889912"
+            "source-reference": "4f54e5d5fb3b54fb107892684018f3704934c48d",
+            "commit-date": "1341126219"
         },
         {
             "package": "sensio/generator-bundle",
@@ -109,7 +109,9 @@
         },
         {
             "package": "swiftmailer/swiftmailer",
-            "version": "v4.1.8"
+            "version": "dev-master",
+            "source-reference": "05b497ee28355a33eb521dcaf7526824e0dda3b2",
+            "commit-date": "1341154877"
         },
         {
             "package": "symfony/assetic-bundle",
@@ -120,14 +122,8 @@
         {
             "package": "symfony/monolog-bundle",
             "version": "dev-master",
-            "source-reference": "660a1aeaf93e8ffdc34c27b3a82dc47195ad1d8d",
-            "commit-date": "1340609637"
-        },
-        {
-            "package": "symfony/swiftmailer-bundle",
-            "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
+            "source-reference": "7fe7f711bb04b86ad7f45a9e11a7f8cbaf9bc1a5",
+            "commit-date": "1341078487"
         },
         {
             "package": "symfony/swiftmailer-bundle",
@@ -144,14 +140,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "alias-pretty-version": "2.1.x-dev",
-            "alias-version": "2.1.9999999.9999999-dev"
-        },
-        {
-            "package": "symfony/symfony",
-            "version": "dev-master",
-            "source-reference": "2e356c1ab9e19aa189a55310a084aef27761806c",
-            "commit-date": "1341081856"
+            "source-reference": "a1b73887f7de2a2549a7d2606b7803edc35af61d",
+            "commit-date": "1341134393"
         },
         {
             "package": "twig/extensions",

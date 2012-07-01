@@ -42,9 +42,7 @@
     {% endif %}
             </td>
             <td>
-    {% if request.title != '' %}
-                <p><a href="{{ path('UrbantCConvertBundle_request_detail', {'id': request.id}) }}">{{ request.title|default('無題')|mb_truncate(30) }}</a></p>
-    {% endif %}
+                <p><a href="{{ path('UrbantCConvertBundle_request_detail', {'id': request.id}) }}" title="{{ request.title }}">{{ request.title|default('無題')|mb_truncate(30) }}</a></p>
                 <p>{{ request.url|mb_truncate_middle(40) }}<a class="request-link" href="{{ request.url }}" title="{{ request.url }}" target="_blank"><i class="icon-share"></i></a></p>
             </td>
             <td>{{ request.getStatusName() }}</td>
