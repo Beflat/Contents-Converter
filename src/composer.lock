@@ -1,5 +1,5 @@
 {
-    "hash": "b3468e6cf3d0b2c70a9ed7365e607ff0",
+    "hash": "fa84c5648429858ae517a119960f69ca",
     "packages": [
         {
             "package": "beflat/beflat_lib",
@@ -32,8 +32,14 @@
         {
             "package": "doctrine/doctrine-bundle",
             "version": "dev-master",
-            "source-reference": "9b4dd7398cbc4d2dfe04eefc3c0451f1e13e141c",
-            "commit-date": "1340813490"
+            "alias-pretty-version": "1.0.x-dev",
+            "alias-version": "1.0.9999999.9999999-dev"
+        },
+        {
+            "package": "doctrine/doctrine-bundle",
+            "version": "dev-master",
+            "source-reference": "1d5061d3e426feb990f2378fbcbee58f6ecadd12",
+            "commit-date": "1341222099"
         },
         {
             "package": "doctrine/doctrine-fixtures-bundle",
@@ -46,6 +52,12 @@
             "version": "2.2.x-dev",
             "source-reference": "5f66c65c9a8d984899903b54215d0249a45b92d6",
             "commit-date": "1338138826"
+        },
+        {
+            "package": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "source-reference": "0363e2389055acf3619b28b5a6c401a4aa5b838b",
+            "commit-date": "1340798867"
         },
         {
             "package": "jms/aop-bundle",
@@ -92,8 +104,8 @@
         {
             "package": "sensio/distribution-bundle",
             "version": "dev-master",
-            "source-reference": "f3515e702f9cae8e727d982557dca8de82dd12c5",
-            "commit-date": "1340790396"
+            "source-reference": "a3f939728f421b897472163b7e041d65d48c3b01",
+            "commit-date": "1341409780"
         },
         {
             "package": "sensio/framework-extra-bundle",
@@ -110,8 +122,14 @@
         {
             "package": "swiftmailer/swiftmailer",
             "version": "dev-master",
-            "source-reference": "05b497ee28355a33eb521dcaf7526824e0dda3b2",
-            "commit-date": "1341154877"
+            "alias-pretty-version": "4.2.x-dev",
+            "alias-version": "4.2.9999999.9999999-dev"
+        },
+        {
+            "package": "swiftmailer/swiftmailer",
+            "version": "dev-master",
+            "source-reference": "f34ff8a49dc611e8171f041b529671b3e460cfe1",
+            "commit-date": "1341391688"
         },
         {
             "package": "symfony/assetic-bundle",
@@ -128,8 +146,14 @@
         {
             "package": "symfony/swiftmailer-bundle",
             "version": "dev-master",
-            "source-reference": "4140ae9813f231a4d8324f405c51041b966e190b",
-            "commit-date": "1341077900"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/swiftmailer-bundle",
+            "version": "dev-master",
+            "source-reference": "66e29c6b1db11e434f773b2902d58349577664ac",
+            "commit-date": "1341344279"
         },
         {
             "package": "symfony/symfony",
@@ -140,8 +164,14 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "a1b73887f7de2a2549a7d2606b7803edc35af61d",
-            "commit-date": "1341134393"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "dev-master",
+            "source-reference": "000d54cd27fc08e3e43dbe33d527c5792fd61491",
+            "commit-date": "1341409667"
         },
         {
             "package": "twig/extensions",
@@ -182,6 +212,7 @@
         "sensio/distribution-bundle": 20,
         "sensio/framework-extra-bundle": 20,
         "sensio/generator-bundle": 20,
+        "friendsofsymfony/user-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
         "beflat/beflat_lib": 20,
         "white-october/pagerfanta-bundle": 20
