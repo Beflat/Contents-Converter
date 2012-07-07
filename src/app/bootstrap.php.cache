@@ -92,6 +92,21 @@ interface IntrospectableContainerInterface extends ContainerInterface
 namespace Symfony\Component\DependencyInjection
 {
 
+
+interface IntrospectableContainerInterface extends ContainerInterface
+{
+    
+    function initialized($id);
+
+}
+}
+ 
+
+
+
+namespace Symfony\Component\DependencyInjection
+{
+
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
@@ -352,6 +367,23 @@ class Container implements IntrospectableContainerInterface
     {
         return strtolower(preg_replace(array('/([A-Z]+)([A-Z][a-z])/', '/([a-z\d])([A-Z])/'), array('\\1_\\2', '\\1_\\2'), strtr($id, '_', '.')));
     }
+}
+}
+ 
+
+
+
+namespace Symfony\Component\HttpKernel
+{
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
+interface TerminableInterface
+{
+    
+    function terminate(Request $request, Response $response);
 }
 }
  
@@ -1112,6 +1144,26 @@ interface BundleInterface extends ContainerAwareInterface
 
     
     public function getPath();
+}
+}
+ 
+
+
+
+namespace Symfony\Component\DependencyInjection
+{
+
+
+abstract class ContainerAware implements ContainerAwareInterface
+{
+    
+    protected $container;
+
+    
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
 }
 }
  

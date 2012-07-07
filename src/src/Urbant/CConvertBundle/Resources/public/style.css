@@ -26,3 +26,13 @@
 .subnav .nav li a:hover {
 	color: #004488;
 }
+
+
+/* --- Login Form --- */
+#login-form-body {
+    margin: 1.5em 1.0em;
+}
+
+#login-form-body .form-label {
+    font-weight: bold;
+}

@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     
     <link rel="stylesheet" href="{{ asset('bundles/urbantcconvert/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/urbantcconvert/bootstrap/css/bootstrap-responsive.css') }}" >
+    <link rel="stylesheet" href="{{ asset('bundles/urbantcconvert/bootstrap/css/bootstrap-responsive.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/urbantcconvert/style.css') }}">
+    <script type="text/javascript" src="{{ asset('bundles/urbantcconvert/js/jquery-1.7.2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/urbantcconvert/bootstrap/js/bootstrap.min.js') }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">   
 </head>
@@ -32,6 +33,14 @@
         {% set subMenuDivClass = isCurrentCat ? 'show' : '' %}
         <li class="{{ menuClass }}"><a href="{{ menuCat.url }}">{{ menuCat.name }}</a></li>
 {% endfor %}
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li class="dropdown" id="menu1">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ユーザー：{{ app.user.username }}<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

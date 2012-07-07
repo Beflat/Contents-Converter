@@ -390,6 +390,10 @@
                     "CG\\": "src/"
                 }
             }
+            "package": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "source-reference": "0363e2389055acf3619b28b5a6c401a4aa5b838b",
+            "commit-date": "1340798867"
         },
         {
             "name": "jms/di-extra-bundle",
