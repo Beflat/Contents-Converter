@@ -44,3 +44,11 @@
     {% endif %}
 {% endspaceless %}
 {% endblock date_widget %}
+
+
+{# -------------------------- CHECKBOX ----------------------------- #}
+{% block checkbox_widget %}
+{% spaceless %}
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+{% endspaceless %}
+{% endblock checkbox_widget %}

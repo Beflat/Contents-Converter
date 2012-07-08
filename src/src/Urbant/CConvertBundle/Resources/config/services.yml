@@ -35,3 +35,8 @@ services:
         class: Pagerfanta\View\DefaultView
         public: false
         tags: [{ name: pagerfanta.view, alias: default }]
+
+    urbant_cconvert.form_element.role_selector:
+        class: Urbant\CConvertBundle\Form\Element\RoleSelectorType
+        tags:
+            - { name: form.type, alias: role_selector }

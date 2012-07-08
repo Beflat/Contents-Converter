@@ -1,0 +1,36 @@
+{% extends 'UrbantCConvertBundle:Common:base.html.twig' %}
+
+{% form_theme form 'UrbantCConvertBundle:Common:form_theme.html.twig' %}
+
+{% block body %}
+
+<div class="span8 offset2">
+
+<h1>Edit user</h1>
+
+{% for flashMessage in app.session.flashbag.get('user.edit.message') %}
+<div class="alert alert-success">
+{{ flashMessage }}
+</div>
+{% endfor %}
+
+
+<div class="form">
+    <form class="" action="{{ path('UrbantCConvertBundle_user_update', {'id': user.id}) }}" method="post" {{ form_enctype(form) }} >
+        {{ form_widget(form) }}
+{#
+        {{ form_row(form.email) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.lastLogin) }}
+        {{ form_row(form.enabled) }}
+        {{ form_row(form.locked) }}
+#}
+        <p>
+            <button type="submit" class="btn btn-primary">保存</button>
+            <button class="btn" onClick="location.href='{{ path('UrbantCConvertBundle_user_list') }}'">戻る</button>
+        </p>
+    </form>
+</div>
+
+</div>
+{% endblock %}
