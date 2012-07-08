@@ -132,3 +132,34 @@ UrbantCConvertBundle_api_request_post:
     pattern:  /api/request/post
     defaults: { _controller: UrbantCConvertBundle:ConvertRequest:apiPost }
 
+UrbantCConvertBundle_user_list:
+    pattern: /user/list
+    defaults: { _controller: UrbantCConvertBundle:User:index }
+
+UrbantCConvertBundle_user_add:
+    pattern: /user/add
+    defaults: { _controller: UrbantCConvertBundle:User:new }
+
+UrbantCConvertBundle_user_create:
+    pattern: /user/create
+    defaults: { _controller: UrbantCConvertBundle:User:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_user_edit:
+    pattern: /user/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:User:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_user_update:
+    pattern: /user/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:User:update }
+    requirements:
+        id: \d+
+        _method: POST
+
+
+UrbantCConvertBundle_user_batch:
+    pattern: /user/batch
+    defaults: { _controller: UrbantCConvertBundle:User:edit }

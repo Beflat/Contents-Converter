@@ -36,3 +36,16 @@
 #login-form-body .form-label {
     font-weight: bold;
 }
+
+
+.control-label {
+    background-color: #e5e5f5;
+    border-left: solid 5px #88a;
+    border-bottom: solid 1px #88a;
+}
+
+.control-label label {
+    font-weight: bold;
+    padding: 0.5em 1.0em;
+    margin: 0;
+}

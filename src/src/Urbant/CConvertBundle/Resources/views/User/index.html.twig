@@ -1,0 +1,68 @@
+{% extends 'UrbantCConvertBundle:Common:base.html.twig' %}
+
+{% block body %}
+
+<div class="row">
+
+    <h2>User</h2>
+
+<!--
+    <div class="pagerfanta">
+        {#{ pagerfanta(pager, 'twitter_bootstrap') }#}
+    </div>
+-->
+
+{% for flashMessage in app.session.flashbag.get('user_message') %}
+    <div class="alert alert-success">{{ flashMessage }}</div>
+{% endfor %}
+
+    <form id="mainform" action="{{ path('UrbantCConvertBundle_user_batch') }}" method="POST" >
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th><a id="toggle-all" ></a> </th>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>Lastlogin</th>
+                <th>Locked</th>
+            </tr>
+{% for user in users %}
+            <tr>
+                <td><input type="checkbox" name="ids[]" value="{{ user.id }}" /></td>
+                <td>{{ user.id }}</td>
+                <td><a href="{{ path('UrbantCConvertBundle_user_edit', {'id': user.id}) }}">{{ user.username }}</a></td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.enabled }}</td>
+                <td>{% if(user.lastLogin) %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ user.locked }}</td>
+            </tr>
+{% else %}
+            <tr>
+                <td colspan="7">No item found.</td>
+            </tr>
+{% endfor %}
+        </table>
+
+<!--
+        <div class="pagerfanta">
+            {#{ pagerfanta(pager, 'twitter_bootstrap') }#}
+        </div>
+-->
+        <!--  start actions-box ............................................... -->
+        <div class="well">
+            <select name="type">
+                <option value="d">DELETE</option>
+            </select>
+            
+            <input type="submit" name="submit" value="実行" />
+            
+        </div>
+        <!-- end actions-box........... -->
+    </form>
+
+</div>
+
+
+
+{% endblock %}

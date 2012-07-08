@@ -83,6 +83,19 @@ abstract class BaseAdminController extends Controller
                     ),
               ),
         );
+        
+        //管理者の場合のみ、ユーザー管理メニューを表示する
+        $securityContext = $this->get('security.context');
+        if($securityContext->isGranted('ROLE_ADMIN')) {
+            $this->menues['user'] = array(
+                'name' => 'USER',
+                'url' => $this->generateUrl('UrbantCConvertBundle_user_list'),
+                'sub' => array(
+                    'list' => array('name' => 'LIST', 'url' => $this->generateUrl('UrbantCConvertBundle_user_list')),
+                    'add' => array('name' => 'ADD', 'url' => $this->generateUrl('UrbantCConvertBundle_user_add')),
+                ),
+            );
+        }
     }
     
     
