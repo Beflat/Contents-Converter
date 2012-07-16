@@ -392,8 +392,8 @@
             }
             "package": "friendsofsymfony/user-bundle",
             "version": "dev-master",
-            "source-reference": "0363e2389055acf3619b28b5a6c401a4aa5b838b",
-            "commit-date": "1340798867"
+            "source-reference": "73d48c442b1cccd90fbce4e555ac8f580f82d974",
+            "commit-date": "1342293032"
         },
         {
             "name": "jms/di-extra-bundle",

@@ -96,7 +96,7 @@ namespace Symfony\Component\DependencyInjection
 interface IntrospectableContainerInterface extends ContainerInterface
 {
     
-    function initialized($id);
+    public function initialized($id);
 
 }
 }
@@ -367,23 +367,6 @@ class Container implements IntrospectableContainerInterface
     {
         return strtolower(preg_replace(array('/([A-Z]+)([A-Z][a-z])/', '/([a-z\d])([A-Z])/'), array('\\1_\\2', '\\1_\\2'), strtr($id, '_', '.')));
     }
-}
-}
- 
-
-
-
-namespace Symfony\Component\HttpKernel
-{
-
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
-
-interface TerminableInterface
-{
-    
-    function terminate(Request $request, Response $response);
 }
 }
  

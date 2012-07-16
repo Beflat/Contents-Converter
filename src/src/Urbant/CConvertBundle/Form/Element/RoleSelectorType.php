@@ -18,7 +18,7 @@ class RoleSelectorType extends AbstractType {
     }
 
     public function getName() {
-        return 'urbant_cconvertbundle_role_selector';
+        return 'role_selector';
     }
 
 }

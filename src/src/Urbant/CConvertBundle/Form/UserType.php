@@ -13,7 +13,6 @@ class UserType extends AbstractType
         $builder
             ->add('username')
             ->add('email')
-            ->add('password', 'password')
 //            ->add('lastLogin', 'datetime', array('required'=>false, 'read_only'=>true, 'widget'=>'single_text'))
             ->add('enabled')
             ->add('locked', null, array('required'=>false))
