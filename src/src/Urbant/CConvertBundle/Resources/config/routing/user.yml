@@ -1,0 +1,31 @@
+UrbantCConvertBundle_user_list:
+    pattern: /admin/user/list
+    defaults: { _controller: UrbantCConvertBundle:User:index }
+
+UrbantCConvertBundle_user_add:
+    pattern: /admin/user/add
+    defaults: { _controller: UrbantCConvertBundle:User:new }
+
+UrbantCConvertBundle_user_create:
+    pattern: /admin/user/create
+    defaults: { _controller: UrbantCConvertBundle:User:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_user_edit:
+    pattern: /admin/user/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:User:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_user_update:
+    pattern: /admin/user/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:User:update }
+    requirements:
+        id: \d+
+        _method: POST
+
+
+UrbantCConvertBundle_user_batch:
+    pattern: /admin/user/batch
+    defaults: { _controller: UrbantCConvertBundle:User:edit }

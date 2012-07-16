@@ -1,0 +1,39 @@
+UrbantCConvertBundle_request_list:
+    pattern:  /request/{page}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:list, page: 1 }
+    requirements:
+      page: \d+
+
+UrbantCConvertBundle_request_add:
+    pattern:  /request/add
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:add }
+
+UrbantCConvertBundle_request_create:
+    pattern:  /request/create
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:create }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_request_batch:
+    pattern:  /request/batch
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:batch, page: 1 }
+    requirements:
+        _method: POST
+
+UrbantCConvertBundle_request_detail:
+    pattern:  /request/detail/{id}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:detail }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_request_edit:
+    pattern:  /request/edit/{id}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:edit }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_request_update:
+    pattern:  /request/update/{id}
+    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:update }
+    requirements:
+        id: \d+

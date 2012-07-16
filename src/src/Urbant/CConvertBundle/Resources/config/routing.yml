@@ -2,164 +2,17 @@ UrbantCConvertBundle_homepage:
     pattern:  /
     defaults: { _controller: UrbantCConvertBundle:Content:list, page: 1 }
 
-#UrbantCConvertBundle_site_list:
-#    pattern:  /site
-#    defaults: { _controller: UrbantCConvertBundle:Site:index, page: 1 }
-#
-#UrbantCConvertBundle_site_add:
-#    pattern:  /site/add
-#    defaults: { _controller: UrbantCConvertBundle:Site:add }
-#
-#UrbantCConvertBundle_site_create:
-#    pattern:  /site/create
-#    defaults: { _controller: UrbantCConvertBundle:Site:create }
-#    requirements:
-#        _method: POST
-#
-#UrbantCConvertBundle_site_batch:
-#    pattern:  /site/batch
-#    defaults: { _controller: UrbantCConvertBundle:Site:batch, page: 1 }
-#    requirements:
-#        _method: POST
-#
-#UrbantCConvertBundle_site_edit:
-#    pattern:  /site/edit/{id}
-#    defaults: { _controller: UrbantCConvertBundle:Site:edit }
-#    requirements:
-#        id: \d+
-#
-#UrbantCConvertBundle_site_update:
-#    pattern:  /site/update/{id}
-#    defaults: { _controller: UrbantCConvertBundle:Site:update }
-#    requirements:
-#        _method: POST
-#        id: \d+
+UrbantCConvertBundle_rule:
+    resource: "@UrbantCConvertBundle/Resources/config/routing/rule.yml"
 
-UrbantCConvertBundle_rule_list:
-    pattern:  /rule/{page}
-    defaults: { _controller: UrbantCConvertBundle:Rule:list, page: 1 }
-    requirements:
-      page: \d+
+UrbantCConvertBundle_request:
+    resource: "@UrbantCConvertBundle/Resources/config/routing/request.yml"
 
-UrbantCConvertBundle_rule_add:
-    pattern:  /rule/add
-    defaults: { _controller: UrbantCConvertBundle:Rule:add }
+UrbantCConvertBundle_content:
+    resource: "@UrbantCConvertBundle/Resources/config/routing/content.yml"
 
-UrbantCConvertBundle_rule_create:
-    pattern:  /rule/create
-    defaults: { _controller: UrbantCConvertBundle:Rule:create }
-    requirements:
-        _method: POST
+UrbantCConvertBundle_user:
+    resource: "@UrbantCConvertBundle/Resources/config/routing/user.yml"
 
-UrbantCConvertBundle_rule_batch:
-    pattern:  /rule/batch
-    defaults: { _controller: UrbantCConvertBundle:Rule:batch, page: 1 }
-    requirements:
-        _method: POST
-
-UrbantCConvertBundle_rule_edit:
-    pattern:  /rule/edit/{id}
-    defaults: { _controller: UrbantCConvertBundle:Rule:edit }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_rule_update:
-    pattern:  /rule/update/{id}
-    defaults: { _controller: UrbantCConvertBundle:Rule:update }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_request_list:
-    pattern:  /request/{page}
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:list, page: 1 }
-    requirements:
-      page: \d+
-
-UrbantCConvertBundle_request_add:
-    pattern:  /request/add
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:add }
-
-UrbantCConvertBundle_request_create:
-    pattern:  /request/create
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:create }
-    requirements:
-        _method: POST
-
-UrbantCConvertBundle_request_batch:
-    pattern:  /request/batch
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:batch, page: 1 }
-    requirements:
-        _method: POST
-
-UrbantCConvertBundle_request_detail:
-    pattern:  /request/detail/{id}
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:detail }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_request_edit:
-    pattern:  /request/edit/{id}
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:edit }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_request_update:
-    pattern:  /request/update/{id}
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:update }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_content_list:
-    pattern:  /content/{page}
-    defaults: { _controller: UrbantCConvertBundle:Content:list, page: 1 }
-
-UrbantCConvertBundle_content_dl:
-    pattern:  /content/download/{id}
-    defaults: { _controller: UrbantCConvertBundle:Content:download }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_content_batch:
-    pattern:  /content/batch
-    defaults: { _controller: UrbantCConvertBundle:Content:batch }
-
-
-UrbantCConvertBundle_api_get_content:
-    pattern:  /api/content/get
-    defaults: { _controller: UrbantCConvertBundle:Content:apiGet }
-
-UrbantCConvertBundle_api_request_post:
-    pattern:  /api/request/post
-    defaults: { _controller: UrbantCConvertBundle:ConvertRequest:apiPost }
-
-UrbantCConvertBundle_user_list:
-    pattern: /admin/user/list
-    defaults: { _controller: UrbantCConvertBundle:User:index }
-
-UrbantCConvertBundle_user_add:
-    pattern: /admin/user/add
-    defaults: { _controller: UrbantCConvertBundle:User:new }
-
-UrbantCConvertBundle_user_create:
-    pattern: /admin/user/create
-    defaults: { _controller: UrbantCConvertBundle:User:create }
-    requirements:
-        _method: POST
-
-UrbantCConvertBundle_user_edit:
-    pattern: /admin/user/edit/{id}
-    defaults: { _controller: UrbantCConvertBundle:User:edit }
-    requirements:
-        id: \d+
-
-UrbantCConvertBundle_user_update:
-    pattern: /admin/user/update/{id}
-    defaults: { _controller: UrbantCConvertBundle:User:update }
-    requirements:
-        id: \d+
-        _method: POST
-
-
-UrbantCConvertBundle_user_batch:
-    pattern: /admin/user/batch
-    defaults: { _controller: UrbantCConvertBundle:User:edit }
+UrbantCConvertBundle_api:
+    resource: "@UrbantCConvertBundle/Resources/config/routing/api.yml"

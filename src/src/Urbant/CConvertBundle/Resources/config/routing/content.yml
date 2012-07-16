@@ -1,0 +1,13 @@
+UrbantCConvertBundle_content_list:
+    pattern:  /content/{page}
+    defaults: { _controller: UrbantCConvertBundle:Content:list, page: 1 }
+
+UrbantCConvertBundle_content_dl:
+    pattern:  /content/download/{id}
+    defaults: { _controller: UrbantCConvertBundle:Content:download }
+    requirements:
+        id: \d+
+
+UrbantCConvertBundle_content_batch:
+    pattern:  /content/batch
+    defaults: { _controller: UrbantCConvertBundle:Content:batch }
