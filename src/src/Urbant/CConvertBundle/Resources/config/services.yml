@@ -7,7 +7,7 @@ parameters:
 
 services:
     urbant_cconvert.convert_request_service:
-        class: %urbant_cconvert.convert_request_service.class%
+        class: %urbant_cconvert.convert_request_service.class% 
         arguments: [@doctrine.orm.entity_manager]
     urbant_cconvert.content_service:
         class: %urbant_cconvert.content_service.class%
