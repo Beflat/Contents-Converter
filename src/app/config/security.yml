@@ -25,16 +25,16 @@ security:
         login_firewall:
             pattern: ^/login$
             anonymous: ~
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         main:
             pattern: ^/
             form_login:
                 provider: fos_user_bundle
                 csrf_provider: form.csrf_provider
+                target_path_parameter: redirect_url
             logout: ~
-
-#     dev:
-#         pattern:  ^/(_(profiler|wdt)|css|images|js)/
-#         security: false
 #   
 #     login:
 #         pattern:  ^/demo/secured/login$
