@@ -25,6 +25,9 @@ security:
         login_firewall:
             pattern: ^/login$
             anonymous: ~
+        anon_firewall:
+            pattern: ^/(resetting)
+            anonymous: ~
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
