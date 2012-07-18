@@ -31,6 +31,7 @@ class RuleController extends BaseAdminController
         
         $searchConditions = $form->getData();
         
+        //TODO: 全体的に使用するのでどこか共通の場所で取得できるようにする。
         $user = $this->get('security.context')->getToken()->getUser();
         
         $qb = $ruleRepo->getQueryBuilderForSearch($user->getId(), $searchConditions);
@@ -103,6 +104,8 @@ class RuleController extends BaseAdminController
         $form->bindRequest($request);
 
         if($form->isValid()) {
+            $user = $this->get('security.context')->getToken()->getUser();
+            $rule->setUserId($user);
             
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($rule);
@@ -125,8 +128,10 @@ class RuleController extends BaseAdminController
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('UrbantCConvertBundle:Rule');
     
+        $user = $this->get('security.context')->getToken()->getUser();
+        
         $rule = $repository->find($id);
-        if(!$rule) {
+        if(!$rule || $rule->getUserId() != $user->getId()) {
             throw new $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
         }
         
@@ -142,8 +147,10 @@ class RuleController extends BaseAdminController
     public function updateAction($id) {
     
         $em = $this->getDoctrine()->getEntityManager();
+        $user = $this->get('security.context')->getToken()->getUser();        
+        
         $rule = $em->getRepository('UrbantCConvertBundle:Rule')->find($id);
-        if(!$rule) {
+        if(!$rule || $user->getUserId() != $user->getId()) {
             throw new $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
         }
         $form = $this->createForm(new RuleType(), $rule);
