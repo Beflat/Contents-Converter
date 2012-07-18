@@ -26,6 +26,13 @@ class Rule
     private $id;
 
     /**
+     * 
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $userId;
+    
+    /**
      * @var string $name
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -301,4 +308,26 @@ class Rule
         return $this->matching_rule;
     }
 
+
+    /**
+     * Set userId
+     *
+     * @param Urbant\CConvertBundle\Entity\User $userId
+     * @return Rule
+     */
+    public function setUserId(\Urbant\CConvertBundle\Entity\User $userId = null)
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return Urbant\CConvertBundle\Entity\User 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
 }

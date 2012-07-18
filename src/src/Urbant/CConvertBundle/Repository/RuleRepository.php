@@ -10,24 +10,28 @@ use Doctrine\ORM\EntityRepository;
 class RuleRepository extends EntityRepository
 {
     
-    public function getQueryBuilderForSearch($searchConditions) {
-       $qb = $this->createQueryBuilder('r')
+    public function getQueryBuilderForSearch($userId, $searchConditions) {
+        $qb = $this->createQueryBuilder('r')
            ->select('r')
            ->addOrderBy('r.created', 'DESC');
         
-       if(isset($searchConditions['name']) && $searchConditions['name'] != '') {
+        if($userId != 0) {
+            $qb->andWhere("r.userId= :user_id");
+            $qb->setParameter('user_id', $userId);
+        }
+        if(isset($searchConditions['name']) && $searchConditions['name'] != '') {
            $qb->andWhere("r.name LIKE :name_cond");
            $qb->setParameter('name_cond', '%' . $searchConditions['name'] . '%');
-       }
-       if(isset($searchConditions['created_from']) && $searchConditions['created_from'] != '') {
+        }
+        if(isset($searchConditions['created_from']) && $searchConditions['created_from'] != '') {
            $qb->andWhere("r.created >= :created_from");
            $qb->setParameter('created_from', $searchConditions['created_from']);
-       }
-       if(isset($searchConditions['created_to']) && $searchConditions['created_to'] != '') {
+        }
+        if(isset($searchConditions['created_to']) && $searchConditions['created_to'] != '') {
            $qb->andWhere("r.created <= :created_to");
            $qb->setParameter('created_to', $searchConditions['created_to']);
-       }
-       
+        }
+        
         return $qb;
     }
     
