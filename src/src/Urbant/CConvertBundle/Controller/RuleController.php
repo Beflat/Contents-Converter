@@ -31,7 +31,9 @@ class RuleController extends BaseAdminController
         
         $searchConditions = $form->getData();
         
-        $qb = $ruleRepo->getQueryBuilderForSearch($searchConditions);
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        $qb = $ruleRepo->getQueryBuilderForSearch($user->getId(), $searchConditions);
 
         
         $adapter = new DoctrineORMAdapter($qb);
