@@ -34,7 +34,7 @@ class RuleController extends BaseAdminController
         //TODO: 全体的に使用するのでどこか共通の場所で取得できるようにする。
         $user = $this->get('security.context')->getToken()->getUser();
         
-        $qb = $ruleRepo->getQueryBuilderForSearch($user->getId(), $searchConditions);
+        $qb = $ruleRepo->getQueryBuilderForSearch($user, $searchConditions);
 
         
         $adapter = new DoctrineORMAdapter($qb);
@@ -67,11 +67,12 @@ class RuleController extends BaseAdminController
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $repository = $em->getRepository('UrbantCConvertBundle:Rule');
+        $user = $this->get('security.context')->getToken()->getUser();
         $type = $request->get('type');
     
         switch($type) {
             case 'd':
-                $repository->deleteRuleForIds($request->get('ids'));
+                $repository->deleteRuleForIds($user, $request->get('ids'));
                 $this->get('session')->setFlash('message', '選択したデータを削除しました。');
                 break;
             default:

@@ -4,12 +4,13 @@ namespace Urbant\CConvertBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\Persistence\ObjectManager;
 use Urbant\CConvertBundle\Entity\ConvertRequest;
 
 class RequestData extends AbstractFixture implements OrderedFixtureInterface{
     
-    public function load($manager) {
-        
+    public function load(ObjectManager $manager) {
+/*
         //
         $req1 = new ConvertRequest();
         $req1->setRule($manager->merge($this->getReference('rule_symfony')));
@@ -81,6 +82,7 @@ class RequestData extends AbstractFixture implements OrderedFixtureInterface{
         $this->addReference('req_nikkei_co_jp_1', $req5);
         $this->addReference('req_nikkei_itpro_1', $req6);
         $this->addReference('req_nikkei_co_jp_2', $req7);
+*/
     }
     
     
