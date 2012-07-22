@@ -27,7 +27,7 @@
 {% endfor %}
 
     <form id="mainform" action="{{ path('UrbantCConvertBundle_rule_batch') }}" method="POST" >
-        <table class="table table-bordered table-striped">
+        <table id="data-list" class="table table-bordered table-striped">
             <tr>
                 <th><a id="toggle-all" ></a> </th>
                 <th><a href="">Name</a>   </th>

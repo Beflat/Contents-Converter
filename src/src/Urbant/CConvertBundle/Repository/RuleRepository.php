@@ -10,14 +10,14 @@ use Doctrine\ORM\EntityRepository;
 class RuleRepository extends EntityRepository
 {
     
-    public function getQueryBuilderForSearch($userId, $searchConditions) {
+    public function getQueryBuilderForSearch($user, $searchConditions) {
         $qb = $this->createQueryBuilder('r')
            ->select('r')
            ->addOrderBy('r.created', 'DESC');
         
-        if($userId != 0) {
+        if($user != null) {
             $qb->andWhere("r.userId= :user_id");
-            $qb->setParameter('user_id', $userId);
+            $qb->setParameter('user_id', $user->getId());
         }
         if(isset($searchConditions['name']) && $searchConditions['name'] != '') {
            $qb->andWhere("r.name LIKE :name_cond");
@@ -70,7 +70,7 @@ class RuleRepository extends EntityRepository
     /**
      * 
      */
-    public function deleteRuleForIds($ids) {
+    public function deleteRuleForIds($user, $ids) {
         
         if(!is_array($ids) || count($ids) == 0) {
             throw new \UnexpectedValueException('Target ID list was empty.');
@@ -88,6 +88,12 @@ class RuleRepository extends EntityRepository
         }
         
         $qb->where('r.id IN ( ' . implode(' , ', $idConditions) . ' )');
+        
+        if($user != null) {
+            $qb->andWhere('r.user_id = :user_id');
+            $qb->setParameter('user_id', $user->getId());
+        }
+        
         $qb->setParameters($idParams);
         
         return $qb->getQuery()->execute();
