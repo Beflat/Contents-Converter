@@ -37,7 +37,7 @@ class ConvertRequest
     /**
      * @var string $title
      * 
-     * @ORM\Column(name="title", type="text", length=1024)
+     * @ORM\Column(name="title", type="text", length=1024, nullable=true)
      */
     private $title;
     
