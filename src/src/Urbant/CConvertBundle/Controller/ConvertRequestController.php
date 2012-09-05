@@ -4,6 +4,7 @@ namespace Urbant\CConvertBundle\Controller;
 
 use Pagerfanta\Pagerfanta;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Urbant\CConvertBundle\Form\ConvertRequestSearchType;
 use Urbant\CConvertBundle\Entity\ConvertRequest;
