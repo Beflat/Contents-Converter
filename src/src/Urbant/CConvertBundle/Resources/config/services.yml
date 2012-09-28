@@ -3,6 +3,7 @@ parameters:
     urbant_cconvert.convert_request_service.class: Urbant\CConvertBundle\Service\ConvertRequestService
     urbant_cconvert.content_service.class: Urbant\CConvertBundle\Service\ContentService
     urbant_cconvert.content_api_service.class: Urbant\CConvertBundle\Service\ContentApiService
+    urbant_cconvert.import_request_service.class: Urbant\CConvertBundle\Service\ImportRequestService
     urbant_cconvert.content_dir_path: /var/www/data/contents_convert/src/app/contents
 
 services:
@@ -16,6 +17,10 @@ services:
           - [setContainer, [ @service_container ] ]
     urbant_cconvert.content_api_service:
         class: %urbant_cconvert.content_api_service.class%
+
+    urbant_cconvert.import_request_service:
+        class: %urbant_cconvert.import_request_service.class%
+        arguments: [@urbant_cconvert.convert_request_service]
 
     twig_extension_text:
         class: Twig_Extensions_Extension_Text
