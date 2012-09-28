@@ -29,7 +29,7 @@ class RuleSearchType extends AbstractType
     }
     
     
-    public function getDefaultOptions() {
+    public function getDefaultOptions(array $options) {
         
         return array(
             'csrf_protection' => false,
