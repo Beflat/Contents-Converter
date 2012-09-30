@@ -52,7 +52,7 @@ class RequestListFileIterator implements \Iterator {
     
     public function valid() {
         $this->openFile();
-        return $this->current !== false;
+        return ($this->current !== false);
     }
     
     public function rewind() {

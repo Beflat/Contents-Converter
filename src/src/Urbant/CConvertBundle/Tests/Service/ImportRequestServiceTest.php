@@ -85,7 +85,7 @@ class ImportRequestServiceTest extends \PHPUnit_Framework_TestCase {
         });
         
         $this->assertEquals(0, $count[ImportRequestService::RESULT_IMPORT], 'Imported lines');
-        $this->assertEquals(4, $count[ImportRequestService::RESULT_SKIP], 'Skipped lines');
+        $this->assertEquals(3, $count[ImportRequestService::RESULT_SKIP], 'Skipped lines');
     }
     
     
