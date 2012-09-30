@@ -21,7 +21,7 @@ class ImportRequestServiceTest extends \PHPUnit_Framework_TestCase {
     
     
     /**
-     * @covers getLinesInFileList
+     * @covers Urbant\CConvertBundle\Service\ImportRequestService::getLinesInFileList
      */
     public function testEmptyFileShouldReturn1Line() {
         //空のファイルを調べた場合
@@ -33,7 +33,7 @@ class ImportRequestServiceTest extends \PHPUnit_Framework_TestCase {
     
     
     /**
-     * @covers getLinesInFileList
+     * @covers Urbant\CConvertBundle\Service\ImportRequestService::getLinesInFileList
      */
     public function test5LinesFileShouldReturn5Lines() {
         //5行のファイルを調べようとした場合
@@ -62,7 +62,7 @@ class ImportRequestServiceTest extends \PHPUnit_Framework_TestCase {
     
     
     /**
-     * @covers importRequestList
+     * @covers Urbant\CConvertBundle\Service\ImportRequestService::importRequestList
      */
     public function testEmptyFileShouldNotImportAnyData() {
         
@@ -90,7 +90,7 @@ class ImportRequestServiceTest extends \PHPUnit_Framework_TestCase {
     
     
     /**
-     * @covers importRequestList
+     * @covers Urbant\CConvertBundle\Service\ImportRequestService::importRequestList
      */
     public function test5LinesFileShouldImport5Requests() {
         
@@ -118,7 +118,7 @@ class ImportRequestServiceTest extends \PHPUnit_Framework_TestCase {
     
     
     /**
-     * @covers importRequestList
+     * @covers Urbant\CConvertBundle\Service\ImportRequestService::importRequestList
      */
     public function testNonExistFileShouldRaiseError() {
         $convertRequestServiceMock = $this->getMock('Urbant\CConvertBundle\Service\ConvertRequestService', array(), array(), '', false);
