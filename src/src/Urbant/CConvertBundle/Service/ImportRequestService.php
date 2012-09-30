@@ -48,11 +48,18 @@ class ImportRequestService {
                 continue;
             }
             
+            if(trim($url) == '') {
+                if($callback != null) {
+                    $callback($url, self::RESULT_SKIP);
+                }
+                continue;
+            }
+            
             $request = new ConvertRequest();
             $request->setUrl($url);
             $this->requestService->saveRequest($request);
             if($callback != null) {
-                $this->callback($url, self::RESULT_IMPORT);
+                $callback($url, self::RESULT_IMPORT);
             }
         }
     }
@@ -69,9 +76,10 @@ class ImportRequestService {
             $count++;
         }
         fclose($fp);
-        return $fp;
+        return $count;
     }
     
     protected function isAlreadyExists($url) {
+        return false;
     }
 }
