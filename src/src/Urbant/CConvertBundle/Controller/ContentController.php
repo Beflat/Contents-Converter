@@ -135,7 +135,7 @@ class ContentController extends BaseAdminController
 
         $site = $repository->find($id);
         if(!$site) {
-            throw new $this->createNotFoundException('ID:' . $id . 'のサイトは存在しません。');
+            throw new $this->createNotFoundException('ID:' . $id . 'のコンテンツは存在しません。');
         }
 
         $form = $this->createForm(new SiteType(), $site);
@@ -153,7 +153,7 @@ class ContentController extends BaseAdminController
         $em = $this->getDoctrine()->getEntityManager();
         $site = $em->getRepository('UrbantCConvertBundle:Site')->find($id);
         if(!$site) {
-            throw new $this->createNotFoundException('ID:' . $id . 'のサイトは存在しません。');
+            throw new $this->createNotFoundException('ID:' . $id . 'のコンテンツは存在しません。');
         }
         $form = $this->createForm(new SiteType(), $site);
 
@@ -163,7 +163,7 @@ class ContentController extends BaseAdminController
         if($form->isValid()) {
             $em->flush();
 
-            $this->get('session')->setFlash('message', 'サイト情報を更新しました。');
+            $this->get('session')->setFlash('message', 'コンテンツ情報を更新しました。');
             $this->redirect($this->generateUrl('UrbantCConvertBundle_site_edit', array('id' => $id), true));
         }
 

@@ -108,7 +108,7 @@ class RuleController extends BaseAdminController
             $em->flush();
             
             $this->get('session')->setFlash('rule.add.message', '変換ルールを保存しました。');
-            $this->redirect('UrbantCCOnvertBundle_add');
+            $this->redirect('UrbantCConvertBundle_add');
         }
         
         return $this->render('UrbantCConvertBundle:Rule:add.html.twig',

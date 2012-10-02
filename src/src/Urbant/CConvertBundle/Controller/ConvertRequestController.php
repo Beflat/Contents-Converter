@@ -168,7 +168,7 @@ class ConvertRequestController extends BaseAdminController
             
             $em->flush();
             
-            $this->get('session')->setFlash('request_edit_message', 'サイト情報を更新しました。');
+            $this->get('session')->setFlash('request_edit_message', 'リクエスト情報を更新しました。');
             $this->redirect($this->generateUrl('UrbantCConvertBundle_request_edit', array('id' => $id), true));
         }
         
