@@ -14,8 +14,9 @@
     bootstrap                   = "bootstrap.php.cache" >
 
     <testsuites>
-        <testsuite name="Unit Test Suite">
-            <directory>../src/Urbant/CConvertBundle/Tests/Unit</directory>
+        <testsuite name="User Acceptance Test Suite">
+            <directory>../src/Urbant/CConvertBundle/Tests/Acceptance</directory>
+            <directory>../src/*/Bundle/*Bundle/Tests</directory>
         </testsuite>
     </testsuites>
 
@@ -38,7 +39,7 @@
     </filter>
 
     <logging>
-        <log type="coverage-html" target="./test_result/unit/coverage_html" charset="UTF-8" yui="true" highlight="false" lowUpperBound="35" highLowerBound="70"/>
-        <log type="junit" target="./test_result/unit/logfile.xml" logIncompleteSkipped="false"/>
+        <log type="coverage-html" target="./test_result/ua/coverage_html" charset="UTF-8" yui="true" highlight="false" lowUpperBound="35" highLowerBound="70"/>
+        <log type="junit" target="./test_result/ua/logfile.xml" logIncompleteSkipped="false"/>
     </logging>
 </phpunit>

@@ -73,6 +73,18 @@ class ConvertRequestRepository extends EntityRepository
     
     /**
      * 
+     * @param \Doctrine\ORM\QueryBuilder $qb
+     */
+    public function getCount($qb = null) {
+        if($qb === null) {
+            $qb = $this->createQueryBuilder('r');
+        }
+        $qb->select('count(r.id)');
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+    
+    /**
+     * 
      * @param Request $request
      */
     public function save(Request $request) {

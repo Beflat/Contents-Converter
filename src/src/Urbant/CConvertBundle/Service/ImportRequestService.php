@@ -3,7 +3,7 @@
 namespace Urbant\CConvertBundle\Service;
 
 use Urbant\CConvertBundle\Entity\ConvertRequest;
-use Urbant\CCOnvertBundle\Model\ConvertRequest\RequestListFileIterator;
+use Urbant\CConvertBundle\Model\ConvertRequest\RequestListFileIterator;
 
 /**
  * リクエストログのインポートに関する処理を記述するクラス

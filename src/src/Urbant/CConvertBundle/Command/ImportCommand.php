@@ -38,23 +38,30 @@ class ImportCommand extends ContainerAwareCommand {
     
     protected function execute(InputInterface $input, OutputInterface $output) {
         
+        $entityManager = $this->getContainer()->get('doctrine')->getManager();
         $output->writeln('<info>Begin import.</info>');
+        
+        $output->writeln('<info>Options:</info>');
+        $output->writeln(var_export($input->getOptions(), true));
+        $output->writeln('<info>Arguments:</info>');
+        $output->writeln(var_export($input->getArguments(), true));
         
         $file = $input->getArgument('file');
         
         $importService = $this->getContainer()->get('urbant_cconvert.import_request_service');
         
-        $lineCount = $importService->getLinesInFileList($fp);
+        $lineCount = $importService->getLinesInFileList($file);
         $count = 0;
-        $importService->importRequestList($file, function($url, $result) use($lineCount, $count) {
+        $importService->importRequestList($file, function($url, $result) use($lineCount, &$count, $output, $entityManager) {
             $count++;
-            if($result == ImportRequestService::RESULT_IMPORT) {
+            if($result == ImportRequestService::RESULT_SKIP) {
                 $output->writeln(sprintf('%6d / %6d: SKIPPED', $count, $lineCount));
             } else {
                 $output->writeln(sprintf('%6d / %6d: %s', $count, $lineCount, $url));
+                $entityManager->flush();
             }
         });
-        
+        $output->writeln('Done.');
     }
     
     

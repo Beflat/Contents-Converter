@@ -31,6 +31,7 @@ class RequestListFileIterator implements \Iterator {
         $this->openFile();
         $request = new ConvertRequest();
         $request->setUrl(trim($this->current));
+        $request->setStatus(ConvertRequest::STATE_WAIT);
         return $request;
     }
     

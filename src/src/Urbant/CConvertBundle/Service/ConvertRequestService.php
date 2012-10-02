@@ -76,6 +76,7 @@ class ConvertRequestService {
         
         $htmlLoader = new HtmlLoader($request->getUrl());
         if(!$htmlLoader->loadHtml()) {
+            $request->setTitle('Unknown');
             $request->appendLog($htmlLoader->getError());
             return;
         }

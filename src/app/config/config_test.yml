@@ -12,3 +12,8 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+parameters:
+    database_name: cc_test
+    database_user: cc_test
+    database_password: cc_test
