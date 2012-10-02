@@ -443,8 +443,6 @@ interface KernelInterface extends HttpKernelInterface, \Serializable
 }
  
 
-
-
 namespace Symfony\Component\HttpKernel
 {
 
@@ -1120,7 +1118,6 @@ interface BundleInterface extends ContainerAwareInterface
 
 namespace Symfony\Component\DependencyInjection
 {
-
 
 abstract class ContainerAware implements ContainerAwareInterface
 {
