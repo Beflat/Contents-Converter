@@ -32,10 +32,11 @@ class RuleController extends BaseAdminController
         $searchConditions = $form->getData();
         
         //TODO: 全体的に使用するのでどこか共通の場所で取得できるようにする。
-        $user = $this->get('security.context')->getToken()->getUser();
-        
-        $qb = $ruleRepo->getQueryBuilderForSearch($user, $searchConditions);
-
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if(!$user->isSuperAdmin()) {
+            $searchConditions['user'] = $user;
+        }
+        $qb = $ruleRepo->getQueryBuilderForSearch($searchConditions);
         
         $adapter = new DoctrineORMAdapter($qb);
         $pagerfanta = new Pagerfanta($adapter);
@@ -70,9 +71,14 @@ class RuleController extends BaseAdminController
         $user = $this->get('security.context')->getToken()->getUser();
         $type = $request->get('type');
     
+        $options = array();
+        if(!$user->isSuperAdmin()) {
+            $options['user'] = $user;
+        }
+        
         switch($type) {
             case 'd':
-                $repository->deleteRuleForIds($user, $request->get('ids'));
+                $repository->deleteRuleForIds($request->get('ids'), $options);
                 $this->get('session')->setFlash('message', '選択したデータを削除しました。');
                 break;
             default:
