@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbant\CConvertBundle\Tests\Controller;
+namespace Urbant\CConvertBundle\Tests\Unit\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Client;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Urbant\CConvertBundle\Tests\Controller;
+namespace Urbant\CConvertBundle\Tests\Unit\Controller;
 
 
 use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
@@ -55,9 +55,10 @@ class RuleControllerTest extends BaseController
         $crawler = $this->client->request('GET', '/rule');
     
         $tableRows = $crawler->filterXPath('//table[@id="data-list"]/*');
-        $this->assertEquals('super_admin_rule_1', $tableRows->filterXPath('.//tr[2]/td[2]/a')->text());
+        $this->assertEquals('super_admin_rule_1', $tableRows->filterXPath('.//tr[3]/td[2]/a')->text());
     
-        $this->assertEquals(2, $tableRows->count());
+        //ヘッダ行 + 実データ(2行)
+        $this->assertEquals(3, $tableRows->count());
     }
     
     
@@ -66,7 +67,7 @@ class RuleControllerTest extends BaseController
      */
     public function testRuleRegistration() {
         $this->loginAsNormalUser($this->client);
-        $this->client->followRedirects(false);
+        //$this->client->followRedirects(false);
         $this->client->request('GET', '/rule');
         $crawler = $this->client->request('GET', '/rule/add');
         

@@ -13,11 +13,11 @@ class RuleRepository extends EntityRepository
     public function getQueryBuilderForSearch($searchConditions) {
         $qb = $this->createQueryBuilder('r')
            ->select('r')
-           ->addOrderBy('r.created', 'DESC');
+           ->addOrderBy('r.id', 'DESC');
         
-        if($searchConditions['user'] != null) {
+        if(isset($searchConditions['user']) && $searchConditions['user'] != null) {
             $qb->andWhere("r.userId= :user_id");
-            $qb->setParameter('user_id', $searchConditions['name']->getId());
+            $qb->setParameter('user_id', $searchConditions['user']->getId());
         }
         if(isset($searchConditions['name']) && $searchConditions['name'] != '') {
            $qb->andWhere("r.name LIKE :name_cond");
@@ -89,7 +89,7 @@ class RuleRepository extends EntityRepository
         
         $qb->where('r.id IN ( ' . implode(' , ', $idConditions) . ' )');
         
-        if($options['user'] != null) {
+        if(isset($options['user']) && $options['user'] != null) {
             $qb->andWhere('r.user_id = :user_id');
             $qb->setParameter('user_id', $options['user']->getId());
         }
