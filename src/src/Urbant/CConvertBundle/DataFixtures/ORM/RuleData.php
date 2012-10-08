@@ -33,6 +33,9 @@ class RuleData extends AbstractFixture implements OrderedFixtureInterface{
         $manager->persist($rule2);
         
         $manager->flush();
+        
+        $this->addReference('super_admin_rule_1', $rule1);
+        $this->addReference('normal_user_rule_1', $rule2);
 
     }
 

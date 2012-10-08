@@ -138,7 +138,11 @@ class RuleController extends BaseAdminController
         $user = $this->get('security.context')->getToken()->getUser();
         
         $rule = $repository->find($id);
-        if(!$rule || $rule->getUserId() != $user->getId()) {
+        if(!$rule) {
+            throw new $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
+        }
+        
+        if(!$user->isSuperAdmin() && $rule->getUserId()->getId() != $user->getId()) {
             throw new $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
         }
         
@@ -157,9 +161,14 @@ class RuleController extends BaseAdminController
         $user = $this->get('security.context')->getToken()->getUser();        
         
         $rule = $em->getRepository('UrbantCConvertBundle:Rule')->find($id);
-        if(!$rule || $user->getUserId() != $user->getId()) {
-            throw new $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
+        if(!$rule) {
+            throw $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
         }
+        
+        if(!$user->isSuperAdmin() && $rule->getUserId()->getId() != $user->getId()) {
+            throw $this->createNotFoundException('ID:' . $id . 'の変換ルールは存在しません。');
+        }
+        
         $form = $this->createForm(new RuleType(), $rule);
     
         $request = $this->getRequest();

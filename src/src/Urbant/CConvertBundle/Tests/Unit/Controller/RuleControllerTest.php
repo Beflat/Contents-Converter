@@ -16,19 +16,36 @@ use Urbant\CConvertBundle\DataFixtures\ORM\RuleData;
 class RuleControllerTest extends BaseController
 {
     
+    /**
+     * 
+     * @var \Doctrine\Common\Persistence\ObjectManager
+     */
+    private $entityManager;
+    
+    /**
+     * 
+     * @var \Doctrine\Common\DataFixtures\ReferenceRepository
+     */
+    private $referenceRepository;
+    
     public function setUp() {
+        $startTime = microtime(true);
         $this->client = self::createClient();
+        $endTime = microtime(true);
+        printf("\nInitialize Time: %5.3f\n", $endTime - $startTime);
         
         //Fixtureのロード
         $bundle = self::$kernel->getBundle('UrbantCConvertBundle');
-        $em = self::$kernel->getContainer()->get('doctrine')->getManager();
+        $this->entityManager = self::$kernel->getContainer()->get('doctrine')->getManager();
         
         $loader = new ContainerAwareLoader(self::$kernel->getContainer());
         $loader->loadFromDirectory($bundle->getPath() . '/DataFixtures/ORM');
-        $purger = new ORMPurger($em);
+        $purger = new ORMPurger($this->entityManager);
         $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
-        $executor = new ORMExecutor($em, $purger);
+        $executor = new ORMExecutor($this->entityManager, $purger);
         $executor->execute($loader->getFixtures());
+        
+        $this->referenceRepository = $executor->getReferenceRepository();
     }
     
     /**
@@ -93,6 +110,66 @@ class RuleControllerTest extends BaseController
      */
     public function testRuleCanEditByItsAuthor() {
         
+        $testRule = $this->entityManager->merge($this->referenceRepository->getReference('normal_user_rule_1'));
+        
+        $this->loginAsNormalUser($this->client);
+        $this->client->request('GET', '/rule');
+        $crawler = $this->client->request('GET', '/rule/edit/' . $testRule->getId());
+        
+        $form = $crawler->selectButton('保存')->form();
+        
+        $this->client->submit($form, array(
+            'urbant_cconvertbundle_ruletype[name]' => 'test_edited_rule',
+            'urbant_cconvertbundle_ruletype[xpath]' => 'xxx2',
+            'urbant_cconvertbundle_ruletype[matching_rule]' => 'xxx2',
+            'urbant_cconvertbundle_ruletype[file_path]' => 'xxx2',
+        ));
+        
+        //メッセージが表示されていること。
+        $this->isSuccessFlashMessageExists($this->client);
+        
+        $crawler = $this->client->request('GET', '/rule');
+        
+        $this->assertEquals('test_edited_rule', $crawler->filterXPath('//table[@id="data-list"]/tr[2]/td[2]/*')->text());
+        
+        //タイトル行も含めて2行であること。
+        $tableRows = $crawler->filterXPath('//table[@id="data-list"]/*');
+        $this->assertCount(2, $tableRows, 'テーブルの行数は2行であること');
+    }
+    
+    
+    /**
+     * ルールを更新する際、そのルールの所有者であれば更新できること
+     */
+    public function testRuleCanNotEditByAnotherAuthor() {
+        
+        $testRule = $this->entityManager->merge($this->referenceRepository->getReference('normal_user_rule_1'));
+        $anotherUserRule = $this->entityManager->merge($this->referenceRepository->getReference('super_admin_rule_1'));
+        
+        $this->loginAsNormalUser($this->client);
+        //$this->client->followRedirects(false);
+        $this->client->request('GET', '/rule');
+        $crawler = $this->client->request('GET', '/rule/edit/' . $testRule->getId());
+        
+        $form = $crawler->selectButton('保存')->form();
+        
+        $form->setValues(array(
+            'urbant_cconvertbundle_ruletype[name]' => 'test_edited_rule',
+            'urbant_cconvertbundle_ruletype[xpath]' => 'xxx2',
+            'urbant_cconvertbundle_ruletype[matching_rule]' => 'xxx2',
+            'urbant_cconvertbundle_ruletype[file_path]' => 'xxx2',
+        ));
+        $this->client->request($form->getMethod(), '/rule/update/' . $anotherUserRule, $form->getPhpValues(), $form->getPhpFiles());
+        
+        $this->assertEquals(404, $this->client->getResponse()->getStatusCode());
+        
+        //なぜかここでログインが切れてしまうので再ログイン(404が原因？)
+        $this->loginAsNormalUser($this->client);
+        $crawler = $this->client->request('GET', '/rule');
+        $this->assertEquals('normal_user_rule_1', $crawler->filterXPath('//table[@id="data-list"]/tr[2]/td[2]/*')->text());
+        
+        $updateResult = $this->entityManager->find('UrbantCConvertBundle:Rule', $testRule->getId());
+        $this->assertEquals('normal_user_rule_1', $updateResult->getName(), '名前が変わっていないこと');
     }
     
     
@@ -100,7 +177,7 @@ class RuleControllerTest extends BaseController
      * ルールを複数件削除できること。
      */
     public function testRuleDeletion() {
-    
+        
     }
     
     
@@ -112,9 +189,9 @@ class RuleControllerTest extends BaseController
     }
     
     
+    /*
     public function testCompleteScenario()
     {
-    /*
         // Create a new client to browse the application
         $client = static::createClient();
 
@@ -155,8 +232,8 @@ class RuleControllerTest extends BaseController
 
         // Check the entity has been delete on the list
         $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
-    */
     }
+    */
     
     /**
      * 処理成功のFLASHメッセージが表示されているか
