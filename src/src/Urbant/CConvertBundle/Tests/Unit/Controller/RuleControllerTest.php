@@ -29,10 +29,7 @@ class RuleControllerTest extends BaseController
     private $referenceRepository;
     
     public function setUp() {
-        $startTime = microtime(true);
-        $this->client = self::createClient();
-        $endTime = microtime(true);
-        printf("\nInitialize Time: %5.3f\n", $endTime - $startTime);
+        parent::setUp();
         
         //Fixtureのロード
         $bundle = self::$kernel->getBundle('UrbantCConvertBundle');
@@ -174,10 +171,25 @@ class RuleControllerTest extends BaseController
     
     
     /**
-     * ルールを複数件削除できること。
+     * ルールを削除できること。
      */
     public function testRuleDeletion() {
+        $this->loginAsNormalUser($this->client);
+        //$this->client->followRedirects(false);
+        $crawler = $this->client->request('GET', '/rule');
         
+        $form = $crawler->selectButton('実行')->form();
+        $form['ids[0]']->setValue(true);
+        
+        $id = $form['ids[0]']->getValue();
+        $form['type']->select('d');
+        
+        $this->client->submit($form);
+        
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        
+//         $entity = $this->entityManager->find('UrbantCConvertBundle:Rule', $id);
+//         $this->assertNull($entity, '削除されていること');
     }
     
     
@@ -185,7 +197,21 @@ class RuleControllerTest extends BaseController
      * ルールを削除する際、自分以外のルールのIDを指定しても削除できないこと。
      */
     public function testRuleCannotDeleteIfOwnerDoesNotMatched() {
+        $this->loginAsNormalUser($this->client);
+        //$this->client->followRedirects(false);
+        $crawler = $this->client->request('GET', '/rule');
         
+        $anotherUserRule = $this->entityManager->merge($this->referenceRepository->getReference('super_admin_rule_1'));
+        
+        $this->client->request('POST', $this->routeGenerator->generate('UrbantCConvertBundle_rule_batch'), array(
+            'ids' => array($anotherUserRule->getId()),
+            'type' => 'd',
+        ));
+        
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        
+        $entity = $this->entityManager->find('UrbantCConvertBundle:Rule', $anotherUserRule->getId());
+        $this->assertNotNull($entity, '削除されていないこと');
     }
     
     

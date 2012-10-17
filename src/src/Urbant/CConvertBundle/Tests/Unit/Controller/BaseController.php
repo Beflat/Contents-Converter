@@ -14,6 +14,21 @@ class BaseController extends WebTestCase {
     protected $client;
     
     /**
+     * 
+     * @var Symfony\Component\Routing\Generator\UrlGeneratorInterface
+     */
+    protected $routeGenerator;
+    
+    
+    public function setup() {
+        $this->client = self::createClient();
+        
+        $this->routeGenerator = static::$kernel->getContainer()->get('router')->getGenerator();
+        
+    }
+    
+    
+    /**
      *
      * @param Client $client
      */

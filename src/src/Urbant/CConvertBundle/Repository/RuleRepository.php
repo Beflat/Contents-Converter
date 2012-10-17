@@ -88,13 +88,13 @@ class RuleRepository extends EntityRepository
         }
         
         $qb->where('r.id IN ( ' . implode(' , ', $idConditions) . ' )');
+        $qb->setParameters($idParams);
         
         if(isset($options['user']) && $options['user'] != null) {
-            $qb->andWhere('r.user_id = :user_id');
+            $qb->andWhere('r.userId = :user_id');
             $qb->setParameter('user_id', $options['user']->getId());
         }
         
-        $qb->setParameters($idParams);
         
         return $qb->getQuery()->execute();
     }
