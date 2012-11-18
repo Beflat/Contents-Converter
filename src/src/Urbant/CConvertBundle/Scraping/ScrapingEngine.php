@@ -338,7 +338,7 @@ class ScrapingEngine {
      * @param string $baseUrl 絶対URL表記の基となるURL:。(例：http://www.www.www/xxx/xxx)
      * @param string $absUrl 変換の対象となるURL (例: /aaa.php)
      */
-    protected function getCompleteUrl($baseUrl, $absUrl) {
+    public function getCompleteUrl($baseUrl, $absUrl) {
         $hostName = parse_url($baseUrl, PHP_URL_HOST);
         $dirPath = parse_url($baseUrl, PHP_URL_PATH);
         
@@ -349,10 +349,17 @@ class ScrapingEngine {
                 $result = $urlPrefix . $absUrl;
             } else {
                 $urlPrefix = 'http://' . $hostName . $dirPath;
-                $result = $urlPrefix . '/' . $absUrl;
+                if(substr($dirPath, -1, 1) == '/') {
+                    //URLのパス部分の末尾が/の場合は、その後ろに追加するだけ
+                    $result = $urlPrefix . $absUrl;
+                } else {
+                    //URLのパス部分の末尾が/で終わっていない場合は、親ディレクトリの末尾に
+                    //追加する。
+                    $result = dirname($urlPrefix) . '/' . $absUrl;
+                }
             }
         } else {
-            $result = absUrl;
+            $result = $absUrl;
         }
         
         return $result;
